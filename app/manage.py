@@ -4,6 +4,7 @@ open a browser and go to http://localhost:5000/
 """
 import flask_script
 import connectsample
+import os
 
 MANAGER = flask_script.Manager(connectsample.app)
 MANAGER.add_command('runserver', flask_script.Server(host='localhost'))
