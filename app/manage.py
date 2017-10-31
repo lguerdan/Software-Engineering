@@ -7,4 +7,5 @@ import connectsample
 
 MANAGER = flask_script.Manager(connectsample.app)
 MANAGER.add_command('runserver', flask_script.Server(host='localhost'))
+MANAGER.add_command('runprod', flask_script.Server(host='0.0.0.0'))
 MANAGER.run()
