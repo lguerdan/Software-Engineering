@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <title>Network | Basic usage</title>
+
+  <script type="text/javascript" src="visjs/vis.js"></script>
+  <script type="text/javascript" src="all_courses.js"></script>
+  
+  <script type="text/javascript">
+      var network;
+  	function start() {
+		var nodeElements = [];
+		var edgeElements = [];
+		var prerequisites = [[]];
+        var shortNumbers = [];
+        nodeElements.push({id: -1, label: "University of Missouri"});
+		for (var i = 0; i < allCourses.length; i++) {
+            
+            nodeElements.push({id: i, label: allCourses[i]["Department"]});
+            edgeElements.push({to:i, from: 666});
+		}
+  	
+  		var nodes = new vis.DataSet(nodeElements);
+  		var edges = new vis.DataSet(edgeElements);
+
+		// create a network
+		var container = document.getElementById('mynetwork');
+		var data = {
+			nodes: nodes,
+			edges: edges
+		};
+		var options = {
+          "edges": {
+            "smooth": {
+              "forceDirection": "none"
+            }
+          },
+          "physics": {
+            "barnesHut": {
+              "centralGravity": 0.00001,
+                "gravitationalConstant":-30000
+            },
+            "minVelocity": 0.75
+          }
+        };
+        network = new vis.Network(container, data, options);
+        
+        network.on("selectNode", function (params) {
+            console.log('selectNode Event:', params);
+            var selectedSubset = allCourses[params.nodes[0]];
+            console.log(selectedSubset);
+            for (i in selectedSubset) {
+                
+            }
+        });
+  	}
+      
+      
+  
+  </script>
+  
+  <link href="visjs/vis-network.min.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    #mynetwork {
+      width: 1500px;
+      height: 1000px;
+      border: 1px solid lightgray;
+    }
+      #description {
+          width: 800px;
+          border-bottom: 1px solid black;
+      }  
+  </style>
+</head>
+<body onLoad="start();">
+
+<p>
+  Computer Science Courses
+</p>
+
+<div id="mynetwork"></div>
+<div id="description"></div>
+
+
+
+</body>
+</html>
+
