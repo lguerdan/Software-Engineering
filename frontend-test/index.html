@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>Network | Basic usage</title>
+  <title>Course Departments</title>
 
   <script type="text/javascript" src="visjs/vis.js"></script>
   <script type="text/javascript" src="all_courses.js"></script>
@@ -13,11 +13,11 @@
 		var edgeElements = [];
 		var prerequisites = [[]];
         var shortNumbers = [];
-        nodeElements.push({id: -1, label: "University of Missouri"});
-		for (var i = 0; i < allCourses.length; i++) {
+        nodeElements.push({id: 0, label: "University of Missouri"});
+		for (var i = 1; i < allCourses.length; i++) {
             
-            nodeElements.push({id: i, label: allCourses[i]["Department"]});
-            edgeElements.push({to:i, from: 666});
+            nodeElements.push({id: i*100, label: allCourses[i]["Department"]});
+            edgeElements.push({to:i*100, from: 0});
 		}
   	
   		var nodes = new vis.DataSet(nodeElements);
@@ -37,7 +37,7 @@
           },
           "physics": {
             "barnesHut": {
-              "centralGravity": 0.00001,
+                "centralGravity": 0.00001,
                 "gravitationalConstant":-30000
             },
             "minVelocity": 0.75
@@ -47,11 +47,48 @@
         
         network.on("selectNode", function (params) {
             console.log('selectNode Event:', params);
-            var selectedSubset = allCourses[params.nodes[0]];
-            console.log(selectedSubset);
-            for (i in selectedSubset) {
+            var baseId = params.nodes[0];
+            var selectedSubset = allCourses[baseId/100];
+            
+            var prerequisites = [[]];
+            var newNodeElements = [];
+            var newEdges = [];
+            var shortenedTitles = []
+            console.log("Selected Subset", selectedSubset);
+            var numberPattern = /\d+/g;
+            var coursePattern = /\w+ \d+/g;
+            for (courseNo in selectedSubset["Courses"]) {
+                
+                console.log('Course Num is ', courseNo);
+                var courseObject = selectedSubset["Courses"][courseNo]
+                var shortCourseTitle = courseObject["Title"].match(coursePattern)[0];
+                console.log(shortCourseTitle);
+                shortenedTitles.push(shortCourseTitle);
+                var currentNodeID = Number(baseId)+Number(courseNo)+1;
+                newNodeElements.push({id:currentNodeID,label:shortCourseTitle});
+                if (courseObject.hasOwnProperty("Prerequisites")) {
+                    var prereqText = courseObject["Prerequisites"];
+                    prerequisites[courseNo] = prereqText.match(coursePattern);
+                    console.log(prerequisites[courseNo]); 
+                    for (j in prerequisites[courseNo]) {
+                        var fromVal = baseId+shortenedTitles.indexOf(prerequisites[courseNo][j])+1;
+                        var toVal = currentNodeID; 
+                        console.log("From Value is ", fromVal);
+                        console.log("To Value is ", toVal);
+                        newEdges.push({from:fromVal,to:toVal});
+                    }
+                    if (!prerequisites[courseNo]) {
+                        newEdges.push({from:baseId, to: currentNodeID});
+                    }
+                    
+                }
+                else {
+                    newEdges.push({from:baseId, to: currentNodeID});
+                }
                 
             }
+            nodes.add(newNodeElements);
+            edges.add(newEdges);
         });
   	}
       
@@ -75,7 +112,7 @@
 <body onLoad="start();">
 
 <p>
-  Computer Science Courses
+  All Courses
 </p>
 
 <div id="mynetwork"></div>
