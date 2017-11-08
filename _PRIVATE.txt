@@ -1,6 +1,0 @@
-18f964f2-2497-4aee-b714-ed27acb5e425
-xjYMQG(onpqyIWD47828*@:
-
-The first two lines of this file should be edited to contain the
-client application ID and client secret, each on a single line with
-no quotes or brackets.
