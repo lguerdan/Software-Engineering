@@ -33,7 +33,10 @@
           "edges": {
             "smooth": {
               "forceDirection": "none"
-            }
+            },
+              "arrows": {
+                  "to":true
+              }
           },
           "physics": {
             "barnesHut": {
@@ -41,7 +44,10 @@
                 "gravitationalConstant":-30000
             },
             "minVelocity": 0.75
-          }
+          },
+            "nodes":{
+                "shape":"triangle"
+            }
         };
         network = new vis.Network(container, data, options);
         
@@ -65,7 +71,7 @@
                 console.log(shortCourseTitle);
                 shortenedTitles.push(shortCourseTitle);
                 var currentNodeID = Number(baseId)+Number(courseNo)+1;
-                newNodeElements.push({id:currentNodeID,label:shortCourseTitle});
+                newNodeElements.push({id:currentNodeID,label:shortCourseTitle + "\n \n " + courseObject["Title"]});
                 if (courseObject.hasOwnProperty("Prerequisites")) {
                     var prereqText = courseObject["Prerequisites"];
                     prerequisites[courseNo] = prereqText.match(coursePattern);
