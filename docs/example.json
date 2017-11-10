@@ -119,6 +119,7 @@
             },
             {
                 "Title": "MATH 4150W:  History of Mathematics - Writing Intensive",
+                "GUID": "MATH4150W",
                 "Description": "This is a history course with mathematics as its subject. Includes topics in the history of mathematics from early civilizations onwards.  The growth of mathematics, both as an abstract discipline and as a subject which interacts with others and with practical concerns, is explored.  Prerequisites or Cirequisite:  MATH 2300 or MATH 2340.  Writing intensive sections require ENGLSH 1000.",
                 "Hours": "3",
                 "Prerequisites": ["MATH2300", "MATH2340", "ENGLSH1000"],
