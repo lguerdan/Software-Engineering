@@ -1,1 +1,1 @@
-web: python app/manage.py runprod
+web: python app/app.py
