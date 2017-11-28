@@ -1,5 +1,4 @@
-var json =
-`[
+[
     {
         "Department": "Information Technology (INFOTC)",
         "Courses": [
@@ -177,6 +176,4 @@ var json =
             }
         ]
     }
-]`;
-
-var allCourses = JSON.parse(json);
+]

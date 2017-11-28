@@ -1,5 +1,5 @@
-[
-    {
+{
+   "MATH": {
         "Department": "Mathematics (MATH)",
         "Courses": [
             {
@@ -43,7 +43,7 @@
                 "Hours": "3",
                 "Prerequisites": ["MATH1100","MATH 1160"]
             },
-            
+
             {
                 "Title": "MATH 1500:  Analytic Geometry and Calculus I",
                 "GUID": "MATH1500",
@@ -51,8 +51,8 @@
                 "Hours": "5",
                 "Prerequisites": ["MATH1100","MATH1160"]
             },
-            
-            
+
+
             {
                 "Title": "MATH 1700:  Calculus II",
                 "GUID": "MATH1700",
@@ -60,7 +60,7 @@
                 "Hours": "5",
                 "Prerequisites": ["MATH1700"]
             },
-            
+
             {
                 "Title": "MATH 2300:  Calculus III",
                 "GUID": "MATH2300",
@@ -68,7 +68,7 @@
                 "Hours": "3",
                 "Prerequisites": ["MATH1340","MATH1360","MATH1700"]
             },
-            
+
             {
                 "Title": "MATH 2320:  Discrete Mathematical Structures",
                 "GUID": "MATH2320",
@@ -76,7 +76,7 @@
                 "Hours": "3",
                 "Prerequisites": ["MATH1700"]
             },
-            
+
             {
                 "Title": "MATH 3000W:  Introduction to Advanced Mathematics - Writing Intensive",
                 "GUID": "MATH3000W",
@@ -85,7 +85,7 @@
                 "Prerequisites": ["MATH1700"],
                 "Tags": ["WRITING"]
             },
-            
+
             {
                 "Title": "MATH 4100:  Differential Equations",
                 "GUID": "MATH4100",
@@ -93,7 +93,7 @@
                 "Hours": "3",
                 "Prerequisites": ["MATH1160", "MATH_MAJOR"]
             },
-            
+
             {
                 "Title": "MATH 4140:  Matrix Theory",
                 "GUID": "MATH1300",
@@ -125,24 +125,26 @@
                 "Prerequisites": ["MATH2300", "MATH2340", "ENGLSH1000"],
                 "Tags": ["WRITING", "TECHNICAL"]
             }
-            
+
         ]
-    }
-    {
-     
+    },
+    "CMP_SC" : {
+
         "Department": "Computer Science (CMP_SC)",
         "Courses": [
             {
                 "Title": "CMP_SC 1000:  Introduction to Computer Science",
                 "GUID": "CMP_SC1000",
                 "Description": "This course introduces the Computer Science field, including the history of computers, career opportunities, and ethical/social issues.  There will be lectures given by MU Computer Science faculty to discuss exciting fields as well as career advisement given by Computer Science industry representatives.  Prerequisites: Restricted to freshman/sophomore students who are BS Computer Science, BS Information Technology and Undeclared Engineering or Pre-Engineering may enroll in the class without permission",
-                "Hours": "1"
+                "Hours": "1",
+                "Prerequisites": []
             },
             {
                 "Title": "CMP_SC 1050:  Algorithm Design and Programming I",
                 "GUID": "CMP_CS1050",
                 "Description": "This course provides experience in developing algorithms, designing, implementing programs. Topics include syntax/semantics, flow control, loops, recursion, I/O, arrays, strings and pointers.",
-                "Hours": "3"
+                "Hours": "3",
+                "Prerequisites": []
             },
             {
                 "Title": "CMP_SC 2050:  Algorithm Design and Programming II",
@@ -156,7 +158,7 @@
                 "GUID": "CMP_SC2111",
                 "Description": "The study of the syntax, semantics, and applications of one programming language suitable for large scale scientific or commercial projects, such as FORTRAN, COBOL, PL/1, C, or ADA. May be taken more than once for credit.",
                 "Hours": "1-3",
-                "Prerequisites": "C- or higher in CMP_SC 1050. May be restricted to Engineering majors only"
+                "Prerequisites": ["CMP_SC1050"]
             },
             {
                 "Title": "CMP_SC 2270:  Introduction to Digital Logic",
@@ -191,7 +193,7 @@
                 "GUID": "CMP_SC3330",
                 "Description": "This course focuses on object-oriented programming concepts:  abstraction, polymorphism, encapsulation, inheritance, interfaces, abstract classes, files, streams, and object serialization.  Topics such as GUI and event-driven programming are also tackled.",
                 "Hours": "3",
-                "Prerequisites": "CMP_SC 2270 or ECE 1210"
+                "Prerequisites": ["CMP_SC2270"]
             },
             {
                 "Title": "CMP_SC 3380:  Database Applications and Information Systems",
@@ -205,20 +207,21 @@
                 "GUID": "CMP_SC3530",
                 "Description": "Introduction to the UNIX operating system and its interfaces including the file system, shell, editors, pipes and filters, input/output system, shell programming, program development including C, and document preparation.",
                 "Hours": "3",
-                "Prerequisites": ["CMP_SC 2050"]
+                "Prerequisites": ["CMP_SC2050"]
             },
             {
                 "Title": "CMP_SC 3940:  Internship in Computer Science",
                 "GUID": "CMP_SC3940",
                 "Description": "Computer-related experience in business or industry jointly supervised by faculty and computer professionals. Students should apply one semester in advance for consent of the supervising professor. Graded on a S/U basis only.",
                 "Hours": "3",
-                "Prerequisites": ["CMP_SC 2050"]
+                "Prerequisites": ["CMP_SC2050"]
             },
             {
                 "Title": "CMP_SC 4050:  Design and Analysis of Algorithms I",
                 "GUID": "CMP_SC4050",
                 "Description": "(cross-leveled with CMP_SC 7050). This course reviews and extends earlier work with linked structures, sorting and searching algorithms, and recursion. Graph algorithms, string matching, combinatorial search, geometrical algorithms and related topics are also studied.",
-                "Hours": "3"
+                "Hours": "3",
+                "Prerequisites": []
             },
             {
                 "Title": "CMP_SC 4060:  String Algorithms",
@@ -239,21 +242,21 @@
                 "GUID": "CMP_SC4080",
                 "Description": "(cross-leveled with CMP_SC 7080) This course will provide in-depth treatment of the evolution high performance computing architectures and parallel programming techniques for those architectures. We will cover topics such as: multi-process and multi-threaded programming; multi-node system architectures (clusters, grids, and clouds) and distributed programming; and general purpose GPU programming. To reinforce lecture topics, programming projects will be completed using multi-process and multi-threaded techniques for modern multicore, multiprocessor workstations; parallel and distributed programming techniques for modern multi-node systems; and general purpose GPU programming. Parallel algorithms will be investigated, selected, and then developed for various scientific data processing problems. Programming projects will be completed using C and C++ APIs and language extensions, e.g. threads (pthreads, Boost/C++), TBB, CILK, OpenMP, OpenMPI, CUDA and OpenCL.",
                 "Hours": "3",
-                "Prerequisites": ["CMP_SC 2050"]
+                "Prerequisites": ["CMP_SC2050"]
             },
             {
                 "Title": "CMP_SC 4085:  Problems in Computer Science",
                 "GUID": "CMP_SC4085",
                 "Description": "Independent investigation or project in Computer Science. May be repeated to up 6 hours.",
                 "Hours": "1-6",
-                "Prerequisites": "C- or higher in CMP_SC 3280 or ECE 3210 and C- or higher in CMP_SC 3050 or ECE 3220"
+                "Prerequisites": ["CMP_SC3280" , "CMP_SC3050"]
             },
             {
                 "Title": "CMP_SC 4270:  Computer Architecture I",
                 "GUID": "CMP_SC4270",
                 "Description": "(cross-leveled with CMP_SC 7270). Architectural features of high-performance computer systems including hierarchical and virtual memory, pipelining, vector processing and an introduction to multiple-processor systems.",
                 "Hours": "3",
-                "Prerequisites": "senior standing in Computer Science"
+                "Prerequisites": []
             },
             {
                 "Title": "CMP_SC 4280:  Network Systems Architecture",
@@ -267,14 +270,14 @@
                 "GUID": "CMP_SC4320",
                 "Description": "(cross-leveled with CMP_SC 7320). Overview of software life cycle, including topics in systems analysis and requirements specification, design, implementation testing and maintenance.  Uses modeling techniques, project management, peer review, quality assurance, and system acquisition.",
                 "Hours": "3",
-                "Prerequisites": "CMP_SC 2050 or ECE 3220," "CMP_SC 3280 or ECE 3210"
+                "Prerequisites": ["CMP_SC2050"]
             },
             {
                 "Title": "CMP_SC 4320W:  Software Engineering I - Writing Intensive",
                 "GUID": "CMP_SC4320W",
                 "Description": "(cross-leveled with CMP_SC 7320). Overview of software life cycle, including topics in systems analysis and requirements specification, design, implementation testing and maintenance.  Uses modeling techniques, project management, peer review, quality assurance, and system acquisition.",
                 "Hours": "3",
-                "Prerequisites": "CMP_SC3380",
+                "Prerequisites": ["CMP_SC3380"],
                 "Tags": ["WRITING"]
             },
             {
@@ -296,7 +299,7 @@
                 "GUID": "CMP_SC4380",
                 "Description": "(cross-leveled with CMP_SC 7380). Fundamental concepts of current database systems with emphasis on the relational model. Topics include entity-relationship model, relational algebra, query by example, indexing, query optimization, normal forms, crash recovery, web-based database access, and case studies. Project work involves a modern DBMS, such as Oracle, using SQL.",
                 "Hours": "3",
-                "Prerequisites": ["CMP_SC 3330", "CMP_SC 3380"]
+                "Prerequisites": ["CMP_SC3330", "CMP_SC3380"]
             },
             {
                 "Title": "CMP_SC 4410:  Theory of Computation I",
@@ -324,7 +327,7 @@
                 "GUID": "CMP_SC4450",
                 "Description": "(cross-leveled with CMP_SC 7450). An introduction to the structure, design and implementation of programming languages. Topics include syntax, semantics, data types, control structures, parameter passing, run-time structures, and functional and logic programming.  May not be counted toward Computer Science MS/PHD.",
                 "Hours": "3",
-                "Prerequisites": "CMP_SC 3280 or ECE 3210"
+                "Prerequisites": ["CMP_SC3280"]
             },
             {
                 "Title": "CMP_SC 4460:  Introduction to Cryptography",
@@ -359,7 +362,7 @@
                 "GUID": "CMP_SC4620",
                 "Description": "(cross-leveled with CMP_SC 7620). This course introduces students to physically based modeling and animation methodology for computer graphics and related fields such as computer vision, visualization, biomedical imaging and virtual reality.  We will explore current research issues and will cover associated computational methods for simulating various visually interesting physical phenomena. This course should be appropriate for graduate students in all areas as well as advanced undergraduate students.",
                 "Hours": "3",
-                "Prerequisites": ["CMP_SC3050, MATH1500"] "....or C- or higher in CMP_SC 3050 and MATH 1300 and MATH 1400"
+                "Prerequisites": ["CMP_SC3050", "MATH1500"]
             },
             {
                 "Title": "CMP_SC 4650:  Digital Image Processing",
@@ -373,7 +376,7 @@
                 "GUID": "CMP_SC4670",
                 "Description": "(same as ECE 4675; cross-leveled with ECE 7675, CMP_SC 7670).  Covers digital image formation, information theory concepts, and fundamental lossless and lossy image compression techniques including bit plane encoding, predictive coding, transform coding, block truncation coding, vector quantization, subband coding and hierarchical coding.",
                 "Hours": "3",
-                "Prerequisites": ["CMP_SC 2050", "STAT 4710"]
+                "Prerequisites": ["CMP_SC2050", "STAT4710"]
             },
             {
                 "Title": "CMP_SC 4720:  Introduction to Machine Learning and Pattern Recognition",
@@ -387,21 +390,21 @@
                 "GUID": "CMP_SC4730",
                 "Description": "(same as ECE 4340; cross-leveled with CMP_SC 7340, ECE 7340). Covers the design and development of intelligent machines, emphasizing topics related to sensor-based control of mobile robots.  Includes mechanics and motor control, sensor characterization, reactive behaviors and control architectures.",
                 "Hours": "4",
-                "Prerequisites": ["CMP_SC2050," "STAT4710"]
+                "Prerequisites": ["CMP_SC2050" , "STAT4710"]
             },
             {
                 "Title": "CMP_SC 4740:  Interdisciplinary Introduction to NLP",
                 "GUID": "CMP_SC4740",
                 "Description": "(same as LINGST 4740; cross-leveled with CMP_SC 7740; LINGST 7740). The goal of this course is to enable students to develop substantive NLP applications.  Focus on current structural and statistical techniques for the parsing and interpretation of texts.",
                 "Hours": "3",
-                "Prerequisites": "junior standing"
+                "Prerequisites": []
             },
             {
                 "Title": "CMP_SC 4750:  Artificial Intelligence I",
                 "GUID": "CMP_SC4750",
                 "Description": "(cross-leveled with CMP_SC 7750). Introduction to the concepts and theories of intelligent systems. Various approaches to creating intelligent systems, including symbolic and computational approaches, insight into the philosophical debates important to understanding AI.",
                 "Hours": "3",
-                "Prerequisites": "senior standing"
+                "Prerequisites": []
             },
             {
                 "Title": "CMP_SC 4770:  Introduction to Computational Intelligence",
@@ -414,7 +417,8 @@
                 "Title": "CMP_SC 4830:  Science and Engineering of the World Wide Web",
                 "GUID": "CMP_SC4830",
                 "Description": "(cross-leveled with CMP_SC 7830). This course will study the science and engineering of the World Wide Web. We will study the languages, protocols, services and tools that enable the web. Emphasis will be placed on basics and technologies.",
-                "Hours": "3"
+                "Hours": "3",
+                "Prerequisites": []
             },
             {
                 "Title": "CMP_SC 4850:  Computer Networks I",
@@ -428,7 +432,7 @@
                 "GUID": "CMP_SC4860",
                 "Description": "(cross-leveled with CMP_SC 7860)., Principles and practice of cryptography, network security, and computer system security.  It includes symmetric and asymmetric cryptography, authentication, security applications such as secure email, IP security, Web security, and system security issues such as intruders, viruses, worms, Trojan horses, and firewalls.  Graded on A-F basis only.",
                 "Hours": "3",
-                "Prerequisites": "C- or higher in CMP_SC 2270 or ECE 1210", "MATH 2320"
+                "Prerequisites": ["CMP_SC2270", "MATH2320"]
             },
             {
                 "Title": "CMP_SC 4870:  Wireless and Mobile Networks",
@@ -470,10 +474,8 @@
                 "Title": "CMP_SC 4995:  Undergraduate Research in Computer Science - Honors",
                 "Description": "Independent investigation to be presented as an undergraduate honors thesis.",
                 "Hours": "1-6",
-                "Prerequisites": "senior standing in Computer Science"
+                "Prerequisites": []
             }
-            
         ]
     }
-
-]
+}
