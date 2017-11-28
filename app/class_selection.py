@@ -1,5 +1,5 @@
 import json, os, random
-file_path = os.path.join(os.path.dirname(__file__),"MATH_CS_JSON.json")
+file_path = os.path.join(os.path.dirname(__file__),"cs_classes_raw.json")
 
 departments = ["MATH", "CMP_SC"]
 bad_requeset = {"error": "bad request"}
