@@ -1,0 +1,131 @@
+[
+    {
+        "Department": "Mathematics (MATH)",
+        "Courses": [
+            {
+                "Title": "MATH _0110:  Intermediate Algebra",
+                "GUID": "MATH_0110",
+                "Description": "MATH _0110 is a preparatory course for college algebra that carries no credit towards any baccalaureate degree.  However, the grade received in MATH _0110 does count towards a student's overall GPA.  The course covers operations with real numbers, graphs of functions, domain and range of functions, linear equations and inequalities, quadratic equations; operations with polynomials, rational expressions, exponents and radicals; equations of lines.  Emphasis is also put on problem-solving.",
+                "Hours": "3"
+            },
+            {
+                "Title": "MATH 1100:  College Algebra",
+                "GUID": "MATH1100",
+                "Description": "A review of exponents, order of operations, factoring, and simplifying polynomial, rational, and radical expressions. Topics include: linear, quadratic, polynomial, rational, inverse, exponential, and logarithmic functions and their applications. Students will solve equations involving these functions, and systems of linear equations in two variables, as well as inequalities.  See the Math website for specific requirements.  A student may receive at most 5.0 credit hours among MATH 1100, MATH 1120, MATH 1140, MATH 1160.",
+                "Hours": "3",
+                "Prerequisites": ["MATH_0110"]
+            },
+            {
+                "Title": "MATH 1140:  Trigonometry",
+                "GUID": "MATH1140",
+                "Description": "A student may receive only 5 credits from among MATH 1100, MATH 1140, and MATH 1160. A Student may receive at most 5.0 credit hours from MATH 1100, MATH 1120, MATH 1140, and MATH 1160.",
+                "Hours": "2",
+                "Prerequisites": ["MATH_0110"]
+            },
+            {
+                "Title": "MATH 1160:  Precalculus Mathematics",
+                "GUID": "MATH1160",
+                "Description": "Review of elementary algebra. Background material for MATH 1500, including algebraic, trigonometric, logarithmic, exponential functions.  A student may receive at most 5 credits from among MATH 1100, MATH 1140, and MATH 1160.",
+                "Hours": "5",
+                "Prerequisites": ["MATH1100"]
+            },
+            {
+                "Title": "MATH 1300:  Finite Mathematics",
+                "GUID": "MATH1300",
+                "Description": "A selections of topics in finite mathematics such as: basic financial mathematics, counting methods and basic probability and statistics, systems of linear equations and matrices.  Warning: without a College Algebra exemption, a sufficient ALEKS score will not suffice unless it is a proctored exam (for MATH 1100 credit).",
+                "Hours": "3",
+                "Prerequisites": ["MATH _0110","MATH 1100"]
+            },
+            {
+                "Title": "MATH 1320:  Elements of Calculus",
+                "GUID": "MATH1320",
+                "Description": "Introductory analytic geometry, derivatives, definite integrals. Primarily for Computer Science BA candidates, Economics majors, and students preparing to enter the College of BUS. No credit for students who have completed a calculus course.  A student may receive credit for MATH 1320, or MATH 1400 but not both.  A student may receive at most 5 credit hours among MATH 1320 or MATH 1400 or MATH 1500.",
+                "Hours": "3",
+                "Prerequisites": ["MATH1100","MATH 1160"]
+            },
+            
+            {
+                "Title": "MATH 1500:  Analytic Geometry and Calculus I",
+                "GUID": "MATH1500",
+                "Description": "Elementary analytic geometry, functions, limits, continuity, derivatives, antiderivatives, definite integrals.  A student may receive at most 5 units of credit among the Mathematics courses MATH 1320 or MATH 1400 and MATH 1500. Math Reasoning Proficiency Course.",
+                "Hours": "5",
+                "Prerequisites": ["MATH1100","MATH1160"]
+            },
+            
+            
+            {
+                "Title": "MATH 1700:  Calculus II",
+                "GUID": "MATH1700",
+                "Description": "Definite integrals, applications and techniques of integration, elementary transcendental functions, infinite series.  Math Proficiency Reasoning course.",
+                "Hours": "5",
+                "Prerequisites": ["MATH1700"]
+            },
+            
+            {
+                "Title": "MATH 2300:  Calculus III",
+                "GUID": "MATH2300",
+                "Description": "Vectors, solid analytic geometry, calculus of several variables.  Math Reasoning Proficiency course.",
+                "Hours": "3",
+                "Prerequisites": ["MATH1340","MATH1360","MATH1700"]
+            },
+            
+            {
+                "Title": "MATH 2320:  Discrete Mathematical Structures",
+                "GUID": "MATH2320",
+                "Description": "Sets, functions, logic, relations, induction, recursion, counting techniques, graphs, trees, algorithms.  Math Reasoning Proficiency course.",
+                "Hours": "3",
+                "Prerequisites": ["MATH1700"]
+            },
+            
+            {
+                "Title": "MATH 3000W:  Introduction to Advanced Mathematics - Writing Intensive",
+                "GUID": "MATH3000W",
+                "Description": "Gateway to theoretical math courses.  Focus on reading and writing math proofs/rigorously developing background needed in Adv Calc/Abstract Alg.  Topics include logic, set theory, properties of functions and integers, the real number system, completeness of the real numbers, sequences of real numbers.",
+                "Hours": "3",
+                "Prerequisites": ["MATH1700"],
+                "Tags": ["WRITING"]
+            },
+            
+            {
+                "Title": "MATH 4100:  Differential Equations",
+                "GUID": "MATH4100",
+                "Description": "Traditional introductory course in ordinary differential equations. Includes 1st and 2nd order linear differential equations with numerous applications; Laplace transforms; power series solutions; numerical methods, linear systems.",
+                "Hours": "3",
+                "Prerequisites": ["MATH1160", "MATH_MAJOR"]
+            },
+            
+            {
+                "Title": "MATH 4140:  Matrix Theory",
+                "GUID": "MATH1300",
+                "Description": "Basic properties of matrices, determinants, vector spaces, linear transformations, eigenvalues, eigenvectors, and Jordan normal forms. Introduction to writing proofs.",
+                "Hours": "3",
+                "Prerequisites": ["MATH2320"]
+            },
+            {
+                "Title": "MATH 4140W:  Matrix Theory - Writing Intensive",
+                "GUID": "MATH4140W",
+                "Description": "Basic properties of matrices, determinants, vector spaces, linear transformations, eigenvalues, eigenvectors, and Jordan normal forms. Introduction to writing proofs.",
+                "Hours": "3",
+                "Prerequisites": ["MATH2300","MATH2320","ENGLSH1000"],
+                "Tags": ["WRITING"]
+            },
+            {
+                "Title": "MATH 4150:  History of Mathematics",
+                "GUID": "MATH4150",
+                "Description": "This is a history course with mathematics as its subject. Includes topics in the history of mathematics from early civilizations onwards.  The growth of mathematics, both as an abstract discipline and as a subject which interacts with others and with practical concerns, is explored.  Prerequisites or Cirequisite:  MATH 2300 or MATH 2340.  Writing intensive sections require ENGLSH 1000.",
+                "Hours": "3",
+                "Prerequisites": ["MATH2300", "MATH 2320"],
+                "Tags": ["TECHNICAL"]
+            },
+            {
+                "Title": "MATH 4150W:  History of Mathematics - Writing Intensive",
+                "GUID": "MATH4150W",
+                "Description": "This is a history course with mathematics as its subject. Includes topics in the history of mathematics from early civilizations onwards.  The growth of mathematics, both as an abstract discipline and as a subject which interacts with others and with practical concerns, is explored.  Prerequisites or Cirequisite:  MATH 2300 or MATH 2340.  Writing intensive sections require ENGLSH 1000.",
+                "Hours": "3",
+                "Prerequisites": ["MATH2300", "MATH2340", "ENGLSH1000"],
+                "Tags": ["WRITING", "TECHNICAL"]
+            }
+            
+        ]
+    }
+    ]
