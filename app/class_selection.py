@@ -1,7 +1,7 @@
 import json, os, random
-file_path = os.path.join(os.path.dirname(__file__),"Math_CS_JSON.json")
+file_path = os.path.join(os.path.dirname(__file__),"CompleteJSON.json")
 
-departments = ["MATH", "CMP_SC"]
+departments = ["MATH", "CMP_SC", "ECONOM", "FINANC", "MANGMT", "MRKTNG", "MUS_APMS", "MUS_ENS", "MUS_GENL", "MUS_H_LI", "MUS_THRY", "INFOTC", "ACCTCY"]
 bad_requeset = {"error": "bad request"}
 
 def get_classes_basic(numclasses, department):
