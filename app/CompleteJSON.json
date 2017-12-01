@@ -241,14 +241,14 @@
 				"GUID": "ECONOM4322",
 				"Description": "(cross-leveled with ECONOM 7322Economic issues concerning the role of government regulation. The course examines the rationale for and effects of regulatory policies in public utilities, transportation, and communications industries.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM1024", "ECONOM 1051"]
+				"Prerequisites": ["ECONOM1024","ECONOM 1051"]
 			},
 			{
 				"Title": "ECONOM 4325:  The International Monetary System",
 				"GUID": "ECONOM4325",
 				"Description": "(cross-leveled with ECONOM 7325). Study of macroeconomic and monetary relationships between the U.S. and the world. Topics include balance of payments, foreign exchange rates, history of the international monetary system.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM3251", "ECONOM4351"]
+				"Prerequisites": ["ECONOM3251","ECONOM4351"]
 			},
 			{
 				"Title": "ECONOM 4326:  Economics of International Trade",
@@ -262,7 +262,7 @@
 				"GUID": "ECONOM4329",
 				"Description": "(cross-leveled with ECONOM 7329). Organization of the money market; credit control procedures and aims, effect of bank expansion and contraction on money market and national income deregulation.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM3251", "ECONOM4351"]
+				"Prerequisites": ["ECONOM3251","ECONOM4351"]
 			},
 			{
 				"Title": "ECONOM 4329W:  The Banking System and the Money Market - Writing Intensive",
@@ -290,35 +290,35 @@
 				"GUID": "ECONOM4345W",
 				"Description": "Economic theory is used to analyze the market for educational services and education policy. Topics include: human capital theory, cost and performance measures for public and private schools, market based approaches to school reform, school finance, higher education cost and access.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM1014", "STAT2500"]
+				"Prerequisites": ["ECONOM1014","STAT2500"]
 			},
 			{
 				"Title": "ECONOM 4351:  Intermediate Microeconomics",
 				"GUID": "ECONOM4351",
 				"Description": "(cross-leveled with ECONOM 7351). Theory of rational behavior in consumption, production, and pricing decisions of households and firms. Partial equilibria in product and factor markets under competition, monopoly, oligopoly and monopolistic competition. A brief introduction to general equilibrium and welfare economics is provided. Calculus is employed. No credit for students who have completed ECONOM 3251.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM1014", "STAT2500"]
+				"Prerequisites": ["ECONOM1014","STAT2500"]
 			},
 			{
 				"Title": "ECONOM 4351H:  Intermediate Microeconomics - Honors",
 				"GUID": "ECONOM4351H",
 				"Description": "Theory of rational behavior in consumption, production, and pricing decisions of households and firms. Partial equilibria in product and factor markets under competition, monopoly, oligopoly and monopolistic competition. A brief introduction to general equilibrium and welfare economics is provided. Calculus is employed. No credit for students who have completed ECONOM 3251.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM1014", "MATH1400"]
+				"Prerequisites": ["ECONOM1014","MATH1400"]
 			},
 			{
 				"Title": "ECONOM 4353:  Intermediate Macroeconomics",
 				"GUID": "ECONOM4353",
 				"Description": "(cross-leveled with ECONOM 7353). The study of the structure and performance of national economics.  Topics include: long-term economic growth, aggregate economic fluctuations, unemployment, and inflation; consequences for national economies of being part of the global economic system; government policies and macroeconomic performance.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM1014", "MATH 1400"]
+				"Prerequisites": ["ECONOM1014","MATH 1400"]
 			},
 			{
 				"Title": "ECONOM 4355:  Industrial Organization and Competitive Strategy",
 				"GUID": "ECONOM4355",
 				"Description": "(cross-leveled with ECONOM 7355). Analyzes the structure of industry, its impact on the operations of the firm and significance for public policy.  The focus is on strategic interaction among firms with market power.  Topics include oligopoly, competition, collusion, price discrimination, product differentiation, advertising, entry and exit.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM1015", "MATH 1400"]
+				"Prerequisites": ["ECONOM1015","MATH 1400"]
 			},
 			{
 				"Title": "ECONOM 4355W:  Industrial Organization and Competitive Strategy - Writing Intensive",
@@ -339,42 +339,42 @@
 				"GUID": "ECONOM4357W",
 				"Description": "Analyzes the economics of health care in the United States with particular attention paid to the role of government.  It examines the demand for health care and the structure and consequences of public and private health insurance; the supply of health care, including professional training, licensure, specialization and compensation, hospital competition and finance, and the determinants and consequences of technical change in medicine and health care reform.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM3251", "STAT2500"]
+				"Prerequisites": ["ECONOM3251","STAT2500"]
 			},
 			{
 				"Title": "ECONOM 4360:  Economic Development",
 				"GUID": "ECONOM4360",
 				"Description": "(same as PEA_ST 4360; cross-leveled with ECONOM 7360). The study of less-developed countries including problems of measuring economic growth, analysis of sources of economic growth, causes of changes in economic and structure, development and trade policies. The consequences of goals and assumptions for development policy are analyzed.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM3251", "STAT2500"]
+				"Prerequisites": ["ECONOM3251","STAT2500"]
 			},
 			{
 				"Title": "ECONOM 4361:  Comparative Economic Systems",
 				"GUID": "ECONOM4361",
 				"Description": "(cross-leveled with ECONOM 4361). Study of capitalism, market socialism, and central planning.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM3229", "ECONOM3251"]
+				"Prerequisites": ["ECONOM3229","ECONOM3251"]
 			},
 			{
 				"Title": "ECONOM 4367:  Law and Economics",
 				"GUID": "ECONOM4367",
 				"Description": "(cross-leveled with ECONOM  7367l PUB_AF 7367). This course is a survey of economic analyses of American legal institutions.  Students will apply basic microeconomics, game theoretic and statistical concepts to the study of property, contracts, torts, the legal process, crime, and the judiciary.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM3229", "ECONOM3251"]
+				"Prerequisites": ["ECONOM3229","ECONOM3251"]
 			},
 			{
 				"Title": "ECONOM 4367W:  Law and Economics - Writing Intensive",
 				"GUID": "ECONOM4367W",
 				"Description": "This course is a survey of economic analyses of American legal institutions.  Students will apply basic microeconomics, game theoretic and statistical concepts to the study of property, contracts, torts, the legal process, crime, and the judiciary.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM3251", "STAT2500"]
+				"Prerequisites": ["ECONOM3251","STAT2500"]
 			},
 			{
 				"Title": "ECONOM 4370:  Quantitative Economics",
 				"GUID": "ECONOM4370",
 				"Description": "(cross-leveled with ECONOM 7370). The aim of this course is to provide an introduction to the mathematical language of economic theory.  Topics include linear models, matrix algebra, rules of differentiation and comparative static analysis, optimization.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM3251", "STAT2500"]
+				"Prerequisites": ["ECONOM3251","STAT2500"]
 			},
 			{
 				"Title": "ECONOM 4371:  Introductory Econometrics",
@@ -388,21 +388,21 @@
 				"GUID": "ECONOM4384",
 				"Description": "(cross-leveled with ECONOM 7384). Explores changes in the structure of the American economy from its earliest colonial beginnings. Structural change, an integral part of growth, is related to technical change, population growth and to the content and form of economic theory.",
 				"Hours": "3",
-				"Prerequisites": ["ECONOM3251", "STAT2500"]
+				"Prerequisites": ["ECONOM3251","STAT2500"]
 			},
 			{
 				"Title": "ECONOM 4385:  Problems in Economics",
 				"GUID": "ECONOM4385",
 				"Description": "Development of a carefully considered research project under close supervision of a faculty member.  Credit arranged by instructor.",
 				"Hours": "1-3",
-				"Prerequisites": ["ECONOM1014", "ECONOM1015"]
+				"Prerequisites": ["ECONOM1014","ECONOM1015"]
 			},
 			{
 				"Title": "ECONOM 4775:  Dynamic Optimization and its Applications to the Natural Sciences and Economics",
 				"GUID": "ECONOM4775",
 				"Description": "(cross-leveled with ECONOM 7775). Development of Calculus of Variations and Optimal Control Theory. Applications. Extensions to stochastic and robust control.",
 				"Hours": "1-3",
-				"Prerequisites": ["ECONOM4351", "ECONOM4371"]
+				"Prerequisites": ["ECONOM4351","ECONOM4371"]
 			},
 			{
 				"Title": "ECONOM 4940:  Internship in Economics",
@@ -462,7 +462,7 @@
 				"GUID": "FINANC3300",
 				"Description": "Teaches the importance of risk in personal endeavors and the intelligent handling of such risk. Life, health, auto, homeowner and liability risks are treated.",
 				"Hours": "3",
-				"Prerequisites": ["STAT2500", "ACCTCY2027", "ECONOM1014", "ECONOM1015"]
+				"Prerequisites": ["STAT2500","ACCTCY2027","ECONOM1014","ECONOM1015"]
 			},
 			{
 				"Title": "FINANC 4010:  Financial Management",
@@ -497,7 +497,7 @@
 				"GUID": "FINANC4110",
 				"Description": "Application of the concepts and tools of finance to cases in working capital management, capital budgeting analysis and capital structure decisions.",
 				"Hours": "3",
-				"Prerequisites": ["FINANC3000", "ECONOM3229"]
+				"Prerequisites": ["FINANC3000","ECONOM3229"]
 			},
 			{
 				"Title": "FINANC 4120:  Security Analysis",
@@ -1040,7 +1040,7 @@
 				"GUID": "MANGMT4970W",
 				"Description": "Enterprise-level case studies, simulations, similar exercises to integrate business functional decisions; assessment of environmental influences on business. Development, implementation of company strategies.",
 				"Hours": "3",
-				"Prerequisites": ["MANGMT3000", "MRKTNG3000", "FINANC3000"]
+				"Prerequisites": ["MANGMT3000","MRKTNG3000","FINANC3000"]
 			}
 		]
 	},
@@ -1100,21 +1100,21 @@
 				"GUID": "MRKTNG4000H",
 				"Description": "Further examination of marketing issues: market analysis, market research, positioning, products, pricing, promotion, distribution, relationship management, other topics.",
 				"Hours": "3",
-				"Prerequisites": ["MRKTNG3000", "ACCTCY2010"]
+				"Prerequisites": ["MRKTNG3000","ACCTCY2010"]
 			},
 			{
 				"Title": "MRKTNG 4050:  Marketing Research",
 				"GUID": "MRKTNG4050",
 				"Description": "Procedures for defining marketing research problems; specifying information requirements; collecting, analyzing, interpreting, and presenting data for use in marketing decision making.  Utilizes student projects and research-related computer assignments.",
 				"Hours": "3",
-				"Prerequisites": ["MRKTNG3000", "ACCTCY2010"]
+				"Prerequisites": ["MRKTNG3000","ACCTCY2010"]
 			},
 			{
 				"Title": "MRKTNG 4185:  Problems in Marketing",
 				"GUID": "MRKTNG4185",
 				"Description": "In-depth independent study of marketing topic(s).  Student must have course plan (assignments, evaluation criteria, etc.) approved by faculty sponsor.  Contact Marketing Department office for details and enrollment permission. Selected sections of this course may be graded either on A-F or S/U basis only.",
 				"Hours": "1-3",
-				"Prerequisites": ["MRKTNG3000", "STAT3500"]
+				"Prerequisites": ["MRKTNG3000","STAT3500"]
 			},
 			{
 				"Title": "MRKTNG 4201:  Topics in Marketing",
@@ -1240,7 +1240,7 @@
 				"GUID": "MRKTNG4880H",
 				"Description": "Selected topical issues, their impact on marketing and marketers, and implications for firms and industries.  Emphasis on scanning the external environment, projection of trends, and analysis; strategy development based on environmental analysis.",
 				"Hours": "3",
-				"Prerequisites": "MRKTNG 3000. During early registration, some sections may be restricted to College of Business students with emphasis in Marketing, or International Business with emphasis on marketing"
+				"Prerequisites": ["MRKTNG3000"]
 			},
 			{
 				"Title": "MRKTNG 4940:  Marketing Practicum",
@@ -1257,7 +1257,8 @@
 				"Title": "MATH 0110:  Intermediate Algebra",
 				"GUID": "MATH0110",
 				"Description": "MATH _0110 is a preparatory course for college algebra that carries no credit towards any baccalaureate degree.  However, the grade received in MATH _0110 does count towards a student's overall GPA.  The course covers operations with real numbers, graphs of functions, domain and range of functions, linear equations and inequalities, quadratic equations; operations with polynomials, rational expressions, exponents and radicals; equations of lines.  Emphasis is also put on problem-solving.",
-				"Hours": "3"
+				"Hours": "3",
+                "Prerequisites": []
 			},
 			{
 				"Title": "MATH 1100:  College Algebra",
@@ -1285,14 +1286,14 @@
 				"GUID": "MATH1300",
 				"Description": "A selections of topics in finite mathematics such as: basic financial mathematics, counting methods and basic probability and statistics, systems of linear equations and matrices.  Warning: without a College Algebra exemption, a sufficient ALEKS score will not suffice unless it is a proctored exam (for MATH 1100 credit).",
 				"Hours": "3",
-				"Prerequisites": ["MATH _0110", "MATH 1100"]
+				"Prerequisites": ["MATH0110", "MATH1100"]
 			},
 			{
 				"Title": "MATH 1320:  Elements of Calculus",
 				"GUID": "MATH1320",
 				"Description": "Introductory analytic geometry, derivatives, definite integrals. Primarily for Computer Science BA candidates, Economics majors, and students preparing to enter the College of BUS. No credit for students who have completed a calculus course.  A student may receive credit for MATH 1320, or MATH 1400 but not both.  A student may receive at most 5 credit hours among MATH 1320 or MATH 1400 or MATH 1500.",
 				"Hours": "3",
-				"Prerequisites": ["MATH1100", "MATH 1160"]
+				"Prerequisites": ["MATH1100","MATH1160"]
 			},
 
 			{
@@ -1300,7 +1301,7 @@
 				"GUID": "MATH1500",
 				"Description": "Elementary analytic geometry, functions, limits, continuity, derivatives, antiderivatives, definite integrals.  A student may receive at most 5 units of credit among the Mathematics courses MATH 1320 or MATH 1400 and MATH 1500. Math Reasoning Proficiency Course.",
 				"Hours": "5",
-				"Prerequisites": ["MATH1100", "MATH1160"]
+				"Prerequisites": ["MATH1100","MATH1160"]
 			},
 
 
@@ -1317,7 +1318,7 @@
 				"GUID": "MATH2300",
 				"Description": "Vectors, solid analytic geometry, calculus of several variables.  Math Reasoning Proficiency course.",
 				"Hours": "3",
-				"Prerequisites": ["MATH1340", "MATH1360", "MATH1700"]
+				"Prerequisites": ["MATH1340","MATH1360","MATH1700"]
 			},
 
 			{
@@ -1342,7 +1343,7 @@
 				"GUID": "MATH4100",
 				"Description": "Traditional introductory course in ordinary differential equations. Includes 1st and 2nd order linear differential equations with numerous applications; Laplace transforms; power series solutions; numerical methods, linear systems.",
 				"Hours": "3",
-				"Prerequisites": ["MATH1160", "MATH_MAJOR"]
+				"Prerequisites": ["MATH1160","MATH_MAJOR"]
 			},
 
 			{
@@ -1357,7 +1358,7 @@
 				"GUID": "MATH4140W",
 				"Description": "Basic properties of matrices, determinants, vector spaces, linear transformations, eigenvalues, eigenvectors, and Jordan normal forms. Introduction to writing proofs.",
 				"Hours": "3",
-				"Prerequisites": ["MATH2300", "MATH2320", "ENGLSH1000"],
+				"Prerequisites": ["MATH2300","MATH2320","ENGLSH1000"],
 				"Tags": ["WRITING"]
 			},
 			{
@@ -1365,7 +1366,7 @@
 				"GUID": "MATH4150",
 				"Description": "This is a history course with mathematics as its subject. Includes topics in the history of mathematics from early civilizations onwards.  The growth of mathematics, both as an abstract discipline and as a subject which interacts with others and with practical concerns, is explored.  Prerequisites or Cirequisite:  MATH 2300 or MATH 2340.  Writing intensive sections require ENGLSH 1000.",
 				"Hours": "3",
-				"Prerequisites": ["MATH2300", "MATH 2320"],
+				"Prerequisites": ["MATH2300","MATH 2320"],
 				"Tags": ["TECHNICAL"]
 			},
 			{
@@ -1373,7 +1374,7 @@
 				"GUID": "MATH4150W",
 				"Description": "This is a history course with mathematics as its subject. Includes topics in the history of mathematics from early civilizations onwards.  The growth of mathematics, both as an abstract discipline and as a subject which interacts with others and with practical concerns, is explored.  Prerequisites or Cirequisite:  MATH 2300 or MATH 2340.  Writing intensive sections require ENGLSH 1000.",
 				"Hours": "3",
-				"Prerequisites": ["MATH2300", "MATH2340", "ENGLSH1000"],
+				"Prerequisites": ["MATH2300","MATH2340","ENGLSH1000"],
 				"Tags": ["WRITING", "TECHNICAL"]
 			}
 
@@ -1478,7 +1479,7 @@
 				"GUID": "CMP_SC4060",
 				"Description": "(cross-leveled with CMP_SC 7060). This course provides an introduction to algorithms that efficiently compute patterns in strings.  Topics covered include basic properties of strings, data structures for processing strings, string decomposition, exact and approximate string matching algorithms.",
 				"Hours": "3",
-				"Prerequisites": ["CMP_SC3050", "MATH2320"]
+				"Prerequisites": ["CMP_SC3050","MATH2320"]
 			},
 			{
 				"Title": "CMP_SC 4070:  Numerical Methods for Science and Engineering",
@@ -1499,7 +1500,7 @@
 				"GUID": "CMP_SC4085",
 				"Description": "Independent investigation or project in Computer Science. May be repeated to up 6 hours.",
 				"Hours": "1-6",
-				"Prerequisites": ["CMP_SC3280", "CMP_SC3050"]
+				"Prerequisites": ["CMP_SC3280","CMP_SC3050"]
 			},
 			{
 				"Title": "CMP_SC 4270:  Computer Architecture I",
@@ -1513,7 +1514,7 @@
 				"GUID": "CMP_SC4280",
 				"Description": "(same as ECE 4280; cross-leveled with CMP_SC 7280, ECE 7280). The course covers network systems (interconnects and switch fabrics, network considerations) and relevant networking applications at the network, transport and application layer.",
 				"Hours": "4",
-				"Prerequisites": ["CMP_SC2270", "CMP_SC2050"]
+				"Prerequisites": ["CMP_SC2270","CMP_SC2050"]
 			},
 			{
 				"Title": "CMP_SC 4320:  Software Engineering I",
@@ -1549,7 +1550,7 @@
 				"GUID": "CMP_SC4380",
 				"Description": "(cross-leveled with CMP_SC 7380). Fundamental concepts of current database systems with emphasis on the relational model. Topics include entity-relationship model, relational algebra, query by example, indexing, query optimization, normal forms, crash recovery, web-based database access, and case studies. Project work involves a modern DBMS, such as Oracle, using SQL.",
 				"Hours": "3",
-				"Prerequisites": ["CMP_SC3330", "CMP_SC3380"]
+				"Prerequisites": ["CMP_SC3330","CMP_SC3380"]
 			},
 			{
 				"Title": "CMP_SC 4410:  Theory of Computation I",
@@ -1570,7 +1571,7 @@
 				"GUID": "CMP_SC4440",
 				"Description": "(cross-leveled with CMP_SC 7440). Malicious software or 'malware' is a security threat.  This course teaches students to understand the nature and types of viruses and how they are threats; teaches techniques used to prevent, detect, repair and defend against viruses and worms; teaches program binary examination tools to detect malicious code; and teaches ethical issues surrounding computer security violations.",
 				"Hours": "3",
-				"Prerequisites": ["MATH2320", "CMP_SC3280", "CMP_SC4450"]
+				"Prerequisites": ["MATH2320","CMP_SC3280","CMP_SC4450"]
 			},
 			{
 				"Title": "CMP_SC 4450:  Principles of Programming Languages",
@@ -1591,14 +1592,14 @@
 				"GUID": "CMP_SC4520",
 				"Description": "(cross-leveled with CMP_SC 7520). Basic concepts, theories and implementation of modern operating systems including process and memory management, synchronization, CPU and disk scheduling, file systems, I/O systems, security and protection, and distributed operating systems.",
 				"Hours": "3",
-				"Prerequisites": ["CMP_SC3050", "MATH2320"]
+				"Prerequisites": ["CMP_SC3050","MATH2320"]
 			},
 			{
 				"Title": "CMP_SC 4530:  Cloud Computing",
 				"GUID": "CMP_SC4530",
 				"Description": "(cross-leveled with CMP_SC 7530). This course covers principles that integrate computing theories and information technologies with the design, programming and application of distributed systems. The course topics will familiarize students with distributed system models and enabling technologies; virtual machines and virtualization of clusters, networks and data centers; cloud platform architecture with security over virtualized data centers; service- oriented architectures for distributed computing; and cloud programming and software environments. Additionally, students will learn how to conduct some parallel and distributed programming and performance evaluation experiments on applications within available cloud platforms. Finally we will survey research literature and latest technology trends that are shaping the future of high performance, distributed and cloud computing.",
 				"Hours": "3",
-				"Prerequisites": ["CMP_SC3050", "MATH1700"]
+				"Prerequisites": ["CMP_SC3050","MATH1700"]
 			},
 			{
 				"Title": "CMP_SC 4610:  Computer Graphics I",
@@ -1612,7 +1613,7 @@
 				"GUID": "CMP_SC4620",
 				"Description": "(cross-leveled with CMP_SC 7620). This course introduces students to physically based modeling and animation methodology for computer graphics and related fields such as computer vision, visualization, biomedical imaging and virtual reality.  We will explore current research issues and will cover associated computational methods for simulating various visually interesting physical phenomena. This course should be appropriate for graduate students in all areas as well as advanced undergraduate students.",
 				"Hours": "3",
-				"Prerequisites": ["CMP_SC3050", "MATH1500"]
+				"Prerequisites": ["CMP_SC3050","MATH1500"]
 			},
 			{
 				"Title": "CMP_SC 4650:  Digital Image Processing",
@@ -1626,7 +1627,7 @@
 				"GUID": "CMP_SC4670",
 				"Description": "(same as ECE 4675; cross-leveled with ECE 7675, CMP_SC 7670).  Covers digital image formation, information theory concepts, and fundamental lossless and lossy image compression techniques including bit plane encoding, predictive coding, transform coding, block truncation coding, vector quantization, subband coding and hierarchical coding.",
 				"Hours": "3",
-				"Prerequisites": ["CMP_SC2050", "STAT4710"]
+				"Prerequisites": ["CMP_SC2050","STAT4710"]
 			},
 			{
 				"Title": "CMP_SC 4720:  Introduction to Machine Learning and Pattern Recognition",
@@ -1640,7 +1641,7 @@
 				"GUID": "CMP_SC4730",
 				"Description": "(same as ECE 4340; cross-leveled with CMP_SC 7340, ECE 7340). Covers the design and development of intelligent machines, emphasizing topics related to sensor-based control of mobile robots.  Includes mechanics and motor control, sensor characterization, reactive behaviors and control architectures.",
 				"Hours": "4",
-				"Prerequisites": ["CMP_SC2050", "STAT4710"]
+				"Prerequisites": ["CMP_SC2050","STAT4710"]
 			},
 			{
 				"Title": "CMP_SC 4740:  Interdisciplinary Introduction to NLP",
@@ -1682,7 +1683,7 @@
 				"GUID": "CMP_SC4860",
 				"Description": "(cross-leveled with CMP_SC 7860)., Principles and practice of cryptography, network security, and computer system security.  It includes symmetric and asymmetric cryptography, authentication, security applications such as secure email, IP security, Web security, and system security issues such as intruders, viruses, worms, Trojan horses, and firewalls.  Graded on A-F basis only.",
 				"Hours": "3",
-				"Prerequisites": ["CMP_SC2270", "MATH2320"]
+				"Prerequisites": ["CMP_SC2270","MATH2320"]
 			},
 			{
 				"Title": "CMP_SC 4870:  Wireless and Mobile Networks",
@@ -1845,7 +1846,7 @@
 				"GUID": "MUS_H_LI4318W",
 				"Description": "Advanced systematic study of musical activities in selected world cultures, with the emphasis on developing listening skills and understanding the role of music in a culture.",
 				"Hours": "3",
-				"Prerequisites": ["MUS_H_LI2307", "MUS_H_LI2308"]
+				"Prerequisites": ["MUS_H_LI2307","MUS_H_LI2308"]
 			},
 			{
 				"Title": "MUS_H_LI 4320W:  Historical Studies in African-American Music - Writing Intensive",
@@ -2021,7 +2022,7 @@
 				"GUID": "INFOTC3001",
 				"Description": "Topics may vary from semester to semester.  May be repeated upon consent of department.  Graded on A-F basis only.",
 				"Hours": "3",
-				"Prerequisites": ["CMP_SC1050", "INFOTC2810"]
+				"Prerequisites": ["CMP_SC1050","INFOTC2810"]
 			},
 			{
 				"Title": "INFOTC 3610:  Audio/Video II",
@@ -2119,7 +2120,7 @@
 				"GUID": "INFOTC4970",
 				"Description": "This course is an opportunity for you to demonstrate that you have achieved the goals established by the Information Technology (IT) program. You will do this through a series of writing exercises, class activities, and a team-based project. You will demonstrate your ability to synthesize various methods and skills, apply them to new, novel, complex, and integrated project requirements in real-world IT problems. Graded on A-F basis only.",
 				"Hours": "3",
-				"Prerequisites": ["CMP_SC2050", "INFOTC2620"]
+				"Prerequisites": ["CMP_SC2050","INFOTC2620"]
 			},
 			{
 				"Title": "INFOTC 4970W:  Senior Capstone Design - Writing Intensive",
