@@ -2133,15 +2133,21 @@
 	},
 	"PHYSCS": {
 		"Department":"Physics",
-		"Courses":{
-			"Title":"PHYSCS 2750: University Physics I",
-			"GUID":"PHYSCS2750",
-			"Description":"First course in calculus-based physics for science and engineering students. Topics covered are vectors, translational and rotational kinematics, translational and rotational dynamics, energy, momentum, gravity, oscillations, waves, fluids and thermodynamics. Three lectures, one discussion, one lab weekly. Students may receive credit for PHYSCS 1210 or PHYSCS 2750, but not both.",
-			"Hours":"5",
-			"Prerequisites":["MATH1500"]
-		}
-		{
-			
-		}
+		"Courses":[
+			{
+				"Title":"PHYSCS 2750: University Physics I",
+				"GUID":"PHYSCS2750",
+				"Description":"First course in calculus-based physics for science and engineering students. Topics covered are vectors, translational and rotational kinematics, translational and rotational dynamics, energy, momentum, gravity, oscillations, waves, fluids and thermodynamics. Three lectures, one discussion, one lab weekly. Students may receive credit for PHYSCS 1210 or PHYSCS 2750, but not both.",
+				"Hours":"5",
+				"Prerequisites":["MATH1500"]
+			},
+			{
+				"Title":"PHYSCS 2760: University Physics 2",
+				"GUID":"PHYSCS2760",
+				"Description":"Second semester course in calculus-based physics for science and engineering students. Topics covered are electrostatics, circuits, magnetism, electromagnetic phenomena, optics, matter waves and particles and modern physics.  Three lectures, one discussion, one lab weekly. Students may receive credit for PHYSCS 1220 or PHYSCS 2760, but not both.",
+				"Hours":"5",
+				"Prerequisites":["MATH1700", "PHYSCS2750"]
+			}
+		]
 	}
 }

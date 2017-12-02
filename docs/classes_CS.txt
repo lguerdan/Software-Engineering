@@ -1,5 +1,5 @@
 {
-	title:"Computer Science",
+	title:"CSMajor",
 	requirements:[
 		{
 			classes:["CS1000", "CS1050", "CS2050", "CS2270", "CS3050", "CS3280", "CS3330", "CS3380", "CS4050", "CS4320", "CS4520", "CS4850", "CS4970", "CS4980"],
