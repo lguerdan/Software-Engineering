@@ -1723,7 +1723,8 @@
 			},
 			{
 				"Title": "CMP_SC 4995:  Undergraduate Research in Computer Science - Honors",
-				"Description": "Independent investigation to be presented as an undergraduate honors thesis.",
+				"GUID": "CMP_SC4995",
+            "Description": "Independent investigation to be presented as an undergraduate honors thesis.",
 				"Hours": "1-6",
 				"Prerequisites": []
 			}

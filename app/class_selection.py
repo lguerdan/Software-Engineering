@@ -61,12 +61,15 @@ def get_degree(degree):
 
 
 def get_course_from_ID(cid):
+
+   print cid
+
    dept = filter(None, re.split(r'(\d+)', cid))[0]
    allcourses = json.load(open(courses_file))
    for course in allcourses[dept]["Courses"]:
       print str(course) + "\n\n\n"
-      # if course["GUID"] == cid:
-      #    return course
+      if course["GUID"] == cid:
+         return course
 
 
    return None
