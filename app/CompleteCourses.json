@@ -2150,5 +2150,24 @@
 				"Prerequisites":["MATH1700", "PHYSCS2750"]
 			}
 		]
-	}
+	},
+    "STAT":{
+        "Department":"Statistics",
+        "Courses":[
+            {
+                "Title":"STAT 2500: Introduction to Probability and Statistics I",
+				"GUID":"STAT2500",
+				"Description":"Designed primarily for students in College of Business. Descriptive statistics, probability, random variables, sampling distributions, estimation, confidence intervals, hypothesis tests. Math Reasoning Proficiency course.",
+				"Hours":"3",
+				"Prerequisites":["MATH1500"]
+            },
+            {
+                "Title":"STAT 4710: Introduction to Mathematical Statistics",
+				"GUID":"STAT4710",
+				"Description":"(same as MATH 4315). Introduction to theory of probability and statistics using concepts and methods of calculus.  No credit for MATH 4315.",
+				"Hours":"3",
+				"Prerequisites":["MATH2300"]
+            }
+        ]
+    }
 }
