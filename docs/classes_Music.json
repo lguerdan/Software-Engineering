@@ -3,24 +3,24 @@
     "requirements":{
         
         "classes":[
-            MUS_THRY 1230	Aural Training and Sight Singing I	2
-MUS_THRY 1231	Aural Training and Sight Singing II	2
-MUS_THRY 2230	Aural Training and Sight Singing III	2
-MUS_THRY 2231	Aural Training and Sight Singing IV	2
-MUS_THRY 1220	Syntax, Structure and Style of Music I	2
-MUS_THRY 1221	Syntax, Structure and Style of Music II	2
-MUS_THRY 2220	Syntax, Structure and Style of Music III	2
-MUS_THRY 2221	Syntax, Structure and Style of Music IV	2
-MUS_H_LI 1322	Introduction to Music in the United States	2
-MUS_H_LI 2307	History of Western Music I	2
-MUS_H_LI 2308	History of Western Music II	2
-MUSIC 4300 level	History Elective (Writing Intensive)	3
-MUS_GENL 3085	Problems in Music (Capstone Experience)	1
-MUS_GENL 1091	Recital Attendance for Undergraduate Music Majors (7 semesters)	0
-MUS_APMS 2455	Studio Instruction (Total of 8 credit hours)	8
-MUS_APMS 3455	Studio Instruction
-        ]
-        
+            MUS_THRY 1230
+"MUS_THRY1231",
+"MUS_THRY2230",
+"MUS_THRY2231",
+"MUS_THRY1220",
+"MUS_THRY1221",
+"MUS_THRY2220",
+"MUS_THRY2221",
+"MUS_H_LI1322",
+"MUS_H_LI2307",
+"MUS_H_LI2308",
+"MUSIC4300",
+"MUS_GENL3085",
+"MUS_GENL1091",
+"MUS_APMS2455",
+"MUS_APMS3455"
+        ],
+        "count":15
     }
     
     
