@@ -1,1 +1,40 @@
-title: "Math"
+{
+	"title":"MathMinor",
+	"requirements":[
+		{
+			"classes":["MATH1500", "MATH1700", "MATH2300"],
+			"count": 3
+		}, 
+		{
+			"classes":["MATH3000"
+                        "MATH4001",
+                        "MATH4100",
+                        "MATH4140",
+                        "MATH4150",
+                        "MATH4300",
+                        "MATH4310",
+                        "MATH4315",
+                        "MATH4320",
+                        "MATH4330",
+                        "MATH4350",
+                        "MATH4355",
+                        "MATH4400",
+                        "MATH4500",
+                        "MATH4520",
+                        "MATH4540",
+                        "MATH4560",
+                        "MATH4580",
+                        "MATH4590",
+                        "MATH4700",
+                        "MATH4720",
+                        "MATH4800",
+                        "MATH4900",
+                        "MATH4920",
+                        "MATH4940",
+                        "MATH4960"
+                     ],
+			"count": 2
+		}
+	]
+
+}
