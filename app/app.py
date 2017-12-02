@@ -21,6 +21,19 @@ def get_classes():
    return jsonify(selected_classes)
 
 
+@app.route("/get_degree")
+def get_degree():
+   deg1 = request.args.get("deg1")
+   deg2 = request.args.get("deg2")
+   print deg1
+   if not deg1 and not deg2:
+      return jsonify({"error": "bad request"})
+
+   selected_classes = get_courses_for_degrees(deg1, deg2)
+   return jsonify(selected_classes)
+
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8080))
     app.run(host='0.0.0.0', port=port)
