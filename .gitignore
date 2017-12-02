@@ -4,6 +4,7 @@
 #Python stuff
 __pycache__
 py3env
+*.pyc
 
 # Windows image file caches
 Thumbs.db
