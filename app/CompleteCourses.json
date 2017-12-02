@@ -1392,7 +1392,7 @@
 			},
 			{
 				"Title": "CMP_SC 1050:  Algorithm Design and Programming I",
-				"GUID": "CMP_CS1050",
+				"GUID": "CMP_SC1050",
 				"Description": "This course provides experience in developing algorithms, designing, implementing programs. Topics include syntax/semantics, flow control, loops, recursion, I/O, arrays, strings and pointers.",
 				"Hours": "3",
 				"Prerequisites": []

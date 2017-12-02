@@ -1,17 +1,17 @@
 {
    "CSMajor": {
       "requirements": [{
-            "classes": ["CS1000", "CS1050", "CS2050", "CS2270", "CS3050", "CS3280", "CS3330", "CS3380", "CS4050", "CS4320", "CS4520", "CS4850", "CS4970", "CS4980"],
+            "classes": ["CMP_SC1000", "CMP_SC1050", "CMP_SC2050", "CMP_SC2270", "CMP_SC3050", "CMP_SC3280", "CMP_SC3330", "CMP_SC3380", "CMP_SC4050", "CMP_SC4320", "CMP_SC4520", "CMP_SC4850", "CMP_SC4970", "CMP_SC4980"],
             "count": 14
          }, {
-            "classes": ["CS4410", "CS4450"],
+            "classes": ["CMP_SC4410", "CMP_SC4450"],
             "count": 1
          },
          {
-            "classes": ["CS2830", "CS3530", "CS3940"],
+            "classes": ["CMP_SC2830", "CMP_SC3530", "CMP_SC3940"],
             "count": 1
          }, {
-            "classes": ["CS4001", "CS4060", "CS4080", "CS4085", "CS4270", "CS4280", "CS4380", "CS4430", "CS4440", "CS4460", "CS4610", "CS4620", "CS4650", "CS4670", "CS4720", "CS4730", "CS4740", "CS4750", "CS4770", "CS4830", "CS4990", "CS4995", "IT4500"],
+            "classes": ["CMP_SC4001", "CMP_SC4060", "CMP_SC4080", "CMP_SC4085", "CMP_SC4270", "CMP_SC4280", "CMP_SC4380", "CMP_SC4430", "CMP_SC4440", "CMP_SC4460", "CMP_SC4610", "CMP_SC4620", "CMP_SC4650", "CMP_SC4670", "CMP_SC4720", "CMP_SC4730", "CMP_SC4740", "CMP_SC4750", "CMP_SC4770", "CMP_SC4830", "CMP_SC4990", "CMP_SC4995", "IT4500"],
             "count": 5
          }, {
             "classes": ["MATH1500", "MATH1700", "MATH2300", "MATH2320", "STAT4710"],
@@ -23,87 +23,37 @@
       ]
    },
     "MathMinor": {
-            "requirements":[
-                {
-                    "classes":["MATH1500", "MATH1700", "MATH2300"],
-                    "count": 3
-                }, 
-                {
-                    "classes":["MATH3000"
-                                "MATH4001",
-                                "MATH4100",
-                                "MATH4140",
-                                "MATH4150",
-                                "MATH4300",
-                                "MATH4310",
-                                "MATH4315",
-                                "MATH4320",
-                                "MATH4330",
-                                "MATH4350",
-                                "MATH4355",
-                                "MATH4400",
-                                "MATH4500",
-                                "MATH4520",
-                                "MATH4540",
-                                "MATH4560",
-                                "MATH4580",
-                                "MATH4590",
-                                "MATH4700",
-                                "MATH4720",
-                                "MATH4800",
-                                "MATH4900",
-                                "MATH4920",
-                                "MATH4940",
-                                "MATH4960"
-                             ],
-                    "count": 2
-                }
-            ]
+      "requirements":[{
+        "classes":["MATH1500", "MATH1700", "MATH2300"],
+        "count": 3
+      },{
+        "classes":["MATH3000","MATH4001","MATH4100","MATH4140","MATH4150","MATH4300","MATH4310","MATH4315","MATH4320","MATH4330","MATH4350","MATH4355","MATH4400","MATH4500","MATH4520","MATH4540","MATH4560","MATH4580","MATH4590","MATH4700","MATH4720","MATH4800","MATH4900","MATH4920","MATH4940","MATH4960"],
+        "count": 2
+      }]
     },
     "ITMajor":{
-        "requirements":[
-		{
+        "requirements":[{
 			"classes":["CMP_SC1000", "CMP_SC1050", "CMP_SC2050", "CMP_SC2830", "CMP_SC3380", "CMP_SC4320", "CMP_SC4970", "CMP_SC4980"],
 			"count": 11
-		}, 
-		{
+		},{
 			"classes":["INFOTC2610", "INFOTC2610", "INFOTC2910"],
 			"count": 1
-		},
-		{
-			classes:["CMP_SC2830", "CMP_SC3530", "CMP_SC3940"],
-			count: 1
-		},
-		{
-			classes: ["CMP_SC3530",
-                    "CMP_SC4380",
-                    "CMP_SC4830",
-                    "INFOTC1610",
-                    "INFOTC2600",
-                    "INFOTC2620",
-                    "INFOTC3610",
-                    "INFOTC3620",
-                    "INFOTC3630",
-                    "INFOTC3640",
-                    "INFOTC3850",
-                    "INFOTC4400",
-                    "INFOTC4500",
-                    "INFOTC4640",]
-			count: 8
-		},
-		{
-			classes: ["MATH1300","MATH1400","STAT2500"],
-			count: 3
-		},
-        {
-            classes: ["MANGMT3000", "IMSE4750", "MRKTNG4650"],
-            count: 1
-        }
-        {
-            classes: ["PHSYCS2750","PHYSCS2760"],
-            count: 2
-        }
-
-	]
+		},{
+			"classes":["CMP_SC2830", "CMP_SC3530", "CMP_SC3940"],
+			"count": 1
+		},{
+			"classes": ["CMP_SC3530", "CMP_SC4380", "CMP_SC4830","INFOTC1610", "INFOTC2600","INFOTC2620","INFOTC3610","INFOTC3620","INFOTC3630",
+                    "INFOTC3640", "INFOTC3850","INFOTC4400","INFOTC4500","INFOTC4640"],
+			"count" : 8
+		},{
+			"classes": ["MATH1300","MATH1400","STAT2500"],
+			"count": 3
+		},{
+            "classes": ["MANGMT3000", "IMSE4750", "MRKTNG4650"],
+            "count": 1
+      },{
+            "classes": ["PHSYCS2750","PHYSCS2760"],
+            "count": 2
+      }]
     }
 }

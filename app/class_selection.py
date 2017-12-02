@@ -1,5 +1,7 @@
-import json, os, random
-file_path = os.path.join(os.path.dirname(__file__),"CompleteJSON.json")
+import json, os, random, re
+courses_file = os.path.join(os.path.dirname(__file__),"CompleteCourses.json")
+degrees_file = os.path.join(os.path.dirname(__file__),"CompleteDegrees.json")
+
 
 departments = ["MATH", "CMP_SC", "ECONOM", "FINANC", "MANGMT", "MRKTNG", "MUS_APMS", "MUS_ENS", "MUS_GENL", "MUS_H_LI", "MUS_THRY", "INFOTC", "ACCTCY"]
 degrees = ["CSMajor","ITMajor", "MathMinor", "MusicStudiesMajor", "BusinessMinor"]
@@ -10,7 +12,7 @@ def get_classes_basic(numclasses, department):
    if department not in departments:
       return bad_requeset
 
-   data = json.load(open(file_path))
+   data = json.load(open(courses_file))
 
    department_classes =  data[department]["Courses"]
    if int(numclasses) > len(department_classes):
@@ -19,6 +21,7 @@ def get_classes_basic(numclasses, department):
    random.shuffle(department_classes)
    classes_out = [department_classes[i] for i in range(int(numclasses))]
    return classes_out
+
 
 def get_courses_for_degrees(degree1, degree2):
    if (degree1 and degree1 not in degrees) or (degree2 and degree2 not in degrees):
@@ -37,6 +40,35 @@ def get_courses_for_degrees(degree1, degree2):
 
 
 def get_degree(degree):
-   print degree
-   return {}
+   data = json.load(open(degrees_file))
+   courses = []
+   courses_full = []
+
+   for requirement in data[degree]["requirements"]:
+      ctemp = requirement["classes"]
+      random.shuffle(ctemp)
+      courses.extend(ctemp[:requirement["count"]])
+
+   for course in courses:
+      course_full = get_course_from_ID(course)
+      if course_full != None:
+         courses_full.append(course_full)
+      else:
+         print "didnt find course" + course
+
+   return courses_full
+
+
+
+def get_course_from_ID(cid):
+   dept = filter(None, re.split(r'(\d+)', cid))[0]
+   allcourses = json.load(open(courses_file))
+
+   for course in allcourses[dept]:
+      print course["GUID"]
+      if course["GUID"] == cid:
+         return course
+
+
+   return None
 
