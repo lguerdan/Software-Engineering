@@ -29,7 +29,7 @@
                     "count": 3
                 }, 
                 {
-                    "classes":["MATH3000"
+                    "classes":["MATH3000",
                                 "MATH4001",
                                 "MATH4100",
                                 "MATH4140",
@@ -62,48 +62,79 @@
     },
     "ITMajor":{
         "requirements":[
-		{
-			"classes":["CMP_SC1000", "CMP_SC1050", "CMP_SC2050", "CMP_SC2830", "CMP_SC3380", "CMP_SC4320", "CMP_SC4970", "CMP_SC4980"],
-			"count": 11
-		}, 
-		{
-			"classes":["INFOTC2610", "INFOTC2610", "INFOTC2910"],
-			"count": 1
-		},
-		{
-			classes:["CMP_SC2830", "CMP_SC3530", "CMP_SC3940"],
-			count: 1
-		},
-		{
-			classes: ["CMP_SC3530",
-                    "CMP_SC4380",
-                    "CMP_SC4830",
-                    "INFOTC1610",
-                    "INFOTC2600",
-                    "INFOTC2620",
-                    "INFOTC3610",
-                    "INFOTC3620",
-                    "INFOTC3630",
-                    "INFOTC3640",
-                    "INFOTC3850",
-                    "INFOTC4400",
-                    "INFOTC4500",
-                    "INFOTC4640",]
-			count: 8
-		},
-		{
-			classes: ["MATH1300","MATH1400","STAT2500"],
-			count: 3
-		},
-        {
-            classes: ["MANGMT3000", "IMSE4750", "MRKTNG4650"],
-            count: 1
-        }
-        {
-            classes: ["PHSYCS2750","PHYSCS2760"],
-            count: 2
-        }
+            {
+                "classes":["CMP_SC1000", "CMP_SC1050", "CMP_SC2050", "CMP_SC2830", "CMP_SC3380", "CMP_SC4320", "CMP_SC4970", "CMP_SC4980"],
+                "count": 11
+            }, 
+            {
+                "classes":["INFOTC2610", "INFOTC2610", "INFOTC2910"],
+                "count": 1
+            },
+            {
+                classes:["CMP_SC2830", "CMP_SC3530", "CMP_SC3940"],
+                count: 1
+            },
+            {
+                classes: ["CMP_SC3530",
+                        "CMP_SC4380",
+                        "CMP_SC4830",
+                        "INFOTC1610",
+                        "INFOTC2600",
+                        "INFOTC2620",
+                        "INFOTC3610",
+                        "INFOTC3620",
+                        "INFOTC3630",
+                        "INFOTC3640",
+                        "INFOTC3850",
+                        "INFOTC4400",
+                        "INFOTC4500",
+                        "INFOTC4640",]
+                count: 8
+            },
+            {
+                classes: ["MATH1300","MATH1400","STAT2500"],
+                count: 3
+            },
+            {
+                classes: ["MANGMT3000", "IMSE4750", "MRKTNG4650"],
+                count: 1
+            }
+            {
+                classes: ["PHSYCS2750","PHYSCS2760"],
+                count: 2
+            }
 
-	]
+	   ]
+    },
+    "MusicStudiesMajor": {
+        "requirements":[
+            {
+            "classes":[
+                "MUS_THRY1230",
+                "MUS_THRY1231",
+                "MUS_THRY2230",
+                "MUS_THRY2231",
+                "MUS_THRY1220",
+                "MUS_THRY1221",
+                "MUS_THRY2220",
+                "MUS_THRY2221",
+                "MUS_H_LI1322",
+                "MUS_H_LI2307",
+                "MUS_H_LI2308",
+                "MUSIC4300",
+                "MUS_GENL3085",
+                "MUS_GENL1091",
+                "MUS_APMS2455",
+                "MUS_APMS3455"
+            ],
+            "count":15
+            },
+            {
+                "classes":["MUS_ENS1841", "MUS_ENS1842"],
+                "count":1
+
+            }
+        ]
+        
     }
 }
