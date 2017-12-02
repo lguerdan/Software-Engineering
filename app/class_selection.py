@@ -54,7 +54,7 @@ def get_degree(degree):
       if course_full != None:
          courses_full.append(course_full)
       else:
-         print "didnt find course" + course
+         print "didnt find course " + course
 
    return courses_full
 
@@ -63,11 +63,10 @@ def get_degree(degree):
 def get_course_from_ID(cid):
    dept = filter(None, re.split(r'(\d+)', cid))[0]
    allcourses = json.load(open(courses_file))
-
-   for course in allcourses[dept]:
-      print course["GUID"]
-      if course["GUID"] == cid:
-         return course
+   for course in allcourses[dept]["Courses"]:
+      print str(course) + "\n\n\n"
+      # if course["GUID"] == cid:
+      #    return course
 
 
    return None
