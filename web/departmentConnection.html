@@ -21,45 +21,44 @@
         
         
         
-        nodeElements.push({id: 0, label: "University of Missouri"});
+        //nodeElements.push({id: 0, label: "University of Missouri"});
         var count = 1;
 		for (var i = 1; i < allCourses.length; i++) {
             allNodes[count] = {
                 "id":count,
                 "Type":0,
                 "Title": allCourses[i]["Department"],
-                "CourseIDs": []
+                "Connections": 0
             }
             nodeElements.push({id: count, label: allNodes[count]["Title"]});
-            edgeElements.push({to:count, from: 0});
+//            edgeElements.push({to:count, from: 0});
+            var currentDepartment = count;
+            count++;
+		}
+        
+        var count = 1;
+		for (var i = 1; i < allCourses.length; i++) {
+            
             var currentDepartment = count;
             count++;
             for (var k =0 ; k<allCourses[i]["Courses"].length;k++) {
                 
                 var currentCourse = allCourses[i]["Courses"][k];
-                var currentCourseShortTitle;
-                if (currentCourseShortTitle = currentCourse["Title"].match(coursePattern)) {
-                    currentCourseShortTitle = currentCourseShortTitle[0];
-                }
-                else {
-                    currentCourseShortTitle = "Could not get short title."
-                }
                 
                 var currentCoursePrerequisites = [];
                 if (currentCourse.hasOwnProperty("Prerequisites")) {
-                     currentCoursePrerequisites = currentCourse["Prerequisites"].match(coursePattern);
+                    currentCoursePrerequisites = currentCourse["Prerequisites"].match(coursePattern);
+                    
+                    if (currentCoursePrerequisites != null) {
+                        allNodes[currentDepartment]["Connections"]=currentCoursePrerequisites.length;
+                        for (prereq in currentCoursePrerequisites) {
+                            var targetDepartment = allNodes.find(function(course){return course["Title"] === prereq}) 
+    //                        allNodes[targetDepartment["id"]]["Connections"]+=1;
+                            edgeElements.push({to:currentDepartment,from:targetDepartment["id"]})
+                        }  
+                    }
+                    
                 } 
-                //console.log(currentCourseShortTitle);
-                allNodes[count] = {
-                    "id":count,
-                    "Type":1,
-                    "Title":currentCourse["Title"],
-                    "shortTitle": currentCourseShortTitle[0],
-                    "Prerequisites": currentCoursePrerequisites
-                }
-                allNodes[currentDepartment]["CourseIDs"].push(count);
-                
-                count++;
             }
 		}
         
@@ -103,48 +102,43 @@
                     "sortMethod":"directed",
                     "nodeSpacing": 100
                 }
-            },
-            "interaction": {
-                "hover":true,
-                "tooltipDelay": 200,
-                "hideEdgesOnDrag": true
-              }
+            }
         };
         network = new vis.Network(container, data, options);
         
         
-        network.on("selectNode", function (params) {
-            console.log('selectNode Event:', params);
-            var baseId = params.nodes[0];
-            
-            var newNodes = [];
-            var newEdges = []
-            
-            var selectedDepartment = allNodes[baseId];
-            var selectedCourses = allNodes[baseId]["CourseIDs"];
-            
-            for (course in selectedCourses) {
-                courseObject = allNodes[selectedCourses[course]];
-                newNodes.push({id:courseObject["id"], label: courseObject["Title"]});
-                prereqs = courseObject["Prerequisites"];
-//               if (prereqs == null){
-                   newEdges.push({to:courseObject["id"],from:selectedDepartment["id"]});
-//               } else {
-//                   for (prereq in prereqs ){
-//                       courseObject = allNodes[selectedCourses[course]];
-//                       console.log(prereqs[prereq])
-//                       console.log(allNodes);
-//                       var indicatedCourse = findNode(allNodes, prereqs[prereq]);
-//                       console.log(indicatedCourse);
-//                       newEdges.push({to: courseObject["id"], from:indicatedCourse["id"]});
-//                   }
-//               }
-            }
-            
-            
-            nodes.add(newNodes);
-            edges.add(newEdges);
-        });
+//        network.on("selectNode", function (params) {
+//            console.log('selectNode Event:', params);
+//            var baseId = params.nodes[0];
+//            
+//            var newNodes = [];
+//            var newEdges = []
+//            
+//            var selectedDepartment = allNodes[baseId];
+//            var selectedCourses = allNodes[baseId]["CourseIDs"];
+//            
+//            for (course in selectedCourses) {
+//                courseObject = allNodes[selectedCourses[course]];
+//                newNodes.push({id:courseObject["id"], label: courseObject["Title"]});
+//                prereqs = courseObject["Prerequisites"];
+////               if (prereqs == null){
+//                   newEdges.push({to:courseObject["id"],from:selectedDepartment["id"]});
+////               } else {
+////                   for (prereq in prereqs ){
+////                       courseObject = allNodes[selectedCourses[course]];
+////                       console.log(prereqs[prereq])
+////                       console.log(allNodes);
+////                       var indicatedCourse = findNode(allNodes, prereqs[prereq]);
+////                       console.log(indicatedCourse);
+////                       newEdges.push({to: courseObject["id"], from:indicatedCourse["id"]});
+////                   }
+////               }
+//            }
+//            
+//            
+//            nodes.add(newNodes);
+//            edges.add(newEdges);
+//        });
         
         
         
@@ -153,7 +147,7 @@
       function findNode(searchArray, target) {
           for (item in searchArray){
               console.log(searchArray[item] + " vs " + target);
-              if (searchArray[item].hasOwnProperty("shortTitle")){
+              if (searchArray[item].hasOwnProperty(".;/l")){
                   if (searchArray[item]["shortTitle"] == target ) {
                   console.log(target + "found");
                   return searchArray[item]
