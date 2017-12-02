@@ -2,7 +2,7 @@
 	"title":"ITMajor",
 	"requirements":[
 		{
-			"classes":["CS1000", "CS1050", "CS2050", "CS2830", "CS3380", "CS4320", "CS4970", "CS4980"],
+			"classes":["CMP_SC1000", "CMP_SC1050", "CMP_SC2050", "CMP_SC2830", "CMP_SC3380", "CMP_SC4320", "CMP_SC4970", "CMP_SC4980"],
 			"count": 11
 		}, 
 		{
@@ -10,7 +10,7 @@
 			"count": 1
 		},
 		{
-			classes:["CS2830", "CS3530", "CS3940"],
+			classes:["CMP_SC2830", "CMP_SC3530", "CMP_SC3940"],
 			count: 1
 		},
 		{
