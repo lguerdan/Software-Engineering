@@ -1,0 +1,48 @@
+{
+	"title":"ITMajor",
+	"requirements":[
+		{
+			"classes":["CS1000", "CS1050", "CS2050", "CS2830", "CS3380", "CS4320", "CS4970", "CS4980"],
+			"count": 11
+		}, 
+		{
+			"classes":["INFOTC2610", "INFOTC2610", "INFOTC2910"],
+			"count": 1
+		},
+		{
+			classes:["CS2830", "CS3530", "CS3940"],
+			count: 1
+		},
+		{
+			classes: ["CMP_SC3530",
+                    "CMP_SC4380",
+                    "CMP_SC4830",
+                    "INFOTC1610",
+                    "INFOTC2600",
+                    "INFOTC2620",
+                    "INFOTC3610",
+                    "INFOTC3620",
+                    "INFOTC3630",
+                    "INFOTC3640",
+                    "INFOTC3850",
+                    "INFOTC4400",
+                    "INFOTC4500",
+                    "INFOTC4640",]
+			count: 8
+		},
+		{
+			classes: ["MATH1300","MATH1400","STAT2500"],
+			count: 3
+		},
+        {
+            classes: ["MANGMT3000", "IMSE4750", "MRKTNG4650"],
+            count: 1
+        }
+        {
+            classes: ["PHSYCS2750","PHYSCS2760"],
+            count: 2
+        }
+
+	]
+
+}
