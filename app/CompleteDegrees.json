@@ -64,5 +64,10 @@
                 "classes":["MUS_ENS1841", "MUS_ENS1842"],
                 "count":1
             }]
+    },
+    "BusinessMinor":{
+        "requirements":[{
+            "classes":[]
+        }]
     }
 }
