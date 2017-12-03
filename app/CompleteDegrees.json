@@ -67,7 +67,20 @@
     },
     "BusinessMinor":{
         "requirements":[{
-            "classes":[]
+            "classes":["ACCT2010","ACCT2026","ACCT2036"],
+            "count":1
+        },{
+            "classes":["ECON1014", "ECON1051H"],
+            "count":1
+        },{
+            "classes":["FIN2000", "FIN3000"],
+            "count":1
+        },{
+            "classes":["MGMT3000"],
+            "count":1
+        },{
+            "classes":["MKT 3000"],
+            "count":1
         }]
     }
 }
