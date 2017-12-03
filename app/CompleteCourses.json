@@ -1427,7 +1427,7 @@
 			},
 			{
 				"Title": "CMP_SC 3050:  Advanced Algorithm Design",
-				"GUID:": "CMP_SC3050",
+				"GUID": "CMP_SC3050",
 				"Description": "This class surveys fundamental algorithms and data structures that have wide practical applicability, including search trees and graph algorithms.  Emphasis is placed on techniques for efficient implementation and good software development methodologies.",
 				"Hours": "3",
 				"Prerequisites": ["CMP_SC2050"]
