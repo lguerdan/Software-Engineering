@@ -17,7 +17,7 @@
             "classes": ["MATH1500", "MATH1700", "MATH2300", "MATH2320", "STAT4710"],
             "count": 5
          }, {
-            "classes": ["PHSYCS2750", "PHYSCS2760"],
+            "classes": ["PHYSCS2750", "PHYSCS2760"],
             "count": 2
          }
       ]
@@ -52,7 +52,7 @@
             "classes": ["MANGMT3000", "IMSE4750", "MRKTNG4650"],
             "count": 1
       },{
-            "classes": ["PHSYCS2750","PHYSCS2760"],
+            "classes": ["PHYSCS2750","PHYSCS2760"],
             "count": 2
       }]
     },

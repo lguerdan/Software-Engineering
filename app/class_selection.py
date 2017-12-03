@@ -50,6 +50,7 @@ def get_degree(degree):
       courses.extend(ctemp[:requirement["count"]])
 
    for course in courses:
+      print course
       course_full = get_course_from_ID(course)
       if course_full != None:
          courses_full.append(course_full)
@@ -62,14 +63,16 @@ def get_degree(degree):
 
 def get_course_from_ID(cid):
 
-   print cid
-
    dept = filter(None, re.split(r'(\d+)', cid))[0]
    allcourses = json.load(open(courses_file))
    for course in allcourses[dept]["Courses"]:
-      print str(course) + "\n\n\n"
-      if course["GUID"] == cid:
-         return course
+
+      if "GUID" in course:
+         if course["GUID"] == cid:
+            return course
+      else:
+         print course["Description"]
+         print "no GUID in "+ str(course)
 
 
    return None
