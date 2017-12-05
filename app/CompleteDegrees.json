@@ -67,19 +67,19 @@
     },
     "BusinessMinor":{
         "requirements":[{
-            "classes":["ACCT2010","ACCT2026","ACCT2036"],
+            "classes":["ACCTCY2010","ACCTCY2026","ACCTCY2036"],
             "count":1
         },{
-            "classes":["ECON1014", "ECON1051H"],
+            "classes":["ECONOM1014", "ECONOM1051H"],
             "count":1
         },{
-            "classes":["FIN2000", "FIN3000"],
+            "classes":["FINANC2000", "FINANC3000"],
             "count":1
         },{
-            "classes":["MGMT3000"],
+            "classes":["MANGMT3000"],
             "count":1
         },{
-            "classes":["MKT 3000"],
+            "classes":["MRKTNG3000"],
             "count":1
         }]
     }
