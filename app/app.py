@@ -1,8 +1,10 @@
 import os, requests, json
 from flask import Flask, send_file, jsonify, request
 from class_selection import *
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def root():
