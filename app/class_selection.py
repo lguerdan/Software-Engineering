@@ -52,7 +52,6 @@ def get_degree(degree):
       course_full = get_course_from_ID(course)
       if course_full != None:
          courses_full.append(course_full)
-         print "appending: " + str(course_full)
       else:
          print "didnt find course " + course
 
