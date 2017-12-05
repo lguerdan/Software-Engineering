@@ -1295,7 +1295,13 @@
 				"Hours": "3",
 				"Prerequisites": ["MATH1100","MATH1160"]
 			},
-
+            {
+                "Title": "MATH 1400: Calculus for Social and Life Sciences I",
+                "GUID": "MATH1400",
+                "Description":"The real number system, functions, analytic geometry, derivatives, integrals, maximum-minimum problems. No credit for students who have completed a calculus course.   A student may receive credit for MATH 1320 or MATH 1400 but not both.  A student may receive at most 5 units of credit among the MATH 1320 or MATH 1400 and MATH 1500.  Math Reasoning Proficiency Course.",
+                "Hours":"3",
+                "Prerequisites":["MATH1160"]
+            },
 			{
 				"Title": "MATH 1500:  Analytic Geometry and Calculus I",
 				"GUID": "MATH1500",
@@ -1724,10 +1730,17 @@
 			{
 				"Title": "CMP_SC 4995:  Undergraduate Research in Computer Science - Honors",
 				"GUID": "CMP_SC4995",
-            "Description": "Independent investigation to be presented as an undergraduate honors thesis.",
+                "Description": "Independent investigation to be presented as an undergraduate honors thesis.",
 				"Hours": "1-6",
 				"Prerequisites": []
-			}
+			},
+            {
+                "Title": "CMP_SC 4610:  Computer Graphics I",
+                "GUID": "CMP_SC4610",
+                "Description": "(cross-leveled with CMP_SC 7610).Basic concepts and techniques of interactive computer graphics including hardware, software, data structures, mathematical manipulation of graphical objects, the user interface, and fundamental implementation algorithms.",
+                "Hours": "3",
+                "Prerequisites": ["CMP_SC3050", "MATH1500"]
+            }
 		]
 	},
 	"MUS_APMS": {
