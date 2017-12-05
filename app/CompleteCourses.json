@@ -1730,6 +1730,16 @@
 			}
 		]
 	},
+   "IMSE": {
+      "Department": "Industrial & Manufacturing Systems Engineering (IMSE)",
+      "Courses": [{
+            "Title": "IMSE 4750:  Entrepreneurial Innovation Management: Enterprise Conception",
+            "GUID": "IMSE4750",
+            "Description": " Develop a new business and technology plan including marketing, finance, engineering, manufacturing, and production concepts in this joint College of Engineering and College of Business course. Prerequisites: sophomore standing.",
+            "Hours": "3",
+            "Prerequisites": []
+         }]
+   },
 	"MUS_APMS": {
 		"Department": "Music-Applied Music (MUS_APMS)",
 		"Courses": [{
