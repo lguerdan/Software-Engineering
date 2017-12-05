@@ -1438,6 +1438,13 @@
 				"Description": "(same as STAT 4750). Probability spaces; random variables and their distributions; repeated trials; probability limit theorems.",
 				"Hours": "3",
 				"Prerequisites": ["MATH2300"]
+            },
+            {
+                "Title":"MATH 4300: Numerical Analysis",
+                "GUID":"MATH4300",
+                "Description": "Machine arithmetic, approximation and interpolation, numerical differentiation and integration, nonlinear equations, linear systems, differential equations, error analysis. Selected algorithms will be programmed for solution on computers.",
+				"Hours": "3",
+				"Prerequisites": ["MATH2300", "MATH4100"]
             }
 
 		]
