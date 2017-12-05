@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Degree Plan Visualization</title>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        
+        <style>
+            body {
+                margin: 0px;
+            }
+            .column {
+                float: left;
+            }
+            #decisionPane, #descriptionPane {
+                width: calc(25% - 4px - 20px);
+                height: calc(100vh - 4px);
+                padding-right: 10px;
+                padding-left: 10px;
+                background-color: gainsboro;
+                border: 2px #d3d3d3 solid;
+            }
+            #visualizationPane {
+                width: calc(50%);
+                height: calc(100vh - 4px);
+                background-color: whitesmoke;
+            }
+            #dropDown {
+                margin-left: 5%;
+                width: 80%;
+            }
+        </style>
+        
+        <script>
+            
+        </script>
+    </head>
+    
+    <body>
+        <div class="row">
+            <div class="column" id="decisionPane">
+                <p><b>Choose Degree Plan:</b></p>
+                <select id="dropDown">
+                    <option value="blank">Choose Degree</option>
+                    <option value="csMajor">CS Major</option>
+                    <option value="itMajor">IT Major</option>
+                    <option value="musicMajor">Music Major</option>
+                    <option value="mathMinor">Math Minor</option>
+                    <option value="businessMinor">Business Minor</option>
+                </select>
+                <br><br>
+                <p><b>Choose Secondary Degree Plan:</b></p>
+                <select id="dropDown">
+                    <option value="blank">Choose Degree</option>
+                    <option value="csMajor">CS Major</option>
+                    <option value="itMajor">IT Major</option>
+                    <option value="musicMajor">Music Major</option>
+                    <option value="mathMinor">Math Minor</option>
+                    <option value="businessMinor">Business Minor</option>
+                </select>
+<!--
+                <input type="checkbox" id="csMajor" name="cs" value="cs">
+                    <label for="cs">CS Major</label>
+                    <br>
+                <input type="checkbox" id="itMajor" name="it" value="it">
+                    <label for="it">IT Major</label>
+                    <br>
+                <input type="checkbox" id="musicMajor" name="music" value="music">
+                    <label for="it">Music Major</label>
+                    <br>
+                <input type="checkbox" id="mathMinor" name="math" value="math">
+                    <label for="math">Math Minor</label>
+                    <br>
+                <input type="checkbox" id="businessMinor" name="business" value="business">
+                    <label for="business">Business Minor</label>
+-->
+            </div>
+            <div class="column" id="visualizationPane">
+                <img src="https://i.pinimg.com/originals/8f/5e/14/8f5e146295801a9c235579675c02a894.gif">
+                <p>This is where the visualization will go, but since I don't have an example, please accept this <i>~ quality ~</i> placeholder instead.</p>
+            </div>
+            <div class="column" id="descriptionPane">
+                <p><b>Course Name:</b></p>
+                <div id="courseName">Name of selected course.</div>
+                <br><br>
+                <p><b>Course Description:</b></p>
+                <div id="courseDescription">Description of selected course.</div>
+                <br><br>
+                <p><b>Prerequisites:</b></p>
+                <div id="coursePrereq">Prerequisites of selected course.</div>
+            </div>
+        </div>
+    </body>
+</html>
