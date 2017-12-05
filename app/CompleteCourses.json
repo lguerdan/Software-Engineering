@@ -1382,7 +1382,21 @@
 				"Hours": "3",
 				"Prerequisites": ["MATH2300","MATH2340","ENGLSH1000"],
 				"Tags": ["WRITING", "TECHNICAL"]
-			}
+			},
+            {
+                "Title": "MATH 4001: Topics in Mathematics-General",
+				"GUID": "MATH4001",
+				"Description": "Organized study of selected topics. Subjects and earnable credit may vary from semester to semester.  May repeat for credit with Departmental consent.",
+				"Hours": "1-99",
+				"Prerequisites": ["MATH2300"]
+            },
+            {
+                "Title": "MATH 4330: Theory of Numbers",
+				"GUID": "MATH4330",
+				"Description": "Divisibility, factorization, arithmetic functions, means value theorems, distribution of prime numbers, congruences, primitive roots, character theory, Riemann zeta function, and Dirichlet L-functions.",
+				"Hours": "3",
+				"Prerequisites": ["MATH2300"]
+            }
 
 		]
 	},
@@ -1740,6 +1754,13 @@
                 "Description": "(cross-leveled with CMP_SC 7610).Basic concepts and techniques of interactive computer graphics including hardware, software, data structures, mathematical manipulation of graphical objects, the user interface, and fundamental implementation algorithms.",
                 "Hours": "3",
                 "Prerequisites": ["CMP_SC3050", "MATH1500"]
+            },
+            {
+                "Title": "CMP_SC 4001: Topics in Computer Science",
+                "GUID": "CMP_SC4001",
+                "Description": "Topic and credit may vary from semester to semester. May be repeated upon consent of department.",
+                "Hours": "1-99",
+                "Prerequisites": []
             }
 		]
 	},
