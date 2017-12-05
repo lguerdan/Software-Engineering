@@ -1396,6 +1396,27 @@
 				"Description": "Divisibility, factorization, arithmetic functions, means value theorems, distribution of prime numbers, congruences, primitive roots, character theory, Riemann zeta function, and Dirichlet L-functions.",
 				"Hours": "3",
 				"Prerequisites": ["MATH2300"]
+            },
+            {
+                "Title": "MATH 4350: Introduction to Non-Euclidean Geometry",
+				"GUID": "MATH4350",
+				"Description": "Account of rise, development of non-Euclidean geometries. Intensive study of plane hyperbolic geometry.",
+				"Hours": "3",
+				"Prerequisites": ["MATH2300"]
+            },
+            {
+                "Title":"MATH 4400: Introduction to Topology",
+                "GUID": "MATH4400",
+				"Description": "Topics from topology of Euclidean spaces, generalizations to metric spaces and topological spaces. Fundamentals of point set topology.",
+				"Hours": "3",
+				"Prerequisites": ["MATH2300"]
+            },
+            {
+                "Title":"MATH 4500: Applied Analysis",
+                "GUID": "MATH4500",
+				"Description": "Solution of the standard partial differential equations (wave, heat, Laplace's eq.) by separation of variables and transform methods; including eigenfunction expansions, Fourier and Laplace transform. Boundary value problems, Sturm-Liouville theory, orthogonality, Fourier, Bessel, and Legendre series, spherical harmonics.",
+				"Hours": "3",
+				"Prerequisites": ["MATH4100"]
             }
 
 		]
