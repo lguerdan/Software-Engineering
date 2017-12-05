@@ -1337,7 +1337,7 @@
 
 			{
 				"Title": "MATH 3000W:  Introduction to Advanced Mathematics - Writing Intensive",
-				"GUID": "MATH3000W",
+				"GUID": "MATH3000",
 				"Description": "Gateway to theoretical math courses.  Focus on reading and writing math proofs/rigorously developing background needed in Adv Calc/Abstract Alg.  Topics include logic, set theory, properties of functions and integers, the real number system, completeness of the real numbers, sequences of real numbers.",
 				"Hours": "3",
 				"Prerequisites": ["MATH1700"],
@@ -1361,7 +1361,7 @@
 			},
 			{
 				"Title": "MATH 4140W:  Matrix Theory - Writing Intensive",
-				"GUID": "MATH4140W",
+				"GUID": "MATH4140",
 				"Description": "Basic properties of matrices, determinants, vector spaces, linear transformations, eigenvalues, eigenvectors, and Jordan normal forms. Introduction to writing proofs.",
 				"Hours": "3",
 				"Prerequisites": ["MATH2300","MATH2320","ENGLSH1000"],

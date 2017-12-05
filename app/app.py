@@ -15,7 +15,6 @@ def get_classes():
    n = request.args.get("num")
    dept = request.args.get("department")
 
-
    if not n or not n.isdigit() or int(n) < 0 :
       return jsonify({"error": "bad request"})
 
