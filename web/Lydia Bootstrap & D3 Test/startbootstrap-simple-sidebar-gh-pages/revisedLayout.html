@@ -12,7 +12,7 @@
             .column {
                 float: left;
                 position: absolute;
-                z-index: -10;
+                z-index: -20;
             }
             #decisionPane, #descriptionPane {
                 width: calc(25% - 4px - 20px);
@@ -23,18 +23,22 @@
                 border: 2px #d3d3d3 solid;
             }
             #visualizationPane {
-                width: calc(50%);
+                width: calc(75%);
                 height: calc(100vh - 4px);
                 background-color: whitesmoke;
+                position: fixed;
+                right: 0;
+                z-index: -20;
             }
             #dropDown {
                 margin-left: 5%;
                 width: 80%;
             }
         </style>
-    <link href="interactive_tree.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.27.2"></script>
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?1.27.2"></script>
+        
+        <link href="interactive_tree.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.27.2"></script>
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?1.27.2"></script>
         
         <script>
             
@@ -79,9 +83,17 @@
                 <input type="checkbox" id="businessMinor" name="business" value="business">
                     <label for="business">Business Minor</label>
 -->
+                <br><p>-----</p><br>
+                <p><b>Course Name:</b></p>
+                <div id="courseName">Name of selected course.</div>
+                <br><br>
+                <p><b>Course Description:</b></p>
+                <div id="courseDescription">Description of selected course.</div>
+                <br><br>
+                <p><b>Prerequisites:</b></p>
+                <div id="coursePrereq">Prerequisites of selected course.</div>
             </div>
-            <div class="column" id="visualizationPane">
-                <style>
+                        <style>
 
             .node {
               cursor: pointer;
@@ -124,7 +136,6 @@
             var svg = d3.select("body").append("svg")
                 .attr("width", width + margin.right + margin.left)
                 .attr("height", height + margin.top + margin.bottom)
-                .attr("z-index", 30)
               .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -134,7 +145,6 @@
               root = flare;
               root.x0 = height / 2;
               root.y0 = 0;
-              root.z0 = 20;
 
               function collapse(d) {
                 if (d.children) {
@@ -250,16 +260,7 @@
             }
 
             </script>
-            </div>
-            <div class="column" id="descriptionPane">
-                <p><b>Course Name:</b></p>
-                <div id="courseName">Name of selected course.</div>
-                <br><br>
-                <p><b>Course Description:</b></p>
-                <div id="courseDescription">Description of selected course.</div>
-                <br><br>
-                <p><b>Prerequisites:</b></p>
-                <div id="coursePrereq">Prerequisites of selected course.</div>
+            <div class="column" id="visualizationPane">
             </div>
         </div>
     </body>
