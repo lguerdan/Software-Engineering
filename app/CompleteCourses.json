@@ -1417,6 +1417,34 @@
 				"Description": "Solution of the standard partial differential equations (wave, heat, Laplace's eq.) by separation of variables and transform methods; including eigenfunction expansions, Fourier and Laplace transform. Boundary value problems, Sturm-Liouville theory, orthogonality, Fourier, Bessel, and Legendre series, spherical harmonics.",
 				"Hours": "3",
 				"Prerequisites": ["MATH4100"]
+            },
+            {
+                "Title":"MATH 4310: Numerical Linear Algebra",
+                "GUID": "MATH4310",
+				"Description": "Solution of linear systems of equations by direct and iterative methods. Calculation of eigenvalues and eigenvectors of matrices. Selected algorithms programmed for solution on computers.",
+				"Hours": "3",
+				"Prerequisites": ["MATH2300"]
+            },
+            {
+                "Title":"MATH 4315: Introduction to Mathematical Statistics",
+                "GUID": "MATH4315",
+				"Description": "(same as STAT 4710). Introduction to theory of probability and statistics using concepts and methods of calculus.",
+				"Hours": "3",
+				"Prerequisites": ["MATH2300"]
+            },
+            {
+                "Title":"MATH 4320: Introduction to Probability Theory",
+                "GUID": "MATH4320",
+				"Description": "(same as STAT 4750). Probability spaces; random variables and their distributions; repeated trials; probability limit theorems.",
+				"Hours": "3",
+				"Prerequisites": ["MATH2300"]
+            },
+            {
+                "Title":"MATH 4300: Numerical Analysis",
+                "GUID":"MATH4300",
+                "Description": "Machine arithmetic, approximation and interpolation, numerical differentiation and integration, nonlinear equations, linear systems, differential equations, error analysis. Selected algorithms will be programmed for solution on computers.",
+				"Hours": "3",
+				"Prerequisites": ["MATH2300", "MATH4100"]
             }
 
 		]
