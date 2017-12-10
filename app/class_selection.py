@@ -15,6 +15,5 @@ def get_classes_basic(numclasses, department):
    if int(numclasses) > len(department_classes):
       numclasses = len(department_classes)
 
-   random.shuffle(department_classes)
    classes_out = [department_classes[i] for i in range(int(numclasses))]
    return classes_out
