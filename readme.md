@@ -81,6 +81,16 @@ Degrees were difficult to model do to their complex structure. To model required
 ```
 ### Backend Development
 
+The backend application was developed using the Python Flask framework and is deployed at [heroku]: https://evanescence.herokuapp.com/, and currently doesn't require authentication. The primary purpose of the Flask server is to provide a layer of abstraction over the course catelog and degree programs. The front end application requests either degrees or departments, and obtiains a list of courses as a response. 
+
+The main work being done here is selecting courses in accordance with degree requirments and returning them to the front end for display. 
+
+##### Sample requests:
+
+| Endpoint      | Params (required) | Params (optional)  | HTTP Methods
+| ------------- |:------------------:| -----------------:|------------:|
+| /get_degree   | deg1               | deg2              | `GET`
+| /get_classes  | department         | num               | `GET`
 
 
 ### Frontend Development
