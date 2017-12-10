@@ -1316,7 +1316,7 @@
 				"GUID": "MATH1700",
 				"Description": "Definite integrals, applications and techniques of integration, elementary transcendental functions, infinite series.  Math Proficiency Reasoning course.",
 				"Hours": "5",
-				"Prerequisites": ["MATH1700"]
+				"Prerequisites": ["MATH1500"]
 			},
 
 			{
