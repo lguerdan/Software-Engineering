@@ -1,0 +1,31 @@
+body {
+    margin: 0px;
+    background-color: whitesmoke;
+}
+.column {
+    float: left;
+    position: absolute;
+    z-index: -20;
+}
+
+#decisionPane, #descriptionPane {
+    width: calc(25% - 4px - 20px);
+    height: calc(100vh - 4px);
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: gainsboro;
+    border: 2px #d3d3d3 solid;
+    z-index: 30;
+}
+#visualizationPane {
+    width: calc(75%);
+    height: calc(100vh - 4px);
+    background-color: whitesmoke;
+    position: fixed;
+    right: 0;
+    z-index: -20;
+}
+#dropDown {
+    margin-left: 5%;
+    width: 80%;
+}
