@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Course Mapper</title>
+    
+    <!--<script src="d3.js"></script>-->
+    <script src="jquery.js"></script>
+    <!-- Separate script file for requesting and receiving JSON file from backend API -->
+    <!--<script src="JSON_request.js"></script>-->
+    <!-- File which contains example json file (for testing purposes) -->
+    <!--<script type="text/javascript" src="course_info.json"></script>-->
+    
+    <link rel="stylesheet" src="main.css" href="main.css">
+    
+    <style>
+
+        .links line {
+          stroke: #999;
+          stroke-opacity: 0.6;
+        }
+
+        .nodes circle {
+          stroke: #fff;
+          stroke-width: 1.5px;
+        }
+
+    </style>
+    
+<!-- PLAN OF ATTACK 
+
+    * For this, we will use a 2-D array
+        * X: course depth
+        * Y: index for course at that depth
+
+    * This array will be filled one level of depth at a time:
+        * To start, find all classes which have 0 prerequisites, and add their GUIDS to the array at X=0.
+        * Then, populate X+1 with all courses which only have prerequisites contained in X. Repeat this step until there are no classes remaining.
+
+-->
+    
+    
+    
+<!-- START OF COPIED CODE -->
+    <svg width="960" height="600"></svg>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script>
+        
+    //var json_request_text = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
+    var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor";
+    var course_info_JSON;
+
+    $.getJSON( json_request_text, function( data ) {
+        console.log("success");
+        //console.log(data);
+        course_info_JSON = data.CSMajor;
+    })
+        .done(function() {
+            console.log( "second success" );
+            console.log( course_info_JSON );
+            console.log( course_info_JSON.length );
+        
+            // Create list of verticies & requirements
+            var courses = [];
+            
+            var requirements = [];
+            var num_requirements = 0;
+            var course_tree = [];           // Maybe don't use this...
+            var courses_assigned = [];      // List of courses we've already assigned
+            //var temp_courses_assigned = [];
+            var courses_assigned_flag = [];
+            var num_courses_assigned = 0;   // Number of courses we've already assigned
+            var temp_num_courses_assigned = 0;
+            var num_courses_per_group = [];
+            var depth = 0;
+            var found = true;
+            var no_prerecs = true;
+        
+            for( i = 0; i < course_info_JSON.length; i++ ) {
+                courses[i] = {
+                    "id": course_info_JSON[i].GUID,
+                    "group": 1
+                };
+                for( j = 0; j < course_info_JSON[i].Prerequisites.length; j++ ) {
+                    requirements[ num_requirements + j ] = {
+                        "source": course_info_JSON[i].Prerequisites[j],
+                        "target": course_info_JSON[i].GUID,
+                        "value": 1   // Not exactly sure what this does...
+                    };
+                    num_requirements++;
+                }
+            }
+        
+            // Iterate through groups (WE DON'T KNOW THE LENGTH IN ADVANCE)
+            // Loop while num_courses_assigned != num_courses_total
+                // Iterate through courses
+                    // Iterate through courses' prerequisites
+                        // Iterate through already assigned courses
+        
+        
+        // ~~~~~~~~~~~~~~~ START OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            var num_courses_fabricated = 0;
+            var num_courses_total = course_info_JSON.length;
+            console.log( "num_courses_total: " + num_courses_total );
+        
+            for( i = 0; i < num_courses_total; i++ ) {
+                courses_assigned_flag[i] = 0;
+            }
+        
+            while( num_courses_assigned - num_courses_fabricated < num_courses_total && depth < 6 ) { 
+                temp_num_courses_assigned = 0;
+                var temp_courses_assigned = [];
+                console.log("Iterating group " + depth);
+                for( i = 0; i < num_courses_total; i++ ) {
+                    if( courses_assigned_flag[i] == 0 ) {
+                        console.log("Looking at item " + i);
+                        if( course_info_JSON[i].Prerequisites.length == 0 ) {
+                            console.log( "NO PRERECS" );
+                            found = true;
+                        } else {
+                            found = true;
+                            for( j = 0; j < course_info_JSON[i].Prerequisites.length && found; j++ ) {
+                                found = false;
+                                console.log( "pre: " + course_info_JSON[i].Prerequisites[j] );
+                                for( k = 0; k < num_courses_assigned && !found; k++ ) {
+                                    if( courses_assigned[k].id == course_info_JSON[i].Prerequisites[j] ) {
+                                        console.log( "MATCH FOUND" );
+                                        console.log( "asg: " + courses_assigned[k].id );
+                                        found = true;
+                                    }
+                                }
+                                if( !found ) {
+                                    console.log("Checking for presence of " + course_info_JSON[i].Prerequisites[j] + "...");
+                                    // Check if the prerequisite we're looking for is here at all
+                                    for( l = 0; l < num_courses_total; l++ ) {
+                                        if( courses[l].id == course_info_JSON[i].Prerequisites[j] ) {
+                                            found = true;
+                                        }
+                                    }
+                                    if( !found ) {
+                                        console.log("PREREQUISITE COMPLETELY ABSENT");
+                                        num_courses_per_group[0]++;
+                                        courses_assigned[num_courses_assigned] = {
+                                            id: course_info_JSON[i].Prerequisites[j],
+                                            group: 0
+                                        };
+                                        num_courses_fabricated++;
+                                        num_courses_assigned++;
+                                        found = true;
+                                    } else {
+                                        found = false;
+                                    }
+                                }
+                            }
+                        }
+                        //console.log( "found == " + found );
+                        if( found ) {
+                            console.log( "Assigning course to courses_assigned..." );
+                            temp_courses_assigned[temp_num_courses_assigned] = {
+                                id: course_info_JSON[i].GUID,
+                                group: depth
+                            };
+                            temp_num_courses_assigned++;
+                            num_courses_per_group[depth]++;
+                            courses_assigned_flag[i] = 1;
+                        }
+                    } else {
+                        console.log("Skipping item   " + i);
+                    }
+                }
+                depth++;
+                console.log("temp_num_courses_assigned: " + temp_num_courses_assigned);
+                console.log("num_courses_assigned: " + num_courses_assigned);
+                console.log("num_courses_fabricated: " + num_courses_fabricated);
+                if(temp_num_courses_assigned == 0) {
+                    console.log("Things are now stuck");
+                    break;
+                }
+                for( i = 0; i < temp_num_courses_assigned; i++ ) {
+                    courses_assigned[num_courses_assigned] = temp_courses_assigned[i];
+                    num_courses_assigned++;
+                }
+                console.log("courses added to group " + (depth - 1) + ":");
+                console.log(temp_courses_assigned);
+                console.log("num_courses_assigned: " + num_courses_assigned);
+            }
+        // ~~~~~~~~~~~~~~~ END OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
+            
+            console.log( "courses_assigned" );
+            console.log( courses_assigned );
+            //console.log( requirements );
+        
+            var courses_not_assigned = [];
+            var counter = 0;
+            console.log( "courses_not_assigned" );
+            for( i = 0; i < num_courses_total; i++ ) {
+                if( courses_assigned_flag[i] == 0 ) {
+                    courses_not_assigned[counter] = course_info_JSON[i];
+                    counter++;
+                }
+            }
+            console.log( courses_not_assigned );
+            var faux_links = [
+                { source: "CMP_SC3050", target: "CMP_SC4520", value: 1, length: 1},
+                { source: "CMP_SC2050", target: "CMP_SC3050", value: 1, length: 1}
+            ];
+        
+            var revised_course_JSON = { 
+                "nodes": courses_assigned, 
+                "links": faux_links
+            };
+        
+            console.log( revised_course_JSON );
+        
+// ————————————————————————————————————————————————————— //
+// CODE COPIED FROM https://bl.ocks.org/mbostock/4062045 //
+// ————————————————————————————————————————————————————— //
+
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var color = d3.scaleOrdinal(d3.schemeCategory20);
+        
+var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(function(d) { return d.id; }))
+    .force("charge", d3.forceManyBody())
+    //.force("charge", function() { return -2; })
+    .force("center", d3.forceCenter(width / 2, height / 2));
+        
+//d3.json( revised_course_JSON, function(error, graph) {
+//  if (error) throw error;
+function fakeD3Load(graph) {
+
+  var link = svg.append("g")
+      .attr("class", "links")
+    .selectAll("line")
+    .data(graph.links)
+    .enter().append("line")
+      //.attr("stroke-width", function(d) { return Math.sqrt(d.value); })
+      .attr("x1", function(d) { return d.value * 100 + 50 })
+      .attr("x2", function(d) { return (d.value + d.length) * 100 + 50 });
+
+  var node = svg.append("g")
+      .attr("class", "nodes")
+    .selectAll("circle")
+    .data(graph.nodes)
+    .enter().append("circle")
+      .attr("r", 5)
+      .attr("x", function(d) { return (d.group * 200) }) 
+      .attr("fill", function(d) { return color(d.group); })
+      .attr("transform", function(d) { return "translate(" + (d.group * 100 + 50) + "," + 0 + ")"; })
+      .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
+
+  node.append("title")
+      .text(function(d) { return d.id; });
+    
+  node.append("text")
+      .text(function(d) { return d.id; });
+          //.attr("x", function(d) { return 10 })
+          //.attr("dy", ".35em")
+          //.attr("text-anchor", function(d) { return "start"; })
+          //.text(function(d) { return d.id; })
+          //.style("fill-opacity", 1e-6);
+
+  simulation
+      .nodes(graph.nodes)
+      .on("tick", ticked);
+
+  simulation.force("link")
+      .links(graph.links);
+
+  function ticked() {
+    link
+        //.attr("x1", function(d) { return d.source.x + 1 * 100 + 50; })
+        .attr("y1", function(d) { return d.source.y; })
+        //.attr("x2", function(d) { return d.target.x + 1 * 100 + 50; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node
+        //.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  }
+
+//});
+};
+        
+fakeD3Load(revised_course_JSON);
+    
+function dragstarted(d) {
+  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragged(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function dragended(d) {
+  if (!d3.event.active) simulation.alphaTarget(0);
+  d.fx = null;
+  d.fy = null;
+}
+
+        
+        })
+        .fail(function() {
+            console.log( "error" );
+        })
+        .always(function() {
+            console.log( "complete" );
+        });
+        
+            
+    // Include other scripts here...
+        
+    </script>
+
+</head>
+    
+<body>
+    
+    <div id="control_panel">
+        TESTING
+    </div>
+    
+</body>
+    
+</html>
