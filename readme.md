@@ -1,5 +1,5 @@
 # Degree Visualizer
-Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, Lydia Schneider   
+Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, Lydia Snyder   
 
 - [Requirements](#requirements)
 - [Application Architecture](#application-architecture)
