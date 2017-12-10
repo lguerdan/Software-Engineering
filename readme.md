@@ -18,15 +18,15 @@ Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, 
 
 ### Data Model
 
-Due to the complexity of degree programs and the number of variables to consider, we decided to store course and degree plan data in a JSON format. This allowed for easy changes of schema and modifying invalid fields; however, in the future we would likely port this structure to a NoSQL store such as MongoDB. 
+Due to the complexity of degree programs and the number of variables to consider, we decided to store course and degree plan data in a JSON format. This allowed for easy changes of schema and modifying invalid fields; however, in the future we would likely port this structure to a NoSQL store such as MongoDB.
 
-##### Courses: 
-Courses are organized by department and are stored as a collection, along with a GUID, description, title, and prerequisites. Prerequisites consist of an array of GUIDs for courses which are dependencies. In order to simplify the process, we decided not to include detailed prerecs such as "sophomore standing". In the event multiple courses can be a prerec, we took only the first (lowest) course entry. 
+##### Courses:
+Courses are organized by department and are stored as a collection, along with a GUID, description, title, and prerequisites. Prerequisites consist of an array of GUIDs for courses which are dependencies. In order to simplify the process, we decided not to include detailed prereqs such as "sophomore standing". In the event multiple courses can be a prereq, we took only the first (lowest) course entry.
 
 
 !["Course data model"](docs/coursesdata.png "Course data model")
 
-``` 
+```
 {
     "ACCTCY": {
         "Department": "Accountancy (ACCTCY)",
@@ -81,9 +81,9 @@ Degrees were difficult to model do to their complex structure. To model required
 ```
 ### Backend Development
 
-The backend application was developed using the Python Flask framework and is deployed at [heroku]: https://evanescence.herokuapp.com/, and currently doesn't require authentication. The primary purpose of the Flask server is to provide a layer of abstraction over the course catelog and degree programs. The front end application requests either degrees or departments, and obtiains a list of courses as a response. 
+The backend application was developed using the Python Flask framework and is deployed at [heroku]: https://evanescence.herokuapp.com/, and currently doesn't require authentication. The primary purpose of the Flask server is to provide a layer of abstraction over the course catalog and degree programs. The front end application requests either degrees or departments, and obtains a list of courses as a response.
 
-The main work being done here is selecting courses in accordance with degree requirments and returning them to the front end for display. 
+The main work being done here is selecting courses in accordance with degree requirements and returning them to the front end for display.
 
 ##### Sample requests:
 
@@ -94,3 +94,7 @@ The main work being done here is selecting courses in accordance with degree req
 
 
 ### Frontend Development
+
+Frontend Development was done using the jquery library and [d3](https://d3js.org/) for visualization. We combined aspects of different templates to get the look and behavior that we wanted. A challenge in the front end was knowing how the data was needed to be formatted, and we weren't sure until later into the project when we had more experience with d3. Because we didn't know this early, some extra work had to be done in javascript to make up for it.
+
+The frontend is where the user is allowed to select one or two degree plans that we have decided on, and see a display of how those two plans line up in comparison to each other. Showing overlap between two plans was something we tried hard to implement.
