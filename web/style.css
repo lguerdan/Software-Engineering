@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Catamaran')
 body {
     margin: 0px;
-    background-color: whitesmoke;
+    background-color: #E3F2F0;
+    font-family: 'Catamaran', sans-serif;
 }
 .column {
     float: left;
@@ -22,7 +24,7 @@ body {
     width: calc(25% - 4px - 20px);
     height: calc(100vh - 4px);
     padding-right: 10px;
-    padding-left: 10px;
+    padding-left: 20px;
     /*background-color: gainsboro;*/
     border: 2px #d3d3d3 solid;
     z-index: 30;
