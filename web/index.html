@@ -332,7 +332,7 @@
 
                     var simulation = d3.forceSimulation()
                         .force("link", d3.forceLink().id(function(d) { return d.id; }))
-                        .force("charge", d3.forceManyBody().strength(-30))
+                        .force("charge", d3.forceManyBody().strength(-60))
                         //.force("charge", function() { return -2; })
                         .force("center", d3.forceCenter(width / 2, height / 2));
 
@@ -389,6 +389,24 @@
 
                         simulation.force("link")
                             .links(graph.links);
+                        
+                        node.on("click", function(params){
+                            console.log(graph)
+                           console.log(params) 
+//                           d3.select(this).classed("selected");
+                            var selectedIndex = params.index
+                            if (graph.nodes[selectedIndex].description == undefined) {
+                                var string = "We do not have this info right now"
+                                $("#courseName").html(string)
+                                $("#courseDescription").html(string)
+                                $("#coursePrereqs").html(string)
+                            }
+                            else {
+                                $("#courseName").html(graph.nodes[selectedIndex].title)
+                                $("#courseDescription").html(graph.nodes[selectedIndex].description)
+                                $("#coursePrereqs").html(graph.nodes[selectedIndex].prerequisites)
+                            }
+                        });
 
                         function ticked() {
                             link
@@ -424,7 +442,7 @@
                         d.fx = null;
                         d.fy = null;
                     }
-
+                    
 
                 })
                 .fail(function() {
