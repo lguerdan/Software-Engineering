@@ -12,6 +12,23 @@ Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, 
 
 ### Requirements
 
+We've said that we want to be able to definitely:
+FRONT END
+H: Preview one major individually
+H: Preview two majors at the same time
+H: Preview a major and a minor at the same time
+H: See through some visual indication the overlap between the two entities being shown
+H: Have three majors and two minors available in our data (CS Major, IT Major, Math Minor, Music Studies/Major, Business Minor)
+M: If it is an elective, see all the options that you can fill. (sidebar or dropdown)
+
+BACK END
+H: Server filter by tag
+-----
+
+What else?
+Select an option for an elective?
+Have the graph update accordingly? (open new options?)
+
 ### Application Architecture
 
 !["Application architecture"](docs/architecture.jpg "Application architecture")
