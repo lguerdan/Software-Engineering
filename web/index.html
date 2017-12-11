@@ -8,15 +8,13 @@
     <!-- From vis -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="jquery.js"></script>
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
     <div class="row">
-        <div class="column" id="decisionPane">
+        <div class="col s2" id="decisionPane">
            <div class="row">
             <h2>Degree Visualizer</h2>
              <form id = "degreeSelector" class="col s12"  onsubmit="">
@@ -63,8 +61,9 @@
 
             <p><b>Prerequisites:</b></p>
             <div id="coursePrereq">Prerequisites of selected course.</div>
+            <br>
         </div>
-        <div class="column" id="visualizationPane">
+        <div class="col s10" id="visualizationPane">
             <!-- START OF COPIED CODE -->
             <svg width="960" height="800"></svg>
             <script>
