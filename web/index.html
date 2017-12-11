@@ -8,13 +8,15 @@
     <!-- From vis -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="jquery.js"></script>
+    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
     <div class="row">
-        <div class="col s2" id="decisionPane">
+        <div class="column" id="decisionPane">
            <div class="row">
             <h2>Degree Visualizer</h2>
              <form id = "degreeSelector" class="col s12"  onsubmit="">
@@ -23,11 +25,11 @@
                  <div class="input-field col s12" name = "deg1">
                    <select>
                      <option value="" selected>Choose degree one</option>
-                      <option value="csMajor">CS Major</option>
-                      <option value="itMajor">IT Major</option>
-                      <option value="musicMajor">Music Major</option>
-                      <option value="mathMinor">Math Minor</option>
-                      <option value="businessMinor">Business Minor</option>
+                      <option value="CSMajor">CS Major</option>
+                      <option value="ITMajor">IT Major</option>
+                      <option value="MusicStudiesMajor">Music Major</option>
+                      <option value="MathMinor">Math Minor</option>
+                      <option value="BusinessMinor">Business Minor</option>
                    </select>
                    <label>Degree One</label>
                  </div>
@@ -37,11 +39,11 @@
                   <div class="input-field col s12" name = "deg2">
                      <select>
                         <option value="" selected>Choose degree one</option>
-                        <option value="csMajor">CS Major</option>
-                        <option value="itMajor">IT Major</option>
-                        <option value="musicMajor">Music Major</option>
-                        <option value="mathMinor">Math Minor</option>
-                        <option value="businessMinor">Business Minor</option>
+                        <option value="CSMajor">CS Major</option>
+                      <option value="ITMajor">IT Major</option>
+                      <option value="MusicStudiesMajor">Music Major</option>
+                      <option value="MathMinor">Math Minor</option>
+                      <option value="BusinessMinor">Business Minor</option>
                    </select>
                    <label>Degree Two</label>
                  </div>
@@ -61,18 +63,24 @@
 
             <p><b>Prerequisites:</b></p>
             <div id="coursePrereq">Prerequisites of selected course.</div>
-            <br>
         </div>
-        <div class="col s10" id="visualizationPane">
+        <div class="column" id="visualizationPane">
             <!-- START OF COPIED CODE -->
             <svg width="960" height="800"></svg>
             <script>
-
+               $(document).ready(function() {
+                  $('select').material_select();
+               });
+            //var json_request_text = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
+            var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor&deg2=MathMinor";
+            var json_request_base = "http://evanescence.herokuapp.com/get_degree?"
+            var json_request_full = ""
+            var course_info_JSON = [{}];
             function getDegrees(){
-
                var deg1 = document.getElementById("degreeSelector").elements[1].value;
                var deg2 = document.getElementById("degreeSelector").elements[3].value;
-
+                console.log(deg1)
+                console.log(deg2);
                if(deg1 === "Choose degree one" && deg2 === "Choose degree two" ){
                   Materialize.toast('Please select at least one degree', 4000)
                   return;
@@ -81,53 +89,59 @@
                   alert("return")
                   return;
                }
-
                json_request_full = json_request_base
                if(deg1 !== "Choose degree one"){
                   json_request_full += "deg1=" + deg1
                }
-               alert(json_request_base)
+//               alert(json_request_base)
                if(deg1 !== "Choose degree one" && deg2 !== "Choose degree two" ){
                   json_request_full += "&"
-                  return;
+
                }
                if(deg2 !== "Choose degree two"){
                   json_request_full += "deg2=" + deg2
                }
-               alert(json_request_full)
-
+               console.log(json_request_full)
+               generateCourseGraph(json_request_full,deg1, deg2)
             }
             $(document).ready(function() {
                $('select').material_select();
             });
-            var json_request_base = "http://evanescence.herokuapp.com/get_degree?"
-            var json_request_full;
 
 
-
-
-
-            var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor";
-            var course_info_JSON;
-
-                var width = 960,
-                    height = 500,
-                    radius = 6;
-
-
-            $.getJSON(json_request_text, function(data) {
+function generateCourseGraph(json_request, deg1, deg2) {
+            $.getJSON(json_request, function(data) {
                     console.log("success");
                     //console.log(data);
-                    course_info_JSON = data.CSMajor;
+                    var temp_course_info_JSON;
+                    var num_courses_unique = 0;
+                    temp_course_info_JSON = data[deg1];
+                    if (deg2 != "")
+                        temp_course_info_JSON = temp_course_info_JSON.concat(data[deg2]);
+                    console.log( temp_course_info_JSON );
+                    var duplicate = false;
+                    for( i = 0; i < temp_course_info_JSON.length; i++ ) {
+                        console.log("Comparing " + temp_course_info_JSON[i].GUID)
+                        duplicate = false;
+                        for( j = 0; j < num_courses_unique; j++ ) {
+                            console.log("To        " + course_info_JSON[j].GUID);
+                            if( temp_course_info_JSON[i].GUID == course_info_JSON[j].GUID ) {
+                                console.log("DUPLICATE FOUND");
+                                duplicate = true;
+                            }
+                        }
+                        if( !duplicate ) {
+                            course_info_JSON[num_courses_unique] = temp_course_info_JSON[i];
+                            num_courses_unique++;
+                        }
+                    }
                 })
                 .done(function() {
                     console.log("second success");
                     console.log(course_info_JSON);
                     console.log(course_info_JSON.length);
-
                     // Create list of verticies & requirements
                     var courses = [];
-
                     var requirements = [];
                     var num_requirements = 0;
                     var course_tree = []; // Maybe don't use this...
@@ -140,7 +154,6 @@
                     var depth = 0;
                     var found = true;
                     var no_prerecs = true;
-
                     for (i = 0; i < course_info_JSON.length; i++) {
                         courses[i] = {
                             "id": course_info_JSON[i].GUID,
@@ -155,23 +168,18 @@
                             num_requirements++;
                         }
                     }
-
                     // Iterate through groups (WE DON'T KNOW THE LENGTH IN ADVANCE)
                     // Loop while num_courses_assigned != num_courses_total
                     // Iterate through courses
                     // Iterate through courses' prerequisites
                     // Iterate through already assigned courses
-
-
                     // ~~~~~~~~~~~~~~~ START OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~
                     var num_courses_fabricated = 0;
                     var num_courses_total = course_info_JSON.length;
                     console.log("num_courses_total: " + num_courses_total);
-
                     for (i = 0; i < num_courses_total; i++) {
                         courses_assigned_flag[i] = 0;
                     }
-
                     while (num_courses_assigned - num_courses_fabricated < num_courses_total && depth < 6) {
                         temp_num_courses_assigned = 0;
                         var temp_courses_assigned = [];
@@ -205,9 +213,16 @@
                                             if (!found) {
                                                 console.log("PREREQUISITE COMPLETELY ABSENT");
                                                 num_courses_per_group[0]++;
+                                                var temp_prerequisites = [];
+                                                for( m = 0; m < course_info_JSON[i].Prerequisites.length; m++ ) {
+                                                    temp_prerequisites[m] = course_info_JSON[i].Prerequisites[m];
+                                                }
                                                 courses_assigned[num_courses_assigned] = {
                                                     id: course_info_JSON[i].Prerequisites[j],
-                                                    group: 0
+                                                    group: 0,
+                                                    title: course_info_JSON[i].Title,
+                                                    description: course_info_JSON[i].Description,
+                                                    prerequisites: temp_prerequisites
                                                 };
                                                 num_courses_fabricated++;
                                                 num_courses_assigned++;
@@ -244,19 +259,15 @@
                         for (i = 0; i < temp_num_courses_assigned; i++) {
                             courses_assigned[num_courses_assigned] = temp_courses_assigned[i];
                             num_courses_assigned++;
-
                         }
                         console.log("courses added to group " + (depth - 1) + ":");
                         console.log(temp_courses_assigned);
                         console.log("num_courses_assigned: " + num_courses_assigned);
                     }
                     // ~~~~~~~~~~~~~~~ END OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~
-
-
                     console.log("courses_assigned");
                     console.log(courses_assigned);
                     //console.log( requirements );
-
                     var courses_not_assigned = [];
                     var counter = 0;
                     console.log("courses_not_assigned");
@@ -271,14 +282,12 @@
                         { source: "CMP_SC3050", target: "CMP_SC4520", value: 1, length: 1 },
                         { source: "CMP_SC2050", target: "CMP_SC3050", value: 1, length: 1 }
                     ];
-
                     // ~~~~~~~~~~~~~~~ START OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~
                     var num_links_total = 0;
                     for( i = 0; i < num_courses_total; i++ ) {
                         num_links_total += course_info_JSON[i].Prerequisites.length;
                     }
                     console.log("num_links_total: " + num_links_total);
-
                     var links = [];
                     var counter = 0;
                     var temp_length;
@@ -310,89 +319,81 @@
                     }
                     console.log("links: ");
                     console.log(links);
-
                     // ~~~~~~~~~~~~~~~ END OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~
-
                     var revised_course_JSON = {
                         "nodes": courses_assigned,
                         "links": links
                     };
-
                     console.log(revised_course_JSON);
-
                     // ————————————————————————————————————————————————————— //
                     // CODE COPIED FROM https://bl.ocks.org/mbostock/4062045 //
                     // ————————————————————————————————————————————————————— //
-
+                    var width = 960,
+                        height = 500,
+                        radius = 6;
                     var svg = d3.select("svg"),
                         width = +svg.attr("width"),
                         height = +svg.attr("height");
 
+                svg.selectAll("*").remove();
                     var color = d3.scaleOrdinal(d3.schemeCategory20);
-
                     var simulation = d3.forceSimulation()
                         .force("link", d3.forceLink().id(function(d) { return d.id; }))
                         .force("charge", d3.forceManyBody().strength(-60))
                         //.force("charge", function() { return -2; })
                         .force("center", d3.forceCenter(width / 2, height / 2));
-
                     //d3.json( revised_course_JSON, function(error, graph) {
                     //  if (error) throw error;
                     function fakeD3Load(graph) {
-
                         var link = svg.append("g")
                             .attr("class", "links")
                             .selectAll("line")
                             .data(graph.links)
                             .enter().append("line")
                             //.attr("stroke-width", function(d) { return Math.sqrt(d.value); })
-                            .attr("x1", function(d) { return d.value * 100 + 50 })
-                            .attr("x2", function(d) { return (d.value + d.length) * 100 + 50 });
-
+                            .attr("x1", function(d) { return d.value * 160 + 50 })
+                            .attr("x2", function(d) { return (d.value + d.length) * 160 + 50 });
                         var node = svg.append("g")
                             .attr("class", "nodes")
                             .selectAll("circle")
                             .data(graph.nodes)
                             .enter().append("circle")
-                            .attr("r", 5)
+                            .attr("r", 10)
                             .attr("x", function(d) { return (d.group * 200) })
                             .attr("fill", function(d) { return color(d.group); })
-                            .attr("transform", function(d) { return "translate(" + (d.group * 100 + 50) + "," + 0 + ")"; })
-                            .attr("charge", -300)
+                            .attr("transform", function(d) { return "translate(" + (d.group * 160 + 50) + "," + 0 + ")"; })
+    //                            .attr("charge", -300)
                             .call(d3.drag()
                                 .on("start", dragstarted)
                                 .on("drag", dragged)
                                 .on("end", dragended));
-
-//                        var force = d3.force();
-//                            .gravity(.05)
-//                            .charge(-240)
-//                            .linkDistance(50)
-//                            .size([width, height]);
-
-
-
+                        var text = svg.append("g")
+                            .attr("class", "text")
+                            .selectAll("text")
+                            .data(graph.nodes)
+                            .enter().append("text")
+                            .attr("x", function(d) { return 15 })
+                            .attr("fill", function(d) { return color(d.group); })
+                            .attr("transform", function(d) { return "translate(" + (d.group * 160 + 50) + "," + 0 + ")";})
+                            .text(function(d) { return d.id });
                         node.append("title")
                             .text(function(d) { return d.id; });
-
-                        node.append("text")
-                            .text(function(d) { return d.id; });
+    //                        node.append("text")
+    //                            .text(function(d) { return d.id; });
                             //.attr("x", function(d) { return 10 })
                             //.attr("dy", ".35em")
                             //.attr("text-anchor", function(d) { return "start"; })
                             //.text(function(d) { return d.id; })
                             //.style("fill-opacity", 1e-6);
-
                         simulation
                             .nodes(graph.nodes)
                             .on("tick", ticked);
-
                         simulation.force("link")
                             .links(graph.links);
-                        
+
                         node.on("click", function(params){
                             console.log(graph)
-                           console.log(params) 
+                           console.log(params)
 //                           d3.select(this).classed("selected");
                             var selectedIndex = params.index
                             if (graph.nodes[selectedIndex].description == undefined) {
@@ -407,42 +408,35 @@
                                 $("#coursePrereqs").html(graph.nodes[selectedIndex].prerequisites)
                             }
                         });
-
                         function ticked() {
                             link
                                 //.attr("x1", function(d) { return d.source.x + 1 * 100 + 50; })
                                 .attr("y1", function(d) { return d.source.y; })
                                 //.attr("x2", function(d) { return d.target.x + 1 * 100 + 50; })
                                 .attr("y2", function(d) { return d.target.y; });
-
-
                             node
                                 //.attr("cx", function(d) { return d.x; })
                                 .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
+                            text
+                                .attr("y", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
                         }
-
                     //});
                     };
-
                     fakeD3Load(revised_course_JSON);
-
                     function dragstarted(d) {
                         if (!d3.event.active) simulation.alphaTarget(0.3).restart();
                         d.fx = d.x;
                         d.fy = d.y;
                     }
-
                     function dragged(d) {
                         d.fx = d3.event.x;
                         d.fy = d3.event.y;
                     }
-
                     function dragended(d) {
                         if (!d3.event.active) simulation.alphaTarget(0);
                         d.fx = null;
                         d.fy = null;
                     }
-                    
 
                 })
                 .fail(function() {
@@ -451,8 +445,7 @@
                 .always(function() {
                     console.log("complete");
                 });
-
-
+}
             // Include other scripts here...
             </script>
         </div>
