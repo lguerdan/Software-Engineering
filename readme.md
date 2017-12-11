@@ -12,26 +12,21 @@ Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, 
 
 ### Requirements
 
-In one of our first meetings our team discussed what features we felt would be essential for our application. From this discussion we decided upon some requirements.
+In one of our first meetings our team discussed what features we felt would be essential for our application. From this discussion, we determined our requirements.
 
-FRONT END
-
-* A user shall be able to select to view one major. 
-* A user shall be able to select to view a major and a minor.
-* A user shall be able to select two majors.
-* A user shall be able to see the courses required for a selected major. 
-* A user shall be able to see how the courses are connected by prerequisites.
-* Our product for our first release ( December 11, 2017 ) shall have three majors and two minors available in our data - CS Major, IT Major, Music Studies/Major, Math Minor, and Business Minor. 
-
-* Our application shall allow a user to view one or two degree plans at a time. 
-allowing them to see the courses required for that major, and follow how the courses are connected (i.e. prerequisites).  The user also has the option to view two degree plans simultaneously.  They can view two majors, or view one major and one minor at the same time.  The course visualization shows the user any overlap between two majors, or a major and a minor.  For example, if both a CS Major and a Math Minor require STAT 4710, that overlap will be shown in the course map.  We currently have three majors and two minors available in our data - CS Major, IT Major, Math Minor, Music Studies/Major, and Business Minor.  Most degree plans require electives, aso if the user clicks on an elective to view, there will be a sidebar/dropdown available to view all the elective options.
-
-BACK END
-H: Server filter by tag
-
-What else?
-Select an option for an elective?
-Have the graph update accordingly? (open new options?)
+* The application shall represent a course with a circular node and a text label in the visualization.
+* The application shall represent a prerequesite relationship with a line in the visualization.
+* The application shall provide a drop down of possible majors and minors for the user to choose from.
+* The application shall make an API call to the Flask server requesting a list of courses for a chosen major or minor.
+* The application shall visualize one chosen major.
+* The application shall simultaneously visualize one chosen major and minor.
+* The application shall simultaneously visualize two chosen majors.
+* The application shall allow the selection of an individual course.
+* The application shall show course name, prerequisites, and description upon selection.
+* The application shall upon first release ( December 11, 2017 ) have three majors and two minors available in its data - CS Major, IT Major, Music Studies/Major, Math Minor, and Business Minor. 
+* The server shall select courses for a requested major or minor based off of prerequisites and tags.
+* The server shall deliver a list of courses for a major or minor in JSON upon request.
+* The server shall use the course GUID and JSON prerequisites list to determine prerequisites.
 
 ### Application Architecture
 
@@ -71,7 +66,7 @@ Courses are organized by department and are stored as a collection, along with a
 *****
 ##### Degrees:
 
-Degrees were difficult to model do to their complex structure. To model required courses and in-major electives, we created a query structure in which courses are randomly selected from a list up to a predefined count value. We didn't have time to include out of major requirements since this is even more complicated and would require including many more classes in the course catalog.
+Degrees were difficult to model due to their complex structure. To model required courses and in-major electives, we created a query structure in which courses are randomly selected from a list up to a predefined count value. We didn't have time to include out of major requirements since this is even more complicated and would require including many more classes in the course catalog.
 
 !["Degrees data model"](docs/degreesdata.png "Degrees data model")
 ```
