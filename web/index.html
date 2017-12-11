@@ -8,15 +8,14 @@
     <!-- From vis -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="jquery.js"></script>
-    <!-- Compiled and minified CSS -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
     <div class="row">
-        <div class="column" id="decisionPane">
+        <div class="col s2" id="decisionPane">
            <div class="row">
             <h2>Degree Visualizer</h2>
              <form id = "degreeSelector" class="col s12"  onsubmit="">
@@ -63,8 +62,10 @@
 
             <p><b>Prerequisites:</b></p>
             <div id="coursePrereq">Prerequisites of selected course.</div>
+            <br>
+            <br>
         </div>
-        <div class="column" id="visualizationPane">
+        <div class="col s10" id="visualizationPane">
             <!-- START OF COPIED CODE -->
             <svg width="960" height="800"></svg>
             <script>
@@ -110,7 +111,7 @@
 
             var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor";
             var course_info_JSON;
-                
+
                 var width = 960,
                     height = 500,
                     radius = 6;
@@ -245,7 +246,7 @@
                         for (i = 0; i < temp_num_courses_assigned; i++) {
                             courses_assigned[num_courses_assigned] = temp_courses_assigned[i];
                             num_courses_assigned++;
-                            
+
                         }
                         console.log("courses added to group " + (depth - 1) + ":");
                         console.log(temp_courses_assigned);
@@ -272,14 +273,14 @@
                         { source: "CMP_SC3050", target: "CMP_SC4520", value: 1, length: 1 },
                         { source: "CMP_SC2050", target: "CMP_SC3050", value: 1, length: 1 }
                     ];
-                
+
                     // ~~~~~~~~~~~~~~~ START OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~
                     var num_links_total = 0;
                     for( i = 0; i < num_courses_total; i++ ) {
                         num_links_total += course_info_JSON[i].Prerequisites.length;
                     }
                     console.log("num_links_total: " + num_links_total);
-                
+
                     var links = [];
                     var counter = 0;
                     var temp_length;
@@ -311,7 +312,7 @@
                     }
                     console.log("links: ");
                     console.log(links);
-                
+
                     // ~~~~~~~~~~~~~~~ END OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~
 
                     var revised_course_JSON = {
@@ -364,14 +365,14 @@
                                 .on("start", dragstarted)
                                 .on("drag", dragged)
                                 .on("end", dragended));
-                        
+
 //                        var force = d3.force();
 //                            .gravity(.05)
 //                            .charge(-240)
 //                            .linkDistance(50)
 //                            .size([width, height]);
-                        
-                        
+
+
 
                         node.append("title")
                             .text(function(d) { return d.id; });
@@ -397,7 +398,7 @@
                                 .attr("y1", function(d) { return d.source.y; })
                                 //.attr("x2", function(d) { return d.target.x + 1 * 100 + 50; })
                                 .attr("y2", function(d) { return d.target.y; });
-                                
+
 
                             node
                                 //.attr("cx", function(d) { return d.x; })
