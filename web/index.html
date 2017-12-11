@@ -318,7 +318,7 @@
 
                     var simulation = d3.forceSimulation()
                         .force("link", d3.forceLink().id(function(d) { return d.id; }))
-                        .force("charge", d3.forceManyBody())
+                        .force("charge", d3.forceManyBody().strength(-30))
                         //.force("charge", function() { return -2; })
                         .force("center", d3.forceCenter(width / 2, height / 2));
 
@@ -343,11 +343,20 @@
                             .attr("r", 5)
                             .attr("x", function(d) { return (d.group * 200) })
                             .attr("fill", function(d) { return color(d.group); })
-                            .attr("transform", function(d) { return "translate(" + (d.group * 200 + 50) + "," + 0 + ")"; })
+                            .attr("transform", function(d) { return "translate(" + (d.group * 100 + 50) + "," + 0 + ")"; })
+                            .attr("charge", -300)
                             .call(d3.drag()
                                 .on("start", dragstarted)
                                 .on("drag", dragged)
                                 .on("end", dragended));
+                        
+//                        var force = d3.force();
+//                            .gravity(.05)
+//                            .charge(-240)
+//                            .linkDistance(50)
+//                            .size([width, height]);
+                        
+                        
 
                         node.append("title")
                             .text(function(d) { return d.id; });
