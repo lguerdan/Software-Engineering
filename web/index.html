@@ -72,8 +72,8 @@
                   $('select').material_select();
                });
             //var json_request_text = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
-            var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor";
-            var course_info_JSON;
+            var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor&deg2=MathMinor";
+            var course_info_JSON = [{}];
                 
                 var width = 960,
                     height = 500,
@@ -83,7 +83,28 @@
             $.getJSON(json_request_text, function(data) {
                     console.log("success");
                     //console.log(data);
-                    course_info_JSON = data.CSMajor;
+                    var temp_course_info_JSON;
+                    var num_courses_unique = 0;
+                    temp_course_info_JSON = data.CSMajor;
+                    temp_course_info_JSON = temp_course_info_JSON.concat(data.MathMinor);
+                    console.log( temp_course_info_JSON );
+                
+                    var duplicate = false;
+                    for( i = 0; i < temp_course_info_JSON.length; i++ ) {
+                        console.log("Comparing " + temp_course_info_JSON[i].GUID)
+                        duplicate = false;
+                        for( j = 0; j < num_courses_unique; j++ ) {
+                            console.log("To        " + course_info_JSON[j].GUID);
+                            if( temp_course_info_JSON[i].GUID == course_info_JSON[j].GUID ) {
+                                console.log("DUPLICATE FOUND");
+                                duplicate = true;
+                            }
+                        }
+                        if( !duplicate ) {
+                            course_info_JSON[num_courses_unique] = temp_course_info_JSON[i];
+                            num_courses_unique++;
+                        }
+                    }
                 })
                 .done(function() {
                     console.log("second success");
@@ -311,8 +332,8 @@
                             .data(graph.links)
                             .enter().append("line")
                             //.attr("stroke-width", function(d) { return Math.sqrt(d.value); })
-                            .attr("x1", function(d) { return d.value * 100 + 50 })
-                            .attr("x2", function(d) { return (d.value + d.length) * 100 + 50 });
+                            .attr("x1", function(d) { return d.value * 200 + 50 })
+                            .attr("x2", function(d) { return (d.value + d.length) * 200 + 50 });
 
                         var node = svg.append("g")
                             .attr("class", "nodes")
@@ -322,7 +343,7 @@
                             .attr("r", 5)
                             .attr("x", function(d) { return (d.group * 200) })
                             .attr("fill", function(d) { return color(d.group); })
-                            .attr("transform", function(d) { return "translate(" + (d.group * 100 + 50) + "," + 0 + ")"; })
+                            .attr("transform", function(d) { return "translate(" + (d.group * 200 + 50) + "," + 0 + ")"; })
                             .call(d3.drag()
                                 .on("start", dragstarted)
                                 .on("drag", dragged)
