@@ -19,10 +19,10 @@
         <div class="column" id="decisionPane">
            <div class="row">
             <h2>Degree Visualizer</h2>
-             <form class="col s12">
+             <form id = "degreeSelector" class="col s12"  onsubmit="">
                <div class="row">
                   <p><b>Choose Degree Plan:</b></p>
-                 <div class="input-field col s12">
+                 <div class="input-field col s12" name = "deg1">
                    <select>
                      <option value="" selected>Choose degree one</option>
                       <option value="csMajor">CS Major</option>
@@ -36,7 +36,7 @@
                </div>
                <div class="row">
                   <p><b>Choose Secondary Degree Plan:</b></p>
-                  <div class="input-field col s12">
+                  <div class="input-field col s12" name = "deg2">
                      <select>
                         <option value="" selected>Choose degree one</option>
                         <option value="csMajor">CS Major</option>
@@ -48,19 +48,19 @@
                    <label>Degree Two</label>
                  </div>
                </div>
-               <button class="btn waves-effect waves-light" type="submit" name="action">See Degree Plans
-
-               </button>
-
+               <div class = "center-align">
+                  <button class="btn waves-effect waves-light " type="button" onclick="getDegrees()">See Degree Plans</button>
+               </div>
              </form>
            </div>
+            <br>
 
             <p><b>Course Name:</b></p>
             <div id="courseName">Name of selected course.</div>
-            <br>
+
             <p><b>Course Description:</b></p>
             <div id="courseDescription">Description of selected course.</div>
-            <br>
+
             <p><b>Prerequisites:</b></p>
             <div id="coursePrereq">Prerequisites of selected course.</div>
         </div>
@@ -68,12 +68,46 @@
             <!-- START OF COPIED CODE -->
             <svg width="960" height="800"></svg>
             <script>
+
                $(document).ready(function() {
                   $('select').material_select();
                });
             //var json_request_text = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
-            var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor";
-            var course_info_JSON;
+            var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor&deg2=MathMinor";
+            var course_info_JSON = [{}];
+
+            function getDegrees(){
+
+               var deg1 = document.getElementById("degreeSelector").elements[1].value;
+               var deg2 = document.getElementById("degreeSelector").elements[3].value;
+
+               if(deg1 === "Choose degree one" && deg2 === "Choose degree two" ){
+                  Materialize.toast('Please select at least one degree', 4000)
+                  return;
+               }else if(deg1 === deg2) {
+                  Materialize.toast('Please select distinct degrees', 4000)
+                  alert("return")
+                  return;
+               }
+
+               json_request_full = json_request_base
+               if(deg1 !== "Choose degree one"){
+                  json_request_full += "deg1=" + deg1
+               }
+               alert(json_request_base)
+               if(deg1 !== "Choose degree one" && deg2 !== "Choose degree two" ){
+                  json_request_full += "&"
+                  return;
+               }
+               if(deg2 !== "Choose degree two"){
+                  json_request_full += "deg2=" + deg2
+               }
+               alert(json_request_full)
+
+            }
+            $(document).ready(function() {
+               $('select').material_select();
+            });
                 
                 var width = 960,
                     height = 500,
@@ -83,7 +117,28 @@
             $.getJSON(json_request_text, function(data) {
                     console.log("success");
                     //console.log(data);
-                    course_info_JSON = data.CSMajor;
+                    var temp_course_info_JSON;
+                    var num_courses_unique = 0;
+                    temp_course_info_JSON = data.CSMajor;
+                    temp_course_info_JSON = temp_course_info_JSON.concat(data.MathMinor);
+                    console.log( temp_course_info_JSON );
+                
+                    var duplicate = false;
+                    for( i = 0; i < temp_course_info_JSON.length; i++ ) {
+                        console.log("Comparing " + temp_course_info_JSON[i].GUID)
+                        duplicate = false;
+                        for( j = 0; j < num_courses_unique; j++ ) {
+                            console.log("To        " + course_info_JSON[j].GUID);
+                            if( temp_course_info_JSON[i].GUID == course_info_JSON[j].GUID ) {
+                                console.log("DUPLICATE FOUND");
+                                duplicate = true;
+                            }
+                        }
+                        if( !duplicate ) {
+                            course_info_JSON[num_courses_unique] = temp_course_info_JSON[i];
+                            num_courses_unique++;
+                        }
+                    }
                 })
                 .done(function() {
                     console.log("second success");
