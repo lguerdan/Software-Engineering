@@ -18,17 +18,19 @@ FRONT END
 
 * The application shall represent a course with a circular node and a text label in the visualization.
 * The application shall represent a prerequesite relationship with a line in the visualization.
-* The application shall visualize one selected major. 
-* The application shall simlutaneously visualize one selected major and minor.
-* The application shall simultaneously visualize two selected majors.
-* The application shall select an individual course.
+* The application shall provide a drop down of possible majors and minors for the user to choose from.
+* The application shall make an API call to the Flask server requesting a list of courses for a chosen major.
+* The application shall visualize one chosen major.
+* The application shall simlutaneously visualize one chosen major and minor.
+* The application shall simultaneously visualize two chosen majors.
+* The application shall allow the selection of an individual course.
 * The application shall show course name, prerequisites, and description upon selection.
 * The application shall upon first release ( December 11, 2017 ) have three majors and two minors available in its data - CS Major, IT Major, Music Studies/Major, Math Minor, and Business Minor. 
 
 BACK END
 
 * The application shall deliver a list of courses in JSON upon 
-* The application shall
+* The application shall 
 * The application shall 
 * The application shall
 
@@ -70,7 +72,7 @@ Courses are organized by department and are stored as a collection, along with a
 *****
 ##### Degrees:
 
-Degrees were difficult to model do to their complex structure. To model required courses and in-major electives, we created a query structure in which courses are randomly selected from a list up to a predefined count value. We didn't have time to include out of major requirements since this is even more complicated and would require including many more classes in the course catalog.
+Degrees were difficult to model due to their complex structure. To model required courses and in-major electives, we created a query structure in which courses are randomly selected from a list up to a predefined count value. We didn't have time to include out of major requirements since this is even more complicated and would require including many more classes in the course catalog.
 
 !["Degrees data model"](docs/degreesdata.png "Degrees data model")
 ```
