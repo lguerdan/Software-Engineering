@@ -1,6 +1,9 @@
 # Degree Visualizer
 Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, Lydia Snyder, Michael Thomas   
 
+
+[![IMAGE ALT TEXT HERE](https://www.youtube.com/watch?v=bMaf7agOkCM/0.jpg)](https://www.youtube.com/watch?v=bMaf7agOkCM)
+
 - [Requirements](#requirements)
 - [Application Architecture](#application-architecture)
 - [Data Model](#data-model)
