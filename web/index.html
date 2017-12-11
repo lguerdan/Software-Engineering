@@ -25,11 +25,11 @@
                  <div class="input-field col s12" name = "deg1">
                    <select>
                      <option value="" selected>Choose degree one</option>
-                      <option value="csMajor">CS Major</option>
-                      <option value="itMajor">IT Major</option>
-                      <option value="musicMajor">Music Major</option>
-                      <option value="mathMinor">Math Minor</option>
-                      <option value="businessMinor">Business Minor</option>
+                      <option value="CSMajor">CS Major</option>
+                      <option value="ITMajor">IT Major</option>
+                      <option value="MusicStudiesMajor">Music Major</option>
+                      <option value="MathMinor">Math Minor</option>
+                      <option value="BusinessMinor">Business Minor</option>
                    </select>
                    <label>Degree One</label>
                  </div>
@@ -39,11 +39,11 @@
                   <div class="input-field col s12" name = "deg2">
                      <select>
                         <option value="" selected>Choose degree one</option>
-                        <option value="csMajor">CS Major</option>
-                        <option value="itMajor">IT Major</option>
-                        <option value="musicMajor">Music Major</option>
-                        <option value="mathMinor">Math Minor</option>
-                        <option value="businessMinor">Business Minor</option>
+                        <option value="CSMajor">CS Major</option>
+                      <option value="ITMajor">IT Major</option>
+                      <option value="MusicStudiesMajor">Music Major</option>
+                      <option value="MathMinor">Math Minor</option>
+                      <option value="BusinessMinor">Business Minor</option>
                    </select>
                    <label>Degree Two</label>
                  </div>
@@ -74,13 +74,16 @@
                });
             //var json_request_text = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
             var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor&deg2=MathMinor";
+            var json_request_base = "http://evanescence.herokuapp.com/get_degree?"
+            var json_request_full = ""
             var course_info_JSON = [{}];
 
             function getDegrees(){
 
                var deg1 = document.getElementById("degreeSelector").elements[1].value;
                var deg2 = document.getElementById("degreeSelector").elements[3].value;
-
+                console.log(deg1)
+                console.log(deg2);
                if(deg1 === "Choose degree one" && deg2 === "Choose degree two" ){
                   Materialize.toast('Please select at least one degree', 4000)
                   return;
@@ -94,35 +97,34 @@
                if(deg1 !== "Choose degree one"){
                   json_request_full += "deg1=" + deg1
                }
-               alert(json_request_base)
+//               alert(json_request_base)
                if(deg1 !== "Choose degree one" && deg2 !== "Choose degree two" ){
                   json_request_full += "&"
-                  return;
+                  
                }
                if(deg2 !== "Choose degree two"){
                   json_request_full += "deg2=" + deg2
                }
-               alert(json_request_full)
-
+               console.log(json_request_full)
+               generateCourseGraph(json_request_full,deg1, deg2)
             }
             $(document).ready(function() {
                $('select').material_select();
             });
                 
-                var width = 960,
-                    height = 500,
-                    radius = 6;
+                
 
-
-            $.getJSON(json_request_text, function(data) {
+function generateCourseGraph(json_request, deg1, deg2) {
+            $.getJSON(json_request, function(data) {
                     console.log("success");
                     //console.log(data);
                     var temp_course_info_JSON;
                     var num_courses_unique = 0;
-                    temp_course_info_JSON = data.CSMajor;
-                    temp_course_info_JSON = temp_course_info_JSON.concat(data.MathMinor);
+                    temp_course_info_JSON = data[deg1];
+                    if (deg2 != "")
+                        temp_course_info_JSON = temp_course_info_JSON.concat(data[deg2]);
                     console.log( temp_course_info_JSON );
-                
+
                     var duplicate = false;
                     for( i = 0; i < temp_course_info_JSON.length; i++ ) {
                         console.log("Comparing " + temp_course_info_JSON[i].GUID)
@@ -225,9 +227,16 @@
                                             if (!found) {
                                                 console.log("PREREQUISITE COMPLETELY ABSENT");
                                                 num_courses_per_group[0]++;
+                                                var temp_prerequisites = [];
+                                                for( m = 0; m < course_info_JSON[i].Prerequisites.length; m++ ) {
+                                                    temp_prerequisites[m] = course_info_JSON[i].Prerequisites[m];
+                                                }
                                                 courses_assigned[num_courses_assigned] = {
                                                     id: course_info_JSON[i].Prerequisites[j],
-                                                    group: 0
+                                                    group: 0,
+                                                    title: course_info_JSON[i].Title,
+                                                    description: course_info_JSON[i].Description,
+                                                    prerequisites: temp_prerequisites
                                                 };
                                                 num_courses_fabricated++;
                                                 num_courses_assigned++;
@@ -264,7 +273,7 @@
                         for (i = 0; i < temp_num_courses_assigned; i++) {
                             courses_assigned[num_courses_assigned] = temp_courses_assigned[i];
                             num_courses_assigned++;
-                            
+
                         }
                         console.log("courses added to group " + (depth - 1) + ":");
                         console.log(temp_courses_assigned);
@@ -291,14 +300,14 @@
                         { source: "CMP_SC3050", target: "CMP_SC4520", value: 1, length: 1 },
                         { source: "CMP_SC2050", target: "CMP_SC3050", value: 1, length: 1 }
                     ];
-                
+
                     // ~~~~~~~~~~~~~~~ START OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~
                     var num_links_total = 0;
                     for( i = 0; i < num_courses_total; i++ ) {
                         num_links_total += course_info_JSON[i].Prerequisites.length;
                     }
                     console.log("num_links_total: " + num_links_total);
-                
+
                     var links = [];
                     var counter = 0;
                     var temp_length;
@@ -330,7 +339,7 @@
                     }
                     console.log("links: ");
                     console.log(links);
-                
+
                     // ~~~~~~~~~~~~~~~ END OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~
 
                     var revised_course_JSON = {
@@ -344,9 +353,15 @@
                     // CODE COPIED FROM https://bl.ocks.org/mbostock/4062045 //
                     // ————————————————————————————————————————————————————— //
 
+                    var width = 960,
+                        height = 500,
+                        radius = 6;
+
                     var svg = d3.select("svg"),
                         width = +svg.attr("width"),
                         height = +svg.attr("height");
+                
+                svg.selectAll("*").remove();
 
                     var color = d3.scaleOrdinal(d3.schemeCategory20);
 
@@ -366,36 +381,40 @@
                             .data(graph.links)
                             .enter().append("line")
                             //.attr("stroke-width", function(d) { return Math.sqrt(d.value); })
-                            .attr("x1", function(d) { return d.value * 100 + 50 })
-                            .attr("x2", function(d) { return (d.value + d.length) * 100 + 50 });
+                            .attr("x1", function(d) { return d.value * 160 + 50 })
+                            .attr("x2", function(d) { return (d.value + d.length) * 160 + 50 });
 
                         var node = svg.append("g")
                             .attr("class", "nodes")
                             .selectAll("circle")
                             .data(graph.nodes)
                             .enter().append("circle")
-                            .attr("r", 5)
+                            .attr("r", 10)
                             .attr("x", function(d) { return (d.group * 200) })
                             .attr("fill", function(d) { return color(d.group); })
-                            .attr("transform", function(d) { return "translate(" + (d.group * 100 + 50) + "," + 0 + ")"; })
-                            .attr("charge", -300)
+                            .attr("transform", function(d) { return "translate(" + (d.group * 160 + 50) + "," + 0 + ")"; })
+    //                            .attr("charge", -300)
                             .call(d3.drag()
                                 .on("start", dragstarted)
                                 .on("drag", dragged)
                                 .on("end", dragended));
-                        
-                        node.append("text")
-                              .attr("dx", 12)
-                              .attr("dy", ".35em")
-                              .text(function(d) { return d.id });
-                        
-                        
+
+                        var text = svg.append("g")
+                            .attr("class", "text")
+                            .selectAll("text")
+                            .data(graph.nodes)
+                            .enter().append("text")
+                            .attr("x", function(d) { return 15 })
+                            .attr("fill", function(d) { return color(d.group); })
+                            .attr("transform", function(d) { return "translate(" + (d.group * 160 + 50) + "," + 0 + ")";})
+                            .text(function(d) { return d.id });
+
 
                         node.append("title")
                             .text(function(d) { return d.id; });
 
-                        node.append("text")
-                            .text(function(d) { return d.id; });
+    //                        node.append("text")
+    //                            .text(function(d) { return d.id; });
                             //.attr("x", function(d) { return 10 })
                             //.attr("dy", ".35em")
                             //.attr("text-anchor", function(d) { return "start"; })
@@ -415,11 +434,14 @@
                                 .attr("y1", function(d) { return d.source.y; })
                                 //.attr("x2", function(d) { return d.target.x + 1 * 100 + 50; })
                                 .attr("y2", function(d) { return d.target.y; });
-                                
+
 
                             node
                                 //.attr("cx", function(d) { return d.x; })
                                 .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
+
+                            text
+                                .attr("y", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
                         }
 
                     //});
@@ -453,7 +475,7 @@
                     console.log("complete");
                 });
 
-
+}
             // Include other scripts here...
             </script>
         </div>
