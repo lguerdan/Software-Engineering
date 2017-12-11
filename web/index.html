@@ -1,238 +1,336 @@
 <!DOCTYPE html>
 <html>
-   <head>
-        <meta charset="utf-8">
-        <title>Degree Plan Visualization</title>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
-         <link href="style.css" rel="stylesheet" type="text/css" />
-        <link href="interactive_tree.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.27.2"></script>
-        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?1.27.2"></script>
-        <!-- Compiled and minified CSS -->
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
 
-        <!-- Compiled and minified JavaScript -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+<head>
+    <meta charset="utf-8">
+    <title>Degree Plan Visualization</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- From vis -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="jquery.js"></script>
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+    <!-- Compiled and minified JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+</head>
 
-    </head>
-
-    <body>
-        <div class="row">
-            <div class="column" id="decisionPane">
-                <p><b>Choose Degree Plan:</b></p>
-                <select id="dropDown">
-                    <option value="blank">Choose Degree</option>
-                    <option value="csMajor">CS Major</option>
-                    <option value="itMajor">IT Major</option>
-                    <option value="musicMajor">Music Major</option>
-                    <option value="mathMinor">Math Minor</option>
-                    <option value="businessMinor">Business Minor</option>
-                </select>
-                <br><br>
-                <p><b>Choose Secondary Degree Plan:</b></p>
-                <select id="dropDown">
-                    <option value="blank">Choose Degree</option>
-                    <option value="csMajor">CS Major</option>
-                    <option value="itMajor">IT Major</option>
-                    <option value="musicMajor">Music Major</option>
-                    <option value="mathMinor">Math Minor</option>
-                    <option value="businessMinor">Business Minor</option>
-                </select>
-<!--
-                <input type="checkbox" id="csMajor" name="cs" value="cs">
-                    <label for="cs">CS Major</label>
-                    <br>
-                <input type="checkbox" id="itMajor" name="it" value="it">
-                    <label for="it">IT Major</label>
-                    <br>
-                <input type="checkbox" id="musicMajor" name="music" value="music">
-                    <label for="it">Music Major</label>
-                    <br>
-                <input type="checkbox" id="mathMinor" name="math" value="math">
-                    <label for="math">Math Minor</label>
-                    <br>
-                <input type="checkbox" id="businessMinor" name="business" value="business">
-                    <label for="business">Business Minor</label>
--->
-                <br><p>-----</p><br>
-                <p><b>Course Name:</b></p>
-                <div id="courseName">Name of selected course.</div>
-                <br><br>
-                <p><b>Course Description:</b></p>
-                <div id="courseDescription">Description of selected course.</div>
-                <br><br>
-                <p><b>Prerequisites:</b></p>
-                <div id="coursePrereq">Prerequisites of selected course.</div>
-            </div>
-                        <style>
-
-            .node {
-              cursor: pointer;
-            }
-
-            .node circle {
-              fill: #fff;
-              stroke: steelblue;
-              stroke-width: 1.5px;
-            }
-
-            .node text {
-              font: 10px sans-serif;
-            }
-
-            .link {
-              fill: none;
-              stroke: #ccc;
-              stroke-width: 1.5px;
-            }
-
-            </style>
-            <script src="d3/d3ver3min.js"></script>
-            <script>
-
-            var margin = {top: 10, right: 120, bottom: 20, left: 400},
-                width = 450,
-                height = 530;
-
-            var i = 0,
-                duration = 750,
-                root;
-
-            var tree = d3.layout.tree()
-                .size([height, width + 900]);
-
-            var diagonal = d3.svg.diagonal()
-                .projection(function(d) { return [d.y, d.x]; });
-
-            var svg = d3.select("body").append("svg")
-                .attr("width", width + margin.right + margin.left + 800)
-                .attr("height", height + margin.top + margin.bottom)
-              .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-            d3.json("math_map_compact.json", function(error, flare) {
-              if (error) throw error;
-
-              root = flare;
-              root.x0 = height / 2;
-              root.y0 = (width + 900) / 2;
-
-              function collapse(d) {
-                if (d.children) {
-                  d._children = d.children;
-                  d._children.forEach(collapse);
-                  d.children = null;
-                }
-              }
-
-              root.children.forEach(collapse);
-              update(root);
-            });
-
-            d3.select(self.frameElement).style("height", "1000px");
-
-            function update(source) {
-
-              // Compute the new tree layout.
-              var nodes = tree.nodes(root).reverse(),
-                  links = tree.links(nodes);
-
-              // Normalize for fixed-depth.
-              nodes.forEach(function(d) { d.y = d.depth * 250; });
-
-              // Update the nodes…
-              var node = svg.selectAll("g.node")
-                  .data(nodes, function(d) { return d.id || (d.id = ++i); });
-
-              // Enter any new nodes at the parent's previous position.
-              var nodeEnter = node.enter().append("g")
-                  .attr("class", "node")
-                  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-                  .on("click", click);
-
-              nodeEnter.append("circle")
-                  .attr("r", 1e-6)
-                  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-
-              nodeEnter.append("text")
-                  .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
-                  .attr("dy", ".35em")
-                  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-                  .text(function(d) { return d.name; })
-                  .style("fill-opacity", 1e-6);
-
-              // Transition nodes to their new position.
-              var nodeUpdate = node.transition()
-                  .duration(duration)
-                  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
-
-              nodeUpdate.select("circle")
-                  .attr("r", 4.5)
-                  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-
-              nodeUpdate.select("text")
-                  .style("fill-opacity", 1);
-
-              // Transition exiting nodes to the parent's new position.
-              var nodeExit = node.exit().transition()
-                  .duration(duration)
-                  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
-                  .remove();
-
-              nodeExit.select("circle")
-                  .attr("r", 1e-6);
-
-              nodeExit.select("text")
-                  .style("fill-opacity", 1e-6);
-
-              // Update the links…
-              var link = svg.selectAll("path.link")
-                  .data(links, function(d) { return d.target.id; });
-
-              // Enter any new links at the parent's previous position.
-              link.enter().insert("path", "g")
-                  .attr("class", "link")
-                  .attr("d", function(d) {
-                    var o = {x: source.x0, y: source.y0};
-                    return diagonal({source: o, target: o});
-                  });
-
-              // Transition links to their new position.
-              link.transition()
-                  .duration(duration)
-                  .attr("d", diagonal);
-
-              // Transition exiting nodes to the parent's new position.
-              link.exit().transition()
-                  .duration(duration)
-                  .attr("d", function(d) {
-                    var o = {x: source.x, y: source.y};
-                    return diagonal({source: o, target: o});
-                  })
-                  .remove();
-
-              // Stash the old positions for transition.
-              nodes.forEach(function(d) {
-                d.x0 = d.x;
-                d.y0 = d.y;
-              });
-            }
-
-            // Toggle children on click.
-            function click(d) {
-              if (d.children) {
-                d._children = d.children;
-                d.children = null;
-              } else {
-                d.children = d._children;
-                d._children = null;
-              }
-              update(d);
-            }
-
-            </script>
-            <div class="column" id="visualizationPane">
-            </div>
+<body>
+    <div class="row">
+        <div class="column" id="decisionPane">
+            <p><b>Choose Degree Plan:</b></p>
+            <select id="dropDown">
+                <option value="blank">Choose Degree</option>
+                <option value="csMajor">CS Major</option>
+                <option value="itMajor">IT Major</option>
+                <option value="musicMajor">Music Major</option>
+                <option value="mathMinor">Math Minor</option>
+                <option value="businessMinor">Business Minor</option>
+            </select>
+            <br>
+            <br>
+            <p><b>Choose Secondary Degree Plan:</b></p>
+            <select id="dropDown">
+                <option value="blank">Choose Degree</option>
+                <option value="csMajor">CS Major</option>
+                <option value="itMajor">IT Major</option>
+                <option value="musicMajor">Music Major</option>
+                <option value="mathMinor">Math Minor</option>
+                <option value="businessMinor">Business Minor</option>
+            </select>
+            <br>
+            <p>-----</p>
+            <br>
+            <p><b>Course Name:</b></p>
+            <div id="courseName">Name of selected course.</div>
+            <br>
+            <br>
+            <p><b>Course Description:</b></p>
+            <div id="courseDescription">Description of selected course.</div>
+            <br>
+            <br>
+            <p><b>Prerequisites:</b></p>
+            <div id="coursePrereq">Prerequisites of selected course.</div>
         </div>
-    </body>
+        <div class="column" id="visualizationPane">
+            <!-- START OF COPIED CODE -->
+            <svg width="960" height="600"></svg>
+            <script>
+            //var json_request_text = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
+            var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor";
+            var course_info_JSON;
+
+            $.getJSON(json_request_text, function(data) {
+                    console.log("success");
+                    //console.log(data);
+                    course_info_JSON = data.CSMajor;
+                })
+                .done(function() {
+                    console.log("second success");
+                    console.log(course_info_JSON);
+                    console.log(course_info_JSON.length);
+
+                    // Create list of verticies & requirements
+                    var courses = [];
+
+                    var requirements = [];
+                    var num_requirements = 0;
+                    var course_tree = []; // Maybe don't use this...
+                    var courses_assigned = []; // List of courses we've already assigned
+                    //var temp_courses_assigned = [];
+                    var courses_assigned_flag = [];
+                    var num_courses_assigned = 0; // Number of courses we've already assigned
+                    var temp_num_courses_assigned = 0;
+                    var num_courses_per_group = [];
+                    var depth = 0;
+                    var found = true;
+                    var no_prerecs = true;
+
+                    for (i = 0; i < course_info_JSON.length; i++) {
+                        courses[i] = {
+                            "id": course_info_JSON[i].GUID,
+                            "group": 1
+                        };
+                        for (j = 0; j < course_info_JSON[i].Prerequisites.length; j++) {
+                            requirements[num_requirements + j] = {
+                                "source": course_info_JSON[i].Prerequisites[j],
+                                "target": course_info_JSON[i].GUID,
+                                "value": 1 // Not exactly sure what this does...
+                            };
+                            num_requirements++;
+                        }
+                    }
+
+                    // Iterate through groups (WE DON'T KNOW THE LENGTH IN ADVANCE)
+                    // Loop while num_courses_assigned != num_courses_total
+                    // Iterate through courses
+                    // Iterate through courses' prerequisites
+                    // Iterate through already assigned courses
+
+
+                    // ~~~~~~~~~~~~~~~ START OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    var num_courses_fabricated = 0;
+                    var num_courses_total = course_info_JSON.length;
+                    console.log("num_courses_total: " + num_courses_total);
+
+                    for (i = 0; i < num_courses_total; i++) {
+                        courses_assigned_flag[i] = 0;
+                    }
+
+                    while (num_courses_assigned - num_courses_fabricated < num_courses_total && depth < 6) {
+                        temp_num_courses_assigned = 0;
+                        var temp_courses_assigned = [];
+                        console.log("Iterating group " + depth);
+                        for (i = 0; i < num_courses_total; i++) {
+                            if (courses_assigned_flag[i] == 0) {
+                                console.log("Looking at item " + i);
+                                if (course_info_JSON[i].Prerequisites.length == 0) {
+                                    console.log("NO PRERECS");
+                                    found = true;
+                                } else {
+                                    found = true;
+                                    for (j = 0; j < course_info_JSON[i].Prerequisites.length && found; j++) {
+                                        found = false;
+                                        console.log("pre: " + course_info_JSON[i].Prerequisites[j]);
+                                        for (k = 0; k < num_courses_assigned && !found; k++) {
+                                            if (courses_assigned[k].id == course_info_JSON[i].Prerequisites[j]) {
+                                                console.log("MATCH FOUND");
+                                                console.log("asg: " + courses_assigned[k].id);
+                                                found = true;
+                                            }
+                                        }
+                                        if (!found) {
+                                            console.log("Checking for presence of " + course_info_JSON[i].Prerequisites[j] + "...");
+                                            // Check if the prerequisite we're looking for is here at all
+                                            for (l = 0; l < num_courses_total; l++) {
+                                                if (courses[l].id == course_info_JSON[i].Prerequisites[j]) {
+                                                    found = true;
+                                                }
+                                            }
+                                            if (!found) {
+                                                console.log("PREREQUISITE COMPLETELY ABSENT");
+                                                num_courses_per_group[0]++;
+                                                courses_assigned[num_courses_assigned] = {
+                                                    id: course_info_JSON[i].Prerequisites[j],
+                                                    group: 0
+                                                };
+                                                num_courses_fabricated++;
+                                                num_courses_assigned++;
+                                                found = true;
+                                            } else {
+                                                found = false;
+                                            }
+                                        }
+                                    }
+                                }
+                                //console.log( "found == " + found );
+                                if (found) {
+                                    console.log("Assigning course to courses_assigned...");
+                                    temp_courses_assigned[temp_num_courses_assigned] = {
+                                        id: course_info_JSON[i].GUID,
+                                        group: depth
+                                    };
+                                    temp_num_courses_assigned++;
+                                    num_courses_per_group[depth]++;
+                                    courses_assigned_flag[i] = 1;
+                                }
+                            } else {
+                                console.log("Skipping item   " + i);
+                            }
+                        }
+                        depth++;
+                        console.log("temp_num_courses_assigned: " + temp_num_courses_assigned);
+                        console.log("num_courses_assigned: " + num_courses_assigned);
+                        console.log("num_courses_fabricated: " + num_courses_fabricated);
+                        if (temp_num_courses_assigned == 0) {
+                            console.log("Things are now stuck");
+                            break;
+                        }
+                        for (i = 0; i < temp_num_courses_assigned; i++) {
+                            courses_assigned[num_courses_assigned] = temp_courses_assigned[i];
+                            num_courses_assigned++;
+                        }
+                        console.log("courses added to group " + (depth - 1) + ":");
+                        console.log(temp_courses_assigned);
+                        console.log("num_courses_assigned: " + num_courses_assigned);
+                    }
+                    // ~~~~~~~~~~~~~~~ END OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+                    console.log("courses_assigned");
+                    console.log(courses_assigned);
+                    //console.log( requirements );
+
+                    var courses_not_assigned = [];
+                    var counter = 0;
+                    console.log("courses_not_assigned");
+                    for (i = 0; i < num_courses_total; i++) {
+                        if (courses_assigned_flag[i] == 0) {
+                            courses_not_assigned[counter] = course_info_JSON[i];
+                            counter++;
+                        }
+                    }
+                    console.log(courses_not_assigned);
+                    var faux_links = [
+                        { source: "CMP_SC3050", target: "CMP_SC4520", value: 1, length: 1 },
+                        { source: "CMP_SC2050", target: "CMP_SC3050", value: 1, length: 1 }
+                    ];
+
+                    var revised_course_JSON = {
+                        "nodes": courses_assigned,
+                        "links": faux_links
+                    };
+
+                    console.log(revised_course_JSON);
+
+                    // ————————————————————————————————————————————————————— //
+                    // CODE COPIED FROM https://bl.ocks.org/mbostock/4062045 //
+                    // ————————————————————————————————————————————————————— //
+
+                    var svg = d3.select("svg"),
+                        width = +svg.attr("width"),
+                        height = +svg.attr("height");
+
+                    var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+                    var simulation = d3.forceSimulation()
+                        .force("link", d3.forceLink().id(function(d) { return d.id; }))
+                        .force("charge", d3.forceManyBody())
+                        //.force("charge", function() { return -2; })
+                        .force("center", d3.forceCenter(width / 2, height / 2));
+
+                    //d3.json( revised_course_JSON, function(error, graph) {
+                    //  if (error) throw error;
+                    function fakeD3Load(graph) {
+
+                        var link = svg.append("g")
+                            .attr("class", "links")
+                            .selectAll("line")
+                            .data(graph.links)
+                            .enter().append("line")
+                            //.attr("stroke-width", function(d) { return Math.sqrt(d.value); })
+                            .attr("x1", function(d) { return d.value * 100 + 50 })
+                            .attr("x2", function(d) { return (d.value + d.length) * 100 + 50 });
+
+                        var node = svg.append("g")
+                            .attr("class", "nodes")
+                            .selectAll("circle")
+                            .data(graph.nodes)
+                            .enter().append("circle")
+                            .attr("r", 5)
+                            .attr("x", function(d) { return (d.group * 200) })
+                            .attr("fill", function(d) { return color(d.group); })
+                            .attr("transform", function(d) { return "translate(" + (d.group * 100 + 50) + "," + 0 + ")"; })
+                            .call(d3.drag()
+                                .on("start", dragstarted)
+                                .on("drag", dragged)
+                                .on("end", dragended));
+
+                        node.append("title")
+                            .text(function(d) { return d.id; });
+
+                        node.append("text")
+                            .text(function(d) { return d.id; });
+                        //.attr("x", function(d) { return 10 })
+                        //.attr("dy", ".35em")
+                        //.attr("text-anchor", function(d) { return "start"; })
+                        //.text(function(d) { return d.id; })
+                        //.style("fill-opacity", 1e-6);
+
+                        simulation
+                            .nodes(graph.nodes)
+                            .on("tick", ticked);
+
+                        simulation.force("link")
+                            .links(graph.links);
+
+                        function ticked() {
+                            link
+                                //.attr("x1", function(d) { return d.source.x + 1 * 100 + 50; })
+                                .attr("y1", function(d) { return d.source.y; })
+                                //.attr("x2", function(d) { return d.target.x + 1 * 100 + 50; })
+                                .attr("y2", function(d) { return d.target.y; });
+
+                            node
+                                //.attr("cx", function(d) { return d.x; })
+                                .attr("cy", function(d) { return d.y; });
+                        }
+
+                        //});
+                    };
+
+                    fakeD3Load(revised_course_JSON);
+
+                    function dragstarted(d) {
+                        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+                        d.fx = d.x;
+                        d.fy = d.y;
+                    }
+
+                    function dragged(d) {
+                        d.fx = d3.event.x;
+                        d.fy = d3.event.y;
+                    }
+
+                    function dragended(d) {
+                        if (!d3.event.active) simulation.alphaTarget(0);
+                        d.fx = null;
+                        d.fy = null;
+                    }
+
+
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+
+
+            // Include other scripts here...
+            </script>
+        </div>
+    </div>
+</body>
+
 </html>

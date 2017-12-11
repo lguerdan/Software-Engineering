@@ -4,16 +4,16 @@
 <head>
 
     <title>Course Mapper</title>
-    
+
     <!--<script src="d3.js"></script>-->
     <script src="jquery.js"></script>
     <!-- Separate script file for requesting and receiving JSON file from backend API -->
     <!--<script src="JSON_request.js"></script>-->
     <!-- File which contains example json file (for testing purposes) -->
     <!--<script type="text/javascript" src="course_info.json"></script>-->
-    
+
     <link rel="stylesheet" src="main.css" href="main.css">
-    
+
     <style>
 
         .links line {
@@ -27,8 +27,8 @@
         }
 
     </style>
-    
-<!-- PLAN OF ATTACK 
+
+<!-- PLAN OF ATTACK
 
     * For this, we will use a 2-D array
         * X: course depth
@@ -39,14 +39,14 @@
         * Then, populate X+1 with all courses which only have prerequisites contained in X. Repeat this step until there are no classes remaining.
 
 -->
-    
-    
-    
+
+
+
 <!-- START OF COPIED CODE -->
     <svg width="960" height="600"></svg>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script>
-        
+
     //var json_request_text = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
     var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor";
     var course_info_JSON;
@@ -60,10 +60,10 @@
             console.log( "second success" );
             console.log( course_info_JSON );
             console.log( course_info_JSON.length );
-        
+
             // Create list of verticies & requirements
             var courses = [];
-            
+
             var requirements = [];
             var num_requirements = 0;
             var course_tree = [];           // Maybe don't use this...
@@ -76,7 +76,7 @@
             var depth = 0;
             var found = true;
             var no_prerecs = true;
-        
+
             for( i = 0; i < course_info_JSON.length; i++ ) {
                 courses[i] = {
                     "id": course_info_JSON[i].GUID,
@@ -91,24 +91,24 @@
                     num_requirements++;
                 }
             }
-        
+
             // Iterate through groups (WE DON'T KNOW THE LENGTH IN ADVANCE)
             // Loop while num_courses_assigned != num_courses_total
                 // Iterate through courses
                     // Iterate through courses' prerequisites
                         // Iterate through already assigned courses
-        
-        
+
+
         // ~~~~~~~~~~~~~~~ START OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             var num_courses_fabricated = 0;
             var num_courses_total = course_info_JSON.length;
             console.log( "num_courses_total: " + num_courses_total );
-        
+
             for( i = 0; i < num_courses_total; i++ ) {
                 courses_assigned_flag[i] = 0;
             }
-        
-            while( num_courses_assigned - num_courses_fabricated < num_courses_total && depth < 6 ) { 
+
+            while( num_courses_assigned - num_courses_fabricated < num_courses_total && depth < 6 ) {
                 temp_num_courses_assigned = 0;
                 var temp_courses_assigned = [];
                 console.log("Iterating group " + depth);
@@ -186,12 +186,12 @@
                 console.log("num_courses_assigned: " + num_courses_assigned);
             }
         // ~~~~~~~~~~~~~~~ END OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        
-            
+
+
             console.log( "courses_assigned" );
             console.log( courses_assigned );
             //console.log( requirements );
-        
+
             var courses_not_assigned = [];
             var counter = 0;
             console.log( "courses_not_assigned" );
@@ -206,14 +206,14 @@
                 { source: "CMP_SC3050", target: "CMP_SC4520", value: 1, length: 1},
                 { source: "CMP_SC2050", target: "CMP_SC3050", value: 1, length: 1}
             ];
-        
-            var revised_course_JSON = { 
-                "nodes": courses_assigned, 
+
+            var revised_course_JSON = {
+                "nodes": courses_assigned,
                 "links": faux_links
             };
-        
+
             console.log( revised_course_JSON );
-        
+
 // ————————————————————————————————————————————————————— //
 // CODE COPIED FROM https://bl.ocks.org/mbostock/4062045 //
 // ————————————————————————————————————————————————————— //
@@ -223,13 +223,13 @@ var svg = d3.select("svg"),
     height = +svg.attr("height");
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
-        
+
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
     .force("charge", d3.forceManyBody())
     //.force("charge", function() { return -2; })
     .force("center", d3.forceCenter(width / 2, height / 2));
-        
+
 //d3.json( revised_course_JSON, function(error, graph) {
 //  if (error) throw error;
 function fakeD3Load(graph) {
@@ -249,7 +249,7 @@ function fakeD3Load(graph) {
     .data(graph.nodes)
     .enter().append("circle")
       .attr("r", 5)
-      .attr("x", function(d) { return (d.group * 200) }) 
+      .attr("x", function(d) { return (d.group * 200) })
       .attr("fill", function(d) { return color(d.group); })
       .attr("transform", function(d) { return "translate(" + (d.group * 100 + 50) + "," + 0 + ")"; })
       .call(d3.drag()
@@ -259,7 +259,7 @@ function fakeD3Load(graph) {
 
   node.append("title")
       .text(function(d) { return d.id; });
-    
+
   node.append("text")
       .text(function(d) { return d.id; });
           //.attr("x", function(d) { return 10 })
@@ -289,9 +289,9 @@ function fakeD3Load(graph) {
 
 //});
 };
-        
+
 fakeD3Load(revised_course_JSON);
-    
+
 function dragstarted(d) {
   if (!d3.event.active) simulation.alphaTarget(0.3).restart();
   d.fx = d.x;
@@ -309,7 +309,7 @@ function dragended(d) {
   d.fy = null;
 }
 
-        
+
         })
         .fail(function() {
             console.log( "error" );
@@ -317,20 +317,20 @@ function dragended(d) {
         .always(function() {
             console.log( "complete" );
         });
-        
-            
+
+
     // Include other scripts here...
-        
+
     </script>
 
 </head>
-    
+
 <body>
-    
+
     <div id="control_panel">
         TESTING
     </div>
-    
+
 </body>
-    
+
 </html>

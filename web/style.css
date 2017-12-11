@@ -8,6 +8,16 @@ body {
     z-index: -20;
 }
 
+.links line {
+ stroke: #999;
+ stroke-opacity: 0.6;
+}
+
+.nodes circle {
+ stroke: #fff;
+ stroke-width: 1.5px;
+}
+
 #decisionPane, #descriptionPane {
     width: calc(25% - 4px - 20px);
     height: calc(100vh - 4px);
