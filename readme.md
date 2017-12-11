@@ -29,11 +29,11 @@ FRONT END
 
 BACK END
 
-* The server shall 
+* The server shall select courses for a requested major or minor based off of prerequisites and tags.
 * The server shall deliver a list of courses for a major or minor in JSON upon request.
-* The server shall 
-* The server shall 
-* The server shall
+* The server shall use the course GUID and JSON prerequisites list to determine prerequisites.
+* The server shall ???
+* The server shall ???
 
 ### Application Architecture
 
