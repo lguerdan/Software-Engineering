@@ -29,7 +29,7 @@ Functional
 * The server shall deliver a list of courses for a major or minor in JSON upon request.
 * The server shall use the course GUID and JSON prerequisites list to determine prerequisites.
 
-Non-Functional
+Nonfunctional
 
 * The application shall upon first release ( December 11, 2017 ) have three majors and two minors available in its data - CS Major, IT Major, Music Studies/Major, Math Minor, and Business Minor. 
 * The application shall be available by December 11, 2017.
@@ -37,6 +37,7 @@ Non-Functional
 * The application shall use JavaScript.
 * The application shall use D3 to graph the courses.
 * The application shall use Flask for the server.
+* The application shall display the visualization in under one second.
 
 ### Application Architecture
 
