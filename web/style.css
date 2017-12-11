@@ -19,10 +19,14 @@ body {
  stroke: #fff;
  stroke-width: 1.5px;
 }
+.node .selected {
+  stroke: black;
+}
+
 
 #decisionPane, #descriptionPane {
     width: calc(25% - 4px - 20px);
-    height: calc(100vh - 4px);
+    height: 90%;
     padding-right: 10px;
     padding-left: 20px;
     /*background-color: gainsboro;*/
