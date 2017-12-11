@@ -9,44 +9,57 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="jquery.js"></script>
     <!-- Compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
     <div class="row">
         <div class="column" id="decisionPane">
-            <p><b>Choose Degree Plan:</b></p>
-            <select id="dropDown">
-                <option value="blank">Choose Degree</option>
-                <option value="csMajor">CS Major</option>
-                <option value="itMajor">IT Major</option>
-                <option value="musicMajor">Music Major</option>
-                <option value="mathMinor">Math Minor</option>
-                <option value="businessMinor">Business Minor</option>
-            </select>
-            <br>
-            <br>
-            <p><b>Choose Secondary Degree Plan:</b></p>
-            <select id="dropDown">
-                <option value="blank">Choose Degree</option>
-                <option value="csMajor">CS Major</option>
-                <option value="itMajor">IT Major</option>
-                <option value="musicMajor">Music Major</option>
-                <option value="mathMinor">Math Minor</option>
-                <option value="businessMinor">Business Minor</option>
-            </select>
-            <br>
-            <p>-----</p>
-            <br>
+           <div class="row">
+            <h2>Degree Visualizer</h2>
+             <form class="col s12">
+               <div class="row">
+                  <p><b>Choose Degree Plan:</b></p>
+                 <div class="input-field col s12">
+                   <select>
+                     <option value="" selected>Choose degree one</option>
+                      <option value="csMajor">CS Major</option>
+                      <option value="itMajor">IT Major</option>
+                      <option value="musicMajor">Music Major</option>
+                      <option value="mathMinor">Math Minor</option>
+                      <option value="businessMinor">Business Minor</option>
+                   </select>
+                   <label>Degree One</label>
+                 </div>
+               </div>
+               <div class="row">
+                  <p><b>Choose Secondary Degree Plan:</b></p>
+                  <div class="input-field col s12">
+                     <select>
+                        <option value="" selected>Choose degree one</option>
+                        <option value="csMajor">CS Major</option>
+                        <option value="itMajor">IT Major</option>
+                        <option value="musicMajor">Music Major</option>
+                        <option value="mathMinor">Math Minor</option>
+                        <option value="businessMinor">Business Minor</option>
+                   </select>
+                   <label>Degree Two</label>
+                 </div>
+               </div>
+               <button class="btn waves-effect waves-light" type="submit" name="action">See Degree Plans
+
+               </button>
+
+             </form>
+           </div>
+
             <p><b>Course Name:</b></p>
             <div id="courseName">Name of selected course.</div>
             <br>
-            <br>
             <p><b>Course Description:</b></p>
             <div id="courseDescription">Description of selected course.</div>
-            <br>
             <br>
             <p><b>Prerequisites:</b></p>
             <div id="coursePrereq">Prerequisites of selected course.</div>
@@ -55,6 +68,9 @@
             <!-- START OF COPIED CODE -->
             <svg width="960" height="600"></svg>
             <script>
+               $(document).ready(function() {
+                  $('select').material_select();
+               });
             //var json_request_text = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
             var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor";
             var course_info_JSON;
