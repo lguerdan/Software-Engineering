@@ -19,9 +19,9 @@ FRONT END
 * The application shall represent a course with a circular node and a text label in the visualization.
 * The application shall represent a prerequesite relationship with a line in the visualization.
 * The application shall provide a drop down of possible majors and minors for the user to choose from.
-* The application shall make an API call to the Flask server requesting a list of courses for a chosen major.
+* The application shall make an API call to the Flask server requesting a list of courses for a chosen major or minor.
 * The application shall visualize one chosen major.
-* The application shall simlutaneously visualize one chosen major and minor.
+* The application shall simultaneously visualize one chosen major and minor.
 * The application shall simultaneously visualize two chosen majors.
 * The application shall allow the selection of an individual course.
 * The application shall show course name, prerequisites, and description upon selection.
@@ -29,10 +29,11 @@ FRONT END
 
 BACK END
 
-* The application shall deliver a list of courses in JSON upon 
-* The application shall 
-* The application shall 
-* The application shall
+* The server shall 
+* The server shall deliver a list of courses for a major or minor in JSON upon request.
+* The server shall 
+* The server shall 
+* The server shall
 
 ### Application Architecture
 
