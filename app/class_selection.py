@@ -47,12 +47,17 @@ def get_degree(degree):
       courses.extend(ctemp[:requirement["count"]])
 
    for course in courses:
-
       course_full = get_course_from_ID(course)
       if course_full != None:
          courses_full.append(course_full)
-      else:
-         print "didnt find course " + course
+
+      for course_prerec in course_full["Prerequisites"]:
+         if(not course_in_selection(courses_full, course_prerec)):
+            prerec_full = get_course_from_ID(course_prerec)
+            if prerec_full != None:
+               courses_full.append(prerec_full)
+            else:
+               print(course_prerec + " not found")
 
    return courses_full
 
@@ -61,8 +66,11 @@ def get_course_from_ID(cid):
 
    dept = filter(None, re.split(r'(\d+)', cid))[0]
    allcourses = json.load(open(courses_file))
-   for course in allcourses[dept]["Courses"]:
+   if(dept not in allcourses):
+      print("department not found:" + dept)
+      return None
 
+   for course in allcourses[dept]["Courses"]:
       if "GUID" in course:
          if course["GUID"] == cid:
             return course
@@ -71,4 +79,10 @@ def get_course_from_ID(cid):
          print "no GUID in "+ str(course)
    return None
 
-def course_in_selection(courses, course):
+def course_in_selection(courses, course_key):
+   for course in courses:
+      if course != None and course["GUID"] == course_key:
+         return True
+   else:
+      return False
+

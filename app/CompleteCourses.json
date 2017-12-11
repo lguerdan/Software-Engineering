@@ -1349,7 +1349,7 @@
 				"GUID": "MATH4100",
 				"Description": "Traditional introductory course in ordinary differential equations. Includes 1st and 2nd order linear differential equations with numerous applications; Laplace transforms; power series solutions; numerical methods, linear systems.",
 				"Hours": "3",
-				"Prerequisites": ["MATH1160","MATH_MAJOR"]
+				"Prerequisites": ["MATH1160"]
 			},
 
 			{

@@ -26,7 +26,6 @@ def get_classes():
 def get_degree():
    deg1 = request.args.get("deg1")
    deg2 = request.args.get("deg2")
-   print deg1
    if not deg1 and not deg2:
       return jsonify({"error": "bad request"})
 
