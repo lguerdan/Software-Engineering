@@ -69,7 +69,7 @@
                   $(document).ready(function() {
                      $('select').material_select();
                   });
-                  //var json_request_text = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
+                  //var json_request_test = "http://evanescence.herokuapp.com/get_classes?num=200&department=CMP_SC";
                   var json_request_text = "http://evanescence.herokuapp.com/get_degree?deg1=CSMajor&deg2=MathMinor";
                   var json_request_base = "http://evanescence.herokuapp.com/get_degree?"
                   var json_request_full = ""
@@ -105,7 +105,7 @@
 
       function generateCourseGraph(json_request, deg1, deg2) {
                   $.getJSON(json_request, function(data) {
-
+                            course_info_JSON = [{}]
                           var temp_course_info_JSON;
                           var num_courses_unique = 0;
                           temp_course_info_JSON = data[deg1];
@@ -281,6 +281,7 @@
                               }
                           }
                           // ~~~~~~~~~~~~~~~ END OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~
+                      
                           var revised_course_JSON = {
                               "nodes": courses_assigned,
                               "links": links
@@ -299,11 +300,15 @@
                           var color = d3.scaleOrdinal(d3.schemeCategory20);
                           var simulation = d3.forceSimulation()
                               .force("link", d3.forceLink().id(function(d) { return d.id; }))
-                              .force("charge", d3.forceManyBody().strength(-120))
+                              .force("charge", d3.forceManyBody().strength(-100))
                               .force("center", d3.forceCenter(width / 2, height / 2));
                       var mulNumber = 132
                       var addNumber = 50
                           function fakeD3Load(graph) {
+                              var group0Num = 0;
+                              for (nodeNo in graph.nodes){
+                                  if (graph.nodes[nodeNo].group == 0) group0Num++;
+                              }
                               var link = svg.append("g")
                                   .attr("class", "links")
                                   .selectAll("line")
@@ -318,6 +323,11 @@
                                   .enter().append("circle")
                                   .attr("r", 10)
                                   .attr("x", function(d) { return (d.group * 200) })
+//                                  .attr("y", function(d){
+//                                        if (d.group == 0){
+//                                            return (height/group0Num)*d.index+10
+//                                        }
+//                                    })
                                   .attr("fill", function(d) { return color(d.group); })
                                     .attr("stroke", "black")
                                     .attr("stroke-width", 1)
@@ -368,6 +378,7 @@
                                   else {
                                       $("#courseName").html(selectedInfo.Title)
                                       $("#courseDescription").html(selectedInfo.Description)
+                                      
                                       $("#coursePrereq").html(selectedInfo.Prerequisites[0])
                                       if (selectedInfo.Prerequisites.length > 1){
                                           var x = 1
@@ -375,24 +386,39 @@
                                               $("#coursePrereq").html($("#coursePrereq").html() + ", " + selectedInfo.Prerequisites[x])
                                           }
                                       }
-
+                                    if (selectedInfo.Prerequisites[0] == undefined) $("#coursePrereq").html("No Prerequisites");
 
                                   }
                               });
                               function ticked() {
                                   link
-                                      //.attr("x1", function(d) { return d.source.x + 1 * 100 + 50; })
-                                      .attr("y1", function(d) { return d.source.y; })
-                                      //.attr("x2", function(d) { return d.target.x + 1 * 100 + 50; })
+                                      .attr("y1", function(d) { 
+//                                      if (d.source.group == 0){
+//                                          return (height/group0Num)*d.source.index + 15
+//                                      } 
+                                      return d.source.y; 
+                                    })
                                       .attr("y2", function(d) { return d.target.y; });
                                   node
-                                      //.attr("cx", function(d) { return d.x; })
-                                      .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - (radius+10), d.y)); });
+                                      .attr("cy", function(d) { 
+//                                      if (d.group == 0){
+//                                            return (height/group0Num)*d.index + 15
+//                                        }
+                                      return d.y = Math.max(radius, Math.min(height - (radius+10), d.y));
+                                  });
+                                        
                                   text
-                                      .attr("y", function(d) { return d.y = Math.max(radius, Math.min(height - (radius+10), d.y)); });
+                                      .attr("y", function(d) { 
+//                                      if (d.group == 0){
+//                                            return (height/group0Num)*d.index + 15
+//                                        }
+                                      return d.y = Math.max(radius, Math.min(height - (radius+10), d.y)); 
+                                  });
+                                   
                               }
                           //});
                           };
+                            svg.selectAll("*").remove();
                           fakeD3Load(revised_course_JSON);
                           function dragstarted(d) {
                               if (!d3.event.active) simulation.alphaTarget(0.3).restart();
