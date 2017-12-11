@@ -16,12 +16,14 @@ In one of our first meetings our team discussed what features we felt would be e
 
 FRONT END
 
-* A user shall be able to select to view one major. 
-* A user shall be able to select to view a major and a minor.
-* A user shall be able to select two majors.
-* A user shall be able to see the courses required for a selected major. 
-* A user shall be able to see how the courses are connected by prerequisites.
-* Our product for our first release ( December 11, 2017 ) shall have three majors and two minors available in our data - CS Major, IT Major, Music Studies/Major, Math Minor, and Business Minor. 
+* The application shall represent a course with a circular node and label.
+* The application shall represent a prerequesite relationship with a line.
+* The application shall visualize one selected major. 
+* The application shall simlutaneously visualize one selected major and minor.
+* The application shall simultaneously visualize two selected majors.
+* The application shall select an individual course.
+* The application shall show course name, prerequisites, and description upon selection.
+* The application shall upon first release ( December 11, 2017 ) have three majors and two minors available in its data - CS Major, IT Major, Music Studies/Major, Math Minor, and Business Minor. 
 
 * Our application shall allow a user to view one or two degree plans at a time. 
 allowing them to see the courses required for that major, and follow how the courses are connected (i.e. prerequisites).  The user also has the option to view two degree plans simultaneously.  They can view two majors, or view one major and one minor at the same time.  The course visualization shows the user any overlap between two majors, or a major and a minor.  For example, if both a CS Major and a Math Minor require STAT 4710, that overlap will be shown in the course map.  We currently have three majors and two minors available in our data - CS Major, IT Major, Math Minor, Music Studies/Major, and Business Minor.  Most degree plans require electives, aso if the user clicks on an elective to view, there will be a sidebar/dropdown available to view all the elective options.
