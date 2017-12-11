@@ -23,7 +23,7 @@ body {
     height: calc(100vh - 4px);
     padding-right: 10px;
     padding-left: 10px;
-    background-color: gainsboro;
+    /*background-color: gainsboro;*/
     border: 2px #d3d3d3 solid;
     z-index: 30;
 }
