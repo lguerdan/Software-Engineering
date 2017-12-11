@@ -14,6 +14,8 @@ Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, 
 
 In one of our first meetings our team discussed what features we felt would be essential for our application. From this discussion, we determined our requirements.
 
+Functional
+
 * The application shall represent a course with a circular node and a text label in the visualization.
 * The application shall represent a prerequesite relationship with a line in the visualization.
 * The application shall provide a drop down of possible majors and minors for the user to choose from.
@@ -23,10 +25,18 @@ In one of our first meetings our team discussed what features we felt would be e
 * The application shall simultaneously visualize two chosen majors.
 * The application shall allow the selection of an individual course.
 * The application shall show course name, prerequisites, and description upon selection.
-* The application shall upon first release ( December 11, 2017 ) have three majors and two minors available in its data - CS Major, IT Major, Music Studies/Major, Math Minor, and Business Minor. 
 * The server shall select courses for a requested major or minor based off of prerequisites and tags.
 * The server shall deliver a list of courses for a major or minor in JSON upon request.
 * The server shall use the course GUID and JSON prerequisites list to determine prerequisites.
+
+Non-Functional
+
+* The application shall upon first release ( December 11, 2017 ) have three majors and two minors available in its data - CS Major, IT Major, Music Studies/Major, Math Minor, and Business Minor. 
+* The application shall be available by December 11, 2017.
+* The application shall dynamically update upon request by user.
+* The application shall use JavaScript.
+* The application shall use D3 to graph the courses.
+* The application shall use Flask for the server.
 
 ### Application Architecture
 
