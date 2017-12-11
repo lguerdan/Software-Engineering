@@ -48,7 +48,7 @@ def get_degree(degree):
 
    for course in courses:
       course_full = get_course_from_ID(course)
-      if course_full != None:
+      if course_full != None and not course_in_selection(courses_full, course):
          courses_full.append(course_full)
 
       for course_prerec in course_full["Prerequisites"]:

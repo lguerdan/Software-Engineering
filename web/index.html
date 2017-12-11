@@ -66,7 +66,7 @@
             <br>
         </div>
         <div class="column" id="visualizationPane">
-            <!-- START OF COPIED CODE -->
+
             <svg width="960" height="800"></svg>
             <script>
                $(document).ready(function() {
@@ -77,24 +77,21 @@
             var json_request_base = "http://evanescence.herokuapp.com/get_degree?"
             var json_request_full = ""
             var course_info_JSON = [{}];
+
             function getDegrees(){
                var deg1 = document.getElementById("degreeSelector").elements[1].value;
                var deg2 = document.getElementById("degreeSelector").elements[3].value;
-//                console.log(deg1)
-//                console.log(deg2);
                if(deg1 === "Choose degree one" && deg2 === "Choose degree two" ){
                   Materialize.toast('Please select at least one degree', 4000)
                   return;
                }else if(deg1 === deg2) {
                   Materialize.toast('Please select distinct degrees', 4000)
-                  alert("return")
                   return;
                }
                json_request_full = json_request_base
                if(deg1 !== "Choose degree one"){
                   json_request_full += "deg1=" + deg1
                }
-//               alert(json_request_base)
                if(deg1 !== "Choose degree one" && deg2 !== "Choose degree two" ){
                   json_request_full += "&"
 
@@ -102,7 +99,6 @@
                if(deg2 !== "Choose degree two"){
                   json_request_full += "deg2=" + deg2
                }
-//               console.log(json_request_full)
                generateCourseGraph(json_request_full,deg1, deg2)
             }
             $(document).ready(function() {
@@ -112,43 +108,38 @@
 
 function generateCourseGraph(json_request, deg1, deg2) {
             $.getJSON(json_request, function(data) {
-//                    console.log("success");
-                    //console.log(data);
+
                     var temp_course_info_JSON;
                     var num_courses_unique = 0;
                     temp_course_info_JSON = data[deg1];
                     if (deg2 != "")
                         temp_course_info_JSON = temp_course_info_JSON.concat(data[deg2]);
-//                    console.log( temp_course_info_JSON );
+
                     var duplicate = false;
                     for( i = 0; i < temp_course_info_JSON.length; i++ ) {
-//                        console.log("Comparing " + temp_course_info_JSON[i].GUID)
+
                         duplicate = false;
                         for( j = 0; j < num_courses_unique; j++ ) {
-//                            console.log("To        " + course_info_JSON[j].GUID);
+
                             if( temp_course_info_JSON[i].GUID == course_info_JSON[j].GUID ) {
-//                                console.log("DUPLICATE FOUND");
                                 duplicate = true;
                             }
                         }
                         if( !duplicate ) {
                             course_info_JSON[num_courses_unique] = temp_course_info_JSON[i];
                             num_courses_unique++;
-                        
+
                         }
                     }
                 })
                 .done(function() {
-//                    console.log("second success");
-//                    console.log(course_info_JSON);
-                    console.log(course_info_JSON);
+
                     // Create list of verticies & requirements
                     var courses = [];
                     var requirements = [];
                     var num_requirements = 0;
                     var course_tree = []; // Maybe don't use this...
                     var courses_assigned = []; // List of courses we've already assigned
-                    //var temp_courses_assigned = [];
                     var courses_assigned_flag = [];
                     var num_courses_assigned = 0; // Number of courses we've already assigned
                     var temp_num_courses_assigned = 0;
@@ -178,34 +169,27 @@ function generateCourseGraph(json_request, deg1, deg2) {
                     // ~~~~~~~~~~~~~~~ START OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~
                     var num_courses_fabricated = 0;
                     var num_courses_total = course_info_JSON.length;
-//                    console.log("num_courses_total: " + num_courses_total);
                     for (i = 0; i < num_courses_total; i++) {
                         courses_assigned_flag[i] = 0;
                     }
                     while (num_courses_assigned - num_courses_fabricated < num_courses_total && depth < 6) {
                         temp_num_courses_assigned = 0;
                         var temp_courses_assigned = [];
-//                        console.log("Iterating group " + depth);
                         for (i = 0; i < num_courses_total; i++) {
                             if (courses_assigned_flag[i] == 0) {
-//                                console.log("Looking at item " + i);
+
                                 if (course_info_JSON[i].Prerequisites.length == 0) {
-//                                    console.log("NO PRERECS");
                                     found = true;
                                 } else {
                                     found = true;
                                     for (j = 0; j < course_info_JSON[i].Prerequisites.length && found; j++) {
                                         found = false;
-//                                        console.log("pre: " + course_info_JSON[i].Prerequisites[j]);
                                         for (k = 0; k < num_courses_assigned && !found; k++) {
                                             if (courses_assigned[k].id == course_info_JSON[i].Prerequisites[j]) {
-//                                                console.log("MATCH FOUND");
-//                                                console.log("asg: " + courses_assigned[k].id);
                                                 found = true;
                                             }
                                         }
                                         if (!found) {
-//                                            console.log("Checking for presence of " + course_info_JSON[i].Prerequisites[j] + "...");
                                             // Check if the prerequisite we're looking for is here at all
                                             for (l = 0; l < num_courses_total; l++) {
                                                 if (courses[l].id == course_info_JSON[i].Prerequisites[j]) {
@@ -213,7 +197,6 @@ function generateCourseGraph(json_request, deg1, deg2) {
                                                 }
                                             }
                                             if (!found) {
-//                                                console.log("PREREQUISITE COMPLETELY ABSENT");
                                                 num_courses_per_group[0]++;
                                                 var temp_prerequisites = [];
                                                 for( m = 0; m < course_info_JSON[i].Prerequisites.length; m++ ) {
@@ -235,9 +218,7 @@ function generateCourseGraph(json_request, deg1, deg2) {
                                         }
                                     }
                                 }
-                                //console.log( "found == " + found );
                                 if (found) {
-//                                    console.log("Assigning course to courses_assigned...");
                                     temp_courses_assigned[temp_num_courses_assigned] = {
                                         id: course_info_JSON[i].GUID,
                                         group: depth
@@ -251,35 +232,24 @@ function generateCourseGraph(json_request, deg1, deg2) {
                             }
                         }
                         depth++;
-//                        console.log("temp_num_courses_assigned: " + temp_num_courses_assigned);
-//                        console.log("num_courses_assigned: " + num_courses_assigned);
-//                        console.log("num_courses_fabricated: " + num_courses_fabricated);
                         if (temp_num_courses_assigned == 0) {
-                            console.log("Things are now stuck");
                             break;
                         }
                         for (i = 0; i < temp_num_courses_assigned; i++) {
                             courses_assigned[num_courses_assigned] = temp_courses_assigned[i];
                             num_courses_assigned++;
                         }
-                        console.log("courses added to group " + (depth - 1) + ":");
                         console.log(temp_courses_assigned);
-                        console.log("num_courses_assigned: " + num_courses_assigned);
                     }
                     // ~~~~~~~~~~~~~~~ END OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~
-                    console.log("courses_assigned");
-                    console.log(courses_assigned);
-                    //console.log( requirements );
                     var courses_not_assigned = [];
                     var counter = 0;
-                    console.log("courses_not_assigned");
                     for (i = 0; i < num_courses_total; i++) {
                         if (courses_assigned_flag[i] == 0) {
                             courses_not_assigned[counter] = course_info_JSON[i];
                             counter++;
                         }
                     }
-                    console.log(courses_not_assigned);
                     var faux_links = [
                         { source: "CMP_SC3050", target: "CMP_SC4520", value: 1, length: 1 },
                         { source: "CMP_SC2050", target: "CMP_SC3050", value: 1, length: 1 }
@@ -289,7 +259,6 @@ function generateCourseGraph(json_request, deg1, deg2) {
                     for( i = 0; i < num_courses_total; i++ ) {
                         num_links_total += course_info_JSON[i].Prerequisites.length;
                     }
-                    console.log("num_links_total: " + num_links_total);
                     var links = [];
                     var counter = 0;
                     var temp_length;
@@ -319,14 +288,11 @@ function generateCourseGraph(json_request, deg1, deg2) {
                             counter++;
                         }
                     }
-                    console.log("links: ");
-                    console.log(links);
                     // ~~~~~~~~~~~~~~~ END OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~
                     var revised_course_JSON = {
                         "nodes": courses_assigned,
                         "links": links
                     };
-                    console.log(revised_course_JSON);
                     // ————————————————————————————————————————————————————— //
                     // CODE COPIED FROM https://bl.ocks.org/mbostock/4062045 //
                     // ————————————————————————————————————————————————————— //
@@ -371,7 +337,7 @@ function generateCourseGraph(json_request, deg1, deg2) {
                                 .on("start", dragstarted)
                                 .on("drag", dragged)
                                 .on("end", dragended));
-                        
+
                         var text = svg.append("g")
                             .attr("class", "text")
                             .selectAll("text")
@@ -381,7 +347,7 @@ function generateCourseGraph(json_request, deg1, deg2) {
                             .attr("fill", function(d) { return color(d.group); })
                             .attr("transform", function(d) { return "translate(" + (d.group * mulNumber + addNumber) + "," + 0 + ")";})
                             .text(function(d) { return d.id });
-                        
+
                         node.append("title")
                             .text(function(d) { return d.id; });
     //                        node.append("text")
@@ -398,9 +364,6 @@ function generateCourseGraph(json_request, deg1, deg2) {
                             .links(graph.links);
 
                         node.on("click", function(params){
-                            console.log(graph)
-                            console.log(course_info_JSON);
-                           console.log(params)
 //                           d3.select(this).classed("selected");
                             var selectedID = params.id
                             var selectedInfo = $.grep(course_info_JSON, function(d){return d.GUID == selectedID})[0]
@@ -420,8 +383,8 @@ function generateCourseGraph(json_request, deg1, deg2) {
                                         $("#coursePrereq").html($("#coursePrereq").html() + ", " + selectedInfo.Prerequisites[x])
                                     }
                                 }
-                                
-                                
+
+
                             }
                         });
                         function ticked() {
