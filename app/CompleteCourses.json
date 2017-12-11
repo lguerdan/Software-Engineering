@@ -1541,7 +1541,7 @@
 				"GUID": "CMP_SC4050",
 				"Description": "(cross-leveled with CMP_SC 7050). This course reviews and extends earlier work with linked structures, sorting and searching algorithms, and recursion. Graph algorithms, string matching, combinatorial search, geometrical algorithms and related topics are also studied.",
 				"Hours": "3",
-				"Prerequisites": []
+				"Prerequisites": ["CMP_SC3050"]
 			},
 			{
 				"Title": "CMP_SC 4060:  String Algorithms",
