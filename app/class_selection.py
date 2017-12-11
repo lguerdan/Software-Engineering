@@ -51,12 +51,10 @@ def get_degree(degree):
       course_full = get_course_from_ID(course)
       if course_full != None:
          courses_full.append(course_full)
-
       else:
          print "didnt find course " + course
 
    return courses_full
-
 
 
 def get_course_from_ID(cid):
@@ -71,6 +69,6 @@ def get_course_from_ID(cid):
       else:
          print course["Description"]
          print "no GUID in "+ str(course)
-
-
    return None
+
+def course_in_selection(courses, course):
