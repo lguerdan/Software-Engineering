@@ -19,6 +19,10 @@ body {
  stroke: #fff;
  stroke-width: 1.5px;
 }
+.node .selected {
+  stroke: black;
+}
+
 
 #decisionPane, #descriptionPane {
     width: calc(25% - 4px - 20px);
