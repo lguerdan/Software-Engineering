@@ -1,7 +1,7 @@
 # Degree Visualizer
 Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, Lydia Snyder, Michael Thomas   
 
-
+Website: http://lukeguerdan.com/Software-Engineering/web/
 [![Overview Video](docs/vid.png)](https://www.youtube.com/watch?v=bMaf7agOkCM)
 
 - [Requirements](#requirements)
