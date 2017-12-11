@@ -12,7 +12,7 @@ Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, 
 
 ### Requirements
 
-In one of our first meetings our team discussed what features we felt would be essential for our application. From this discussion we decided upon some requirements.
+In one of our first meetings our team discussed what features we felt would be essential for our application. From this discussion, we determined our requirements.
 
 FRONT END
 
@@ -27,9 +27,10 @@ FRONT END
 
 BACK END
 
-* The application shall deliver a list on courses in JSON upon 
-*
-*
+* The application shall deliver a list of courses in JSON upon 
+* The application shall
+* The application shall 
+* The application shall
 
 ### Application Architecture
 
