@@ -1,5 +1,5 @@
 # Degree Visualizer
-Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, Lydia Snyder   
+Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, Lydia Snyder, Michael Thomas   
 
 - [Requirements](#requirements)
 - [Application Architecture](#application-architecture)
@@ -12,11 +12,19 @@ Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, 
 
 ### Requirements
 
-We've said that we want to be able to definitely:
+In one of our first meetings our team discussed what features we felt would be essential for our application. From this discussion we decided upon some requirements.
 
 FRONT END
 
-Our website allows the user to view one or two degree plans at a time.  The user can choose to view only one major, allowing them to see the courses required for that major, and follow how the courses are connected (i.e. prerequisites).  The user also has the option to view two degree plans simultaneously.  They can view two majors, or view one major and one minor at the same time.  The course visualization shows the user any overlap between two majors, or a major and a minor.  For example, if both a CS Major and a Math Minor require STAT 4710, that overlap will be shown in the course map.  We currently have three majors and two minors available in our data - CS Major, IT Major, Math Minor, Music Studies/Major, and Business Minor.  Most degree plans require electives, aso if the user clicks on an elective to view, there will be a sidebar/dropdown available to view all the elective options.
+* A user shall be able to select to view one major. 
+* A user shall be able to select to view a major and a minor.
+* A user shall be able to select two majors.
+* A user shall be able to see the courses required for a selected major. 
+* A user shall be able to see how the courses are connected by prerequisites.
+* Our product for our first release ( December 11, 2017 ) shall have three majors and two minors available in our data - CS Major, IT Major, Music Studies/Major, Math Minor, and Business Minor. 
+
+* Our application shall allow a user to view one or two degree plans at a time. 
+allowing them to see the courses required for that major, and follow how the courses are connected (i.e. prerequisites).  The user also has the option to view two degree plans simultaneously.  They can view two majors, or view one major and one minor at the same time.  The course visualization shows the user any overlap between two majors, or a major and a minor.  For example, if both a CS Major and a Math Minor require STAT 4710, that overlap will be shown in the course map.  We currently have three majors and two minors available in our data - CS Major, IT Major, Math Minor, Music Studies/Major, and Business Minor.  Most degree plans require electives, aso if the user clicks on an elective to view, there will be a sidebar/dropdown available to view all the elective options.
 
 BACK END
 H: Server filter by tag
