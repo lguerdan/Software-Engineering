@@ -66,7 +66,7 @@
         </div>
         <div class="column" id="visualizationPane">
             <!-- START OF COPIED CODE -->
-            <svg width="960" height="600"></svg>
+            <svg width="960" height="800"></svg>
             <script>
                $(document).ready(function() {
                   $('select').material_select();
@@ -128,7 +128,7 @@
                     // Iterate through already assigned courses
 
 
-                    // ~~~~~~~~~~~~~~~ START OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    // ~~~~~~~~~~~~~~~ START OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~
                     var num_courses_fabricated = 0;
                     var num_courses_total = course_info_JSON.length;
                     console.log("num_courses_total: " + num_courses_total);
@@ -209,12 +209,13 @@
                         for (i = 0; i < temp_num_courses_assigned; i++) {
                             courses_assigned[num_courses_assigned] = temp_courses_assigned[i];
                             num_courses_assigned++;
+                            
                         }
                         console.log("courses added to group " + (depth - 1) + ":");
                         console.log(temp_courses_assigned);
                         console.log("num_courses_assigned: " + num_courses_assigned);
                     }
-                    // ~~~~~~~~~~~~~~~ END OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    // ~~~~~~~~~~~~~~~ END OF GROUP-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~
 
 
                     console.log("courses_assigned");
@@ -235,10 +236,51 @@
                         { source: "CMP_SC3050", target: "CMP_SC4520", value: 1, length: 1 },
                         { source: "CMP_SC2050", target: "CMP_SC3050", value: 1, length: 1 }
                     ];
+                
+                    // ~~~~~~~~~~~~~~~ START OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~
+                    var num_links_total = 0;
+                    for( i = 0; i < num_courses_total; i++ ) {
+                        num_links_total += course_info_JSON[i].Prerequisites.length;
+                    }
+                    console.log("num_links_total: " + num_links_total);
+                
+                    var links = [];
+                    var counter = 0;
+                    var temp_length;
+                    var start_depth;
+                    var end_depth;
+                    var temp_value;
+                    for( i = 0; i < num_courses_total; i++ ) {
+                        for( l = 0; l < courses_assigned.length; l++ ) {
+                            if( courses_assigned[l].id == course_info_JSON[i].GUID ) {
+                                end_depth = courses_assigned[l].group;
+                            }
+                        }
+                        for( j = 0; j < course_info_JSON[i].Prerequisites.length; j++ ) {
+                            for( k = 0; k < courses_assigned.length; k++ ) {
+                                if( courses_assigned[k].id == course_info_JSON[i].Prerequisites[j] ) {
+                                    start_depth = courses_assigned[k].group;
+                                    temp_value = courses_assigned[k].group;
+                                }
+                            }
+                            temp_length = end_depth - start_depth;
+                            links[counter] = {
+                                source: course_info_JSON[i].Prerequisites[j],
+                                target: course_info_JSON[i].GUID,
+                                length: temp_length,
+                                value: temp_value
+                            };
+                            counter++;
+                        }
+                    }
+                    console.log("links: ");
+                    console.log(links);
+                
+                    // ~~~~~~~~~~~~~~~ END OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~~~
 
                     var revised_course_JSON = {
                         "nodes": courses_assigned,
-                        "links": faux_links
+                        "links": links
                     };
 
                     console.log(revised_course_JSON);
@@ -300,11 +342,11 @@
 
                         node.append("text")
                             .text(function(d) { return d.id; });
-                        //.attr("x", function(d) { return 10 })
-                        //.attr("dy", ".35em")
-                        //.attr("text-anchor", function(d) { return "start"; })
-                        //.text(function(d) { return d.id; })
-                        //.style("fill-opacity", 1e-6);
+                            //.attr("x", function(d) { return 10 })
+                            //.attr("dy", ".35em")
+                            //.attr("text-anchor", function(d) { return "start"; })
+                            //.text(function(d) { return d.id; })
+                            //.style("fill-opacity", 1e-6);
 
                         simulation
                             .nodes(graph.nodes)
@@ -326,7 +368,7 @@
                                 .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
                         }
 
-                        //});
+                    //});
                     };
 
                     fakeD3Load(revised_course_JSON);
