@@ -172,7 +172,7 @@ function generateCourseGraph(json_request, deg1, deg2) {
                     for (i = 0; i < num_courses_total; i++) {
                         courses_assigned_flag[i] = 0;
                     }
-                    while (num_courses_assigned - num_courses_fabricated < num_courses_total && depth < 6) {
+                    while (num_courses_assigned - num_courses_fabricated < num_courses_total && depth < 7) {
                         temp_num_courses_assigned = 0;
                         var temp_courses_assigned = [];
                         for (i = 0; i < num_courses_total; i++) {
@@ -250,10 +250,7 @@ function generateCourseGraph(json_request, deg1, deg2) {
                             counter++;
                         }
                     }
-                    var faux_links = [
-                        { source: "CMP_SC3050", target: "CMP_SC4520", value: 1, length: 1 },
-                        { source: "CMP_SC2050", target: "CMP_SC3050", value: 1, length: 1 }
-                    ];
+                   
                     // ~~~~~~~~~~~~~~~ START OF LINK-DETERMINING CODE ~~~~~~~~~~~~~~~~~~~~~
                     var num_links_total = 0;
                     for( i = 0; i < num_courses_total; i++ ) {
@@ -312,7 +309,7 @@ function generateCourseGraph(json_request, deg1, deg2) {
                         .force("center", d3.forceCenter(width / 2, height / 2));
                     //d3.json( revised_course_JSON, function(error, graph) {
                     //  if (error) throw error;
-                var mulNumber = 160
+                var mulNumber = 132
                 var addNumber = 50
                     function fakeD3Load(graph) {
                         var link = svg.append("g")
