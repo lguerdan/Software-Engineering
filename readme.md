@@ -14,12 +14,7 @@ Brought to you by: Evan Teters, Chris Mitchell, Luke Guerdan, Abigail Sandusky, 
 
 We've said that we want to be able to definitely:
 FRONT END
-H: Preview one major individually
-H: Preview two majors at the same time
-H: Preview a major and a minor at the same time
-H: See through some visual indication the overlap between the two entities being shown
-H: Have three majors and two minors available in our data (CS Major, IT Major, Math Minor, Music Studies/Major, Business Minor)
-M: If it is an elective, see all the options that you can fill. (sidebar or dropdown)
+Our website allows the user to view one or two degree plans at a time.  The user can choose to view only one major, allowing them to see the courses required for that major, and follow how the courses are connected (i.e. prerequisites).  The user also has the option to view two degree plans simultaneously.  They can view two majors, or view one major and one minor at the same time.  The course visualization shows the user any overlap between two majors, or a major and a minor.  For example, if both a CS Major and a Math Minor require STAT 4710, that overlap will be shown in the course map.  We currently have three majors and two minors available in our data - CS Major, IT Major, Math Minor, Music Studies/Major, and Business Minor.  Most degree plans require electives, aso if the user clicks on an elective to view, there will be a sidebar/dropdown available to view all the elective options.
 
 BACK END
 H: Server filter by tag
